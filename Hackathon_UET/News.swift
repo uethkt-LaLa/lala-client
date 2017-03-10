@@ -55,23 +55,23 @@ class News: NSObject {
         
         for item in likeArr {
             let val = item.stringValue
+            self.likes_count = self.likes_count + 1
             if UltilsUser.userId == val {
                 self.isLike = true
                 break
             }
-            self.likes_count = self.likes_count + 1
         }
         
         let disLikeArr = json["dislikes"].arrayValue
         self.dislikes_count = 0
         self.isDisLike = false
         for item in disLikeArr {
+            self.dislikes_count = self.dislikes_count + 1
             let val = item.stringValue
             if UltilsUser.userId == val {
                 self.isDisLike = true
                 break
             }
-            self.dislikes_count = self.dislikes_count + 1
         }
         
         self.isFollow = false

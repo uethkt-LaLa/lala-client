@@ -16,10 +16,9 @@ class PopularUser: NSObject {
     var popular : Int
     var join_date : String
     var follower_count : Int
-    var image_url : String
     
     init(json : JSON) {
-        self.avatarUser = json["avatar"].stringValue
+        self.avatarUser = json["image_url"].stringValue
         self.id = json["_id"].stringValue
         self.username = json["username"].stringValue
         self.popular = json["popular"].intValue
@@ -30,8 +29,7 @@ class PopularUser: NSObject {
         self.join_date = dateformat.string(from: date2)
         
         let fols = json["followers"].arrayValue
-        self.follower_count = fols.count
-        self.image_url = json["image_url"].stringValue
+        self.follower_count = fols.count        
     }
     
     /*"_id": "58ba468ddfae86239b973adc",

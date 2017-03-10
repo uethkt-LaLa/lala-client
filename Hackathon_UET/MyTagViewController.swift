@@ -32,8 +32,10 @@ class MyTagViewController: UIViewController {
         Alamofire.request(URL_DEFINE.tagHome, method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
             let jsondata = JSON.init(data: response.data!)
             for item in jsondata.arrayValue {
-                let id = item.stringValue
-                self.listChoose.append(id)
+                let tag = Tag.init(json: item)
+                tag.select = true
+                self.listChoose.append(tag.id)
+                self.listTags.append(tag)
             }
             Alamofire.request(URL_DEFINE.tagAll, method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
                 let jsondata = JSON.init(data: response.data!)
@@ -42,9 +44,6 @@ class MyTagViewController: UIViewController {
                     if self.listChoose.contains(tag.id) == false {
                         tag.select = false
                         self.listTags.append(tag)
-                    } else {
-                        tag.select = true
-                        self.listTags.insert(tag, at: 0)
                     }
                 }
             self.tbl.reloadData()

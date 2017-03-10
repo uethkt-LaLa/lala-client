@@ -60,14 +60,16 @@ class WhatNewsViewController: BaseViewController {
         let idPost = self.listShow[index.row].id
         let item = self.listShow[index.row]
         if status == true { ////like
+            item.isLike = true
+            item.likes_count = item.likes_count + 1
             Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/like", method: .put, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
-                item.isLike = true
-                item.likes_count = item.likes_count + 1
+                
             }
         } else if status == false { //unlike
+            item.isLike = false
+            item.likes_count = item.likes_count - 1
             Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/like", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
-                item.isLike = false
-                item.likes_count = item.likes_count - 1
+                
             }
         }
         self.listShow[index.row] = item
@@ -78,14 +80,15 @@ class WhatNewsViewController: BaseViewController {
         let idPost = self.listShow[index.row].id
         let item = self.listShow[index.row]
         if status == true { ////like
+            item.isDisLike = true
+            item.dislikes_count = item.dislikes_count + 1
             Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .put, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
-                item.isDisLike = true
-                item.dislikes_count = item.dislikes_count + 1
+                
             }
         } else if status == false { //unlike
-            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
-                item.isDisLike = false
-                item.dislikes_count = item.dislikes_count + 1
+            item.isDisLike = false
+            item.dislikes_count = item.dislikes_count - 1
+            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in                
             }
         }
         self.listShow[index.row] = item
@@ -142,11 +145,13 @@ extension WhatNewsViewController : DetailPostDelegate {
 extension WhatNewsViewController : DelegateNewCell {
     func likeTouchUp(cell : NewTableViewCell , status : Bool){
         let index = tbl.indexPath(for: cell)
+        let status = !self.listShow[(index?.row)!].isLike
         self.setLikeforIndex(index: index!, status: status)
         
     }
     func dislikeTouchUp(cell : NewTableViewCell , status : Bool){
         let index = tbl.indexPath(for: cell)
+        let status = !self.listShow[(index?.row)!].isDisLike
         self.setDisLikeForIndex(index: index!, status: status)
     }
     func favTouchUp(cell : NewTableViewCell , status : Bool){
