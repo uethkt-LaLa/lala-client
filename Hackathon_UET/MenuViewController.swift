@@ -34,6 +34,7 @@ class MenuViewController: UIViewController {
         listMenu.append(MenuObj(titleName: "Favorite Posts", imgPath: ""))
         listMenu.append(MenuObj(titleName: "My Posts", imgPath: ""))
         listMenu.append(MenuObj(titleName: "My Tag", imgPath: ""))
+        listMenu.append(MenuObj(titleName: "Popular User", imgPath: ""))
         listMenu.append(MenuObj(titleName: "My Profile", imgPath: ""))
         tbl.register(UINib.init(nibName: "MenuTableViewCell", bundle: nil), forCellReuseIdentifier: "MenuTableViewCell")
         tbl.tableFooterView = UIView.init(frame: CGRect.zero)
@@ -63,14 +64,21 @@ extension MenuViewController : UITableViewDataSource,UITableViewDelegate {
             MainViewController.sharedInstance.slideMenu?.mainViewController = whatNews
             NotificationCenter.default.post(name: NSNotification.Name.init("MenuWhatNews"), object: nil)
         case 1:
-            MainViewController.sharedInstance.slideMenu?.mainViewController = favVC
+            let vc = WhatNewsViewController(nibName: "WhatNewsViewController", bundle: nil)
+            //vc.urlRequest = URL_DEFINE.
+            MainViewController.sharedInstance.slideMenu?.mainViewController = vc
             NotificationCenter.default.post(name: NSNotification.Name.init("Favorites"), object: nil)
         case 2:
+            let vc = WhatNewsViewController(nibName: "WhatNewsViewController", bundle: nil)
+            vc.urlRequest = URL_DEFINE.home_post
             MainViewController.sharedInstance.slideMenu?.mainViewController = myPostVC
             NotificationCenter.default.post(name: NSNotification.Name.init("PostVC"), object: nil)
         case 3:
             MainViewController.sharedInstance.slideMenu?.mainViewController = myTagVC
-            NotificationCenter.default.post(name: NSNotification.Name.init("PostVC"), object: nil)        
+            NotificationCenter.default.post(name: NSNotification.Name.init("PostVC"), object: nil)
+        case 4:
+            let vc = PopularUserViewController(nibName: "PopularUserViewController", bundle: nil)
+            MainViewController.sharedInstance.slideMenu?.mainViewController = vc
         default:
             break
         }

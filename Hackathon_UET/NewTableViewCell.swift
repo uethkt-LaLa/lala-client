@@ -47,7 +47,13 @@ class NewTableViewCell: UITableViewCell {
     }
     
     func setData(new : News) {
-        self.lblStatus.text = new.descriptionData
+        
+        if new.descriptionData.characters.count > 500 {
+            let text = new.descriptionData.substring(to: 499) + "..."
+            self.lblStatus.text = new.descriptionData
+        } else {
+            self.lblStatus.text = new.descriptionData
+        }
         let count_comment = new.comments.count
         let dis_like_count = new.dislikes_count
         let like_count = new.likes_count
@@ -106,7 +112,8 @@ class NewTableViewCell: UITableViewCell {
     }
     @IBAction func btnFavTouchUp(_ sender : UIButton) {
         if delegate != nil {
-            delegate?.favTouchUp(cell: self, status: true)
+            let val = !(object?.isFollow)!
+            delegate?.favTouchUp(cell: self, status: val)
         }
     }
     

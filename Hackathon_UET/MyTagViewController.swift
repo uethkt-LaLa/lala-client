@@ -18,18 +18,18 @@ class MyTagViewController: UIViewController {
         super.viewDidLoad()
         tbl.register(UINib.init(nibName: "TagTableViewCell", bundle: nil), forCellReuseIdentifier: "TagTableViewCell")
         self.requestData()
-        self.tbl.tableFooterView = UIView.init(frame: CGRect.zero)        
-        // Do any additional setup after loading the view.
+        self.tbl.tableFooterView = UIView.init(frame: CGRect.zero)
     }
     
     func requestData() {
         var tmp = [Tag]()
-        Alamofire.request(URL_DEFINE.tagAll, method: .get, parameters: nil).authenticate(user: "admin", password: "123456").responseJSON { (response) in
+        Alamofire.request(URL_DEFINE.tagAll, method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
             let jsondata = JSON.init(data: response.data!)
             for item in jsondata.arrayValue {
                 let tag = Tag(json: item)
-                self.listTags.append(tag)
+                tmp.append(tag)
             }
+            self.listTags = tmp
             self.tbl.reloadData()
         }
     }
@@ -57,5 +57,10 @@ extension MyTagViewController : UITableViewDataSource,UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let whatNews = WhatNewsViewController(nibName: "WhatNewsViewController", bundle: nil)
+        //set URL
     }
 }

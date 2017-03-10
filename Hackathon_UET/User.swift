@@ -27,31 +27,31 @@ class User: NSObject {
         self.gender = json["gender"].boolValue
         self.join_date = json["join_date"].stringValue
         self.followers = [String]()
-        for item in json["followers"].array! {
+        for item in json["followers"].arrayValue {
             let val = item.stringValue
             self.followers.append(val)
         }
         
         self.following_categories = [String]()
-        for item in json["following_categories"].array! {
+        for item in json["following_categories"].arrayValue {
             let val = item.stringValue
             self.following_categories.append(val)
         }
         
         self.following_tags = [String]()
-        for item in json["following_tags"].array! {
+        for item in json["following_tags"].arrayValue {
             let val = item.stringValue
             self.following_tags.append(val)
         }
         
         self.following_posts = [String]()
-        for item in json["following_posts"].array! {
+        for item in json["following_posts"].arrayValue {
             let val = item.stringValue
             self.following_posts.append(val)
         }
         
         self.followings = [String]()
-        for item in json["followings"].array! {
+        for item in json["followings"].arrayValue {
             let val = item.stringValue
             self.followings.append(val)
         }

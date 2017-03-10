@@ -12,22 +12,26 @@ import SwiftyJSON
 class Tag: NSObject {
     var id : String
     var name : String
-    var followers : [String]
-    var posts : [String]
+    var followers_count : Int
+    var post_count : Int
+//    var followers : [String]
+//    var posts : [String]
     init(json : JSON) {
         self.id = json["_id"].stringValue
         self.name = json["name"].stringValue
-        self.followers = [String]()
+        var followers = [String]()
         for item in json["followers"].arrayValue {
             let str = item.stringValue
-            self.followers.append(str)
+            followers.append(str)
         }
-        self.posts = [String]()
+        self.followers_count = followers.count
+        
+        var posts = [String]()
         for item in json["posts"].arrayValue {
             let str = item.stringValue
-            self.posts.append(str)
+            posts.append(str)
         }
-        
+        self.post_count = posts.count
     }
     
 }

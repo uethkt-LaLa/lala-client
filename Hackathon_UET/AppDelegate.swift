@@ -11,9 +11,9 @@ import IQKeyboardManagerSwift
 import FBSDKLoginKit
 
 let kUserId = "58ba468ddfae86239b973adc"
-let kURL = "https://lala-server.herokuapp.com/api/"
-let kUserName = "admin"
-let kPassword = "123456"
+let kURL = "https://lala-test.herokuapp.com/api/"
+var kUserName = "admin"
+var kPassword = "123456"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

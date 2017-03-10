@@ -37,6 +37,9 @@
 		3672F5981E70621E00A80D24 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3672F5961E70621E00A80D24 /* ImageCollectionViewCell.swift */; };
 		3672F5991E70621E00A80D24 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3672F5971E70621E00A80D24 /* ImageCollectionViewCell.xib */; };
 		367704191E72F90C008706B5 /* UltilsUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367704181E72F90C008706B5 /* UltilsUser.swift */; };
+		3677041D1E730C96008706B5 /* PopularUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3677041B1E730C96008706B5 /* PopularUserViewController.swift */; };
+		3677041E1E730C96008706B5 /* PopularUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3677041C1E730C96008706B5 /* PopularUserViewController.xib */; };
+		367704201E730D82008706B5 /* PopularUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3677041F1E730D82008706B5 /* PopularUser.swift */; };
 		368E2B751E70894300078F5A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368E2B741E70894300078F5A /* Bolts.framework */; };
 		368E2B7F1E7089B700078F5A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368E2B7C1E7089B700078F5A /* FBSDKCoreKit.framework */; };
 		368E2B801E7089B700078F5A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368E2B7D1E7089B700078F5A /* FBSDKLoginKit.framework */; };
@@ -158,6 +161,9 @@
 		3672F5961E70621E00A80D24 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		3672F5971E70621E00A80D24 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		367704181E72F90C008706B5 /* UltilsUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UltilsUser.swift; sourceTree = "<group>"; };
+		3677041B1E730C96008706B5 /* PopularUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularUserViewController.swift; sourceTree = "<group>"; };
+		3677041C1E730C96008706B5 /* PopularUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopularUserViewController.xib; sourceTree = "<group>"; };
+		3677041F1E730D82008706B5 /* PopularUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularUser.swift; sourceTree = "<group>"; };
 		368E2B741E70894300078F5A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		368E2B7C1E7089B700078F5A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		368E2B7D1E7089B700078F5A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -363,6 +369,15 @@
 			name = ImgCollectionView;
 			sourceTree = "<group>";
 		};
+		3677041A1E730C7F008706B5 /* PopularUserVC */ = {
+			isa = PBXGroup;
+			children = (
+				3677041B1E730C96008706B5 /* PopularUserViewController.swift */,
+				3677041C1E730C96008706B5 /* PopularUserViewController.xib */,
+			);
+			name = PopularUserVC;
+			sourceTree = "<group>";
+		};
 		36A6586C1E716C8300494445 /* ChooseImageVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +449,7 @@
 		36D803781E6C6C6400AE1405 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3677041A1E730C7F008706B5 /* PopularUserVC */,
 				362DBC6D1E7276DB00F211A1 /* BaseViewController.swift */,
 				36546B7B1E72633400028DE6 /* PreViewVC */,
 				36546B761E72615D00028DE6 /* DetailPost */,
@@ -460,6 +476,7 @@
 				36B2F14B1E726AD000DE01A3 /* User.swift */,
 				36EE8A1D1E72CDE10049B84D /* Comment.swift */,
 				367704181E72F90C008706B5 /* UltilsUser.swift */,
+				3677041F1E730D82008706B5 /* PopularUser.swift */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -607,6 +624,7 @@
 				36546B7A1E72617100028DE6 /* DetailPostViewController.xib in Resources */,
 				36546B7F1E72634700028DE6 /* PreviewViewController.xib in Resources */,
 				3650AECA1E6F26A6005FA6F2 /* MyPostsViewController.xib in Resources */,
+				3677041E1E730C96008706B5 /* PopularUserViewController.xib in Resources */,
 				36D803B71E6C74A500AE1405 /* MenuTableViewCell.xib in Resources */,
 				366606111E725D9A0099BAFC /* SilderPhotoViewController.xib in Resources */,
 				36B9A3521E6C8B7A00EB1290 /* CustomeKeyboard.xib in Resources */,
@@ -662,6 +680,8 @@
 				36546B7E1E72634700028DE6 /* PreviewViewController.swift in Sources */,
 				36546B791E72617100028DE6 /* DetailPostViewController.swift in Sources */,
 				36EE8A211E72D88E0049B84D /* FavoritesPostViewController.swift in Sources */,
+				3677041D1E730C96008706B5 /* PopularUserViewController.swift in Sources */,
+				367704201E730D82008706B5 /* PopularUser.swift in Sources */,
 				36A6586F1E716CA700494445 /* PicktureViewController.swift in Sources */,
 				36D803B11E6C741300AE1405 /* WhatNewsViewController.swift in Sources */,
 				364A76391E6C7E3C00FB3199 /* NewPostViewController.swift in Sources */,

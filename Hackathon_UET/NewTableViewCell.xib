@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="385" height="335"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="385" height="334.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="385" height="334"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mI9-nA-ZrC">
@@ -78,7 +78,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="9Jf-9p-fV1">
-                        <rect key="frame" x="0.0" y="145.5" width="385" height="100"/>
+                        <rect key="frame" x="0.0" y="146" width="385" height="100"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="53Q-Mh-kAd"/>
                         </constraints>
@@ -90,7 +90,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOi-3E-zu2">
-                        <rect key="frame" x="0.0" y="278.5" width="385" height="44"/>
+                        <rect key="frame" x="0.0" y="279" width="385" height="44"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Zd-I1-EP6">
                                 <rect key="frame" x="4" y="4" width="36" height="36"/>
@@ -145,7 +145,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Spb-3G-XqM">
-                        <rect key="frame" x="0.0" y="249.5" width="385" height="25"/>
+                        <rect key="frame" x="0.0" y="250" width="385" height="25"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qx3-Ln-zN4">
                                 <rect key="frame" x="24" y="2" width="42" height="21"/>

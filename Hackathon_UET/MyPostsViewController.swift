@@ -7,14 +7,20 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
-class MyPostsViewController: UIViewController {
+class MyPostsViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
     var listShow = [News]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tbl.register(UINib.init(nibName: "NewTableViewCell", bundle: nil), forCellReuseIdentifier: "NewTableViewCell")
+        tbl.tableFooterView = UIView.init(frame: CGRect.zero)
+        tbl.estimatedRowHeight = 100
+        tbl.rowHeight = UITableViewAutomaticDimension
+        tbl.allowsSelection = false
+        self.loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,8 +28,23 @@ class MyPostsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func requestData() {
+    func reloadData(notification : Notification) {
         
+    }
+    func loadData() {
+        self.showLoadingHUD()
+        var tmp = [News]()
+        Alamofire.request(URL_DEFINE.home_post, method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+            let jsondata = JSON.init(data: response.data!)
+            NSLog("\(jsondata)")
+            for item in jsondata.array! {
+                let new = News(json: item)
+                tmp.append(new)
+            }
+            self.listShow = tmp
+            self.hideLoadingHUD()
+            self.tbl.reloadData()
+        }
     }
 
 }

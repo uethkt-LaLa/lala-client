@@ -25,6 +25,7 @@ class News: NSObject {
     var imagePath : [String]
     var isLike : Bool
     var isDisLike : Bool
+    var isFollow : Bool
     
     init(json : JSON) {
         self.id = json["_id"].stringValue
@@ -34,7 +35,7 @@ class News: NSObject {
         self.imagePath.append("https://www.w3schools.com/css/img_fjords.jpg")
         self.userId = json["userId"].stringValue
         self.categoryID = json["categoryId"].stringValue
-        self.descriptionData = json["description"].stringValue        
+        self.descriptionData = json["description"].stringValue
         let created_time = json["created_time"].stringValue
         self.created_time = created_time
         self.followers = [String]()
@@ -49,27 +50,38 @@ class News: NSObject {
             self.comments.append(val)
         }
         let likeArr = json["likes"].arrayValue
-        
-        
         self.likes_count = 0
         self.isLike = false
-        let disLikeArr = json["dislikes"].arrayValue
+        
         for item in likeArr {
             let val = item.stringValue
             if UltilsUser.userId == val {
                 self.isLike = true
+                break
             }
             self.likes_count = self.likes_count + 1
         }
         
+        let disLikeArr = json["dislikes"].arrayValue
         self.dislikes_count = 0
         self.isDisLike = false
         for item in disLikeArr {
             let val = item.stringValue
             if UltilsUser.userId == val {
                 self.isDisLike = true
+                break
             }
             self.dislikes_count = self.dislikes_count + 1
+        }
+        
+        self.isFollow = false
+        let followArr = json["followers"].arrayValue
+        for item in followArr {
+            let val = item.string
+            if UltilsUser.userId == val {
+                self.isFollow = true
+                break
+            }
         }
         
         self.is_published = json["is_published"].boolValue

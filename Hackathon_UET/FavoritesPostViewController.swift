@@ -11,8 +11,7 @@ import UIKit
 class FavoritesPostViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
     override func viewDidLoad() {
-        super.viewDidLoad()
-
+        super.viewDidLoad()        
         // Do any additional setup after loading the view.
     }
 

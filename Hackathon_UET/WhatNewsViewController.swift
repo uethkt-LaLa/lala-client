@@ -12,7 +12,8 @@ import SwiftyJSON
 
 class WhatNewsViewController: BaseViewController {
     @IBOutlet weak var tbl : UITableView!
-    var listShow = [News]()    
+    var listShow = [News]()
+    var urlRequest : String?
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(WhatNewsViewController.reloadData(notification:)), name: NSNotification.Name.init("Menu0"), object: nil)
@@ -20,6 +21,7 @@ class WhatNewsViewController: BaseViewController {
         tbl.tableFooterView = UIView.init(frame: CGRect.zero)
         tbl.estimatedRowHeight = 100
         tbl.rowHeight = UITableViewAutomaticDimension
+        tbl.allowsSelection = false
         self.loadData()
     }
     
@@ -29,7 +31,11 @@ class WhatNewsViewController: BaseViewController {
     
     func loadData() {
         self.showLoadingHUD()
-        Alamofire.request(URL_DEFINE.home_post, method: .get, parameters: nil).authenticate(user: "admin", password: "123456").responseJSON { (response) in
+        var url = URL_DEFINE.post_all
+        if urlRequest != nil {
+            url = urlRequest!
+        }
+        Alamofire.request(url, method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
             let jsondata = JSON.init(data: response.data!)
             NSLog("\(jsondata)")
             for item in jsondata.array! {
@@ -78,8 +84,18 @@ class WhatNewsViewController: BaseViewController {
         }
         tbl.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
     }
-    func favForIndex(index : IndexPath, status : Bool){
-        
+    func setfavForIndex(index : IndexPath, status : Bool){
+        let idPost = self.listShow[index.row].id
+        if status == true { ////like
+            Alamofire.request(URL_DEFINE.foorunFollow+"/\(idPost)", method: .put, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+                self.listShow[index.row].isDisLike = true
+            }
+        } else if status == false { //unlike
+            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+                self.listShow[index.row].isDisLike = false
+            }
+        }
+        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
     }
 }
 extension WhatNewsViewController : UITableViewDataSource,UITableViewDelegate {
@@ -107,7 +123,6 @@ extension WhatNewsViewController : UITableViewDataSource,UITableViewDelegate {
 }
 extension WhatNewsViewController : DetailPostDelegate {
     func likeTouch(index: IndexPath, status: Bool) {
-        
     }
     func favTouch(index: IndexPath, status: Bool) {
         
@@ -127,7 +142,8 @@ extension WhatNewsViewController : DelegateNewCell {
         self.setDisLikeForIndex(index: index!, status: status)
     }
     func favTouchUp(cell : NewTableViewCell , status : Bool){
-        
+        let index = tbl.indexPath(for: cell)
+        self.setfavForIndex(index: index!, status: status)
     }
     func commentTouchUp(cell : NewTableViewCell){
         
