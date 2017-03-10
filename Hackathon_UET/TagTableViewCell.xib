@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="TagTableViewCell" customModule="Hackathon_UET" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SnV-FX-brP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OYq-X8-XZl">
+                                <rect key="frame" x="8" y="8" width="27.5" height="27.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="OYq-X8-XZl" secondAttribute="height" id="wuf-6A-41n"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGE-xn-N0N">
+                                <rect key="frame" x="39.5" y="11.5" width="233" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NvS-i7-Axl">
+                                <rect key="frame" x="276.5" y="4" width="35.5" height="35.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NvS-i7-Axl" secondAttribute="height" multiplier="1:1" id="XEY-h6-XLm"/>
+                                </constraints>
+                                <state key="normal" image="CheckMark"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OYq-X8-XZl" firstAttribute="leading" secondItem="SnV-FX-brP" secondAttribute="leading" constant="8" id="15s-op-UqK"/>
+                            <constraint firstItem="NvS-i7-Axl" firstAttribute="top" secondItem="SnV-FX-brP" secondAttribute="top" constant="4" id="AX0-Xc-bNz"/>
+                            <constraint firstAttribute="trailing" secondItem="NvS-i7-Axl" secondAttribute="trailing" constant="8" id="CF0-EU-EyX"/>
+                            <constraint firstAttribute="bottom" secondItem="NvS-i7-Axl" secondAttribute="bottom" constant="4" id="Qox-Et-RtD"/>
+                            <constraint firstItem="NvS-i7-Axl" firstAttribute="leading" secondItem="wGE-xn-N0N" secondAttribute="trailing" constant="4" id="Vm2-AV-vkK"/>
+                            <constraint firstItem="wGE-xn-N0N" firstAttribute="centerY" secondItem="OYq-X8-XZl" secondAttribute="centerY" id="WSn-0U-jsz"/>
+                            <constraint firstItem="wGE-xn-N0N" firstAttribute="leading" secondItem="OYq-X8-XZl" secondAttribute="trailing" constant="4" id="iyX-B3-Xay"/>
+                            <constraint firstItem="OYq-X8-XZl" firstAttribute="top" secondItem="SnV-FX-brP" secondAttribute="top" constant="8" id="mLU-2S-s7p"/>
+                            <constraint firstAttribute="bottom" secondItem="OYq-X8-XZl" secondAttribute="bottom" constant="8" id="vST-QF-cBu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="SnV-FX-brP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="LUR-50-vQL"/>
+                    <constraint firstAttribute="trailing" secondItem="SnV-FX-brP" secondAttribute="trailing" id="cJV-pc-K9M"/>
+                    <constraint firstAttribute="bottom" secondItem="SnV-FX-brP" secondAttribute="bottom" id="vC1-gC-hHr"/>
+                    <constraint firstItem="SnV-FX-brP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="z58-r2-LeY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnChoose" destination="NvS-i7-Axl" id="eSf-CA-amS"/>
+                <outlet property="imgThumNail" destination="OYq-X8-XZl" id="EVQ-2v-da5"/>
+                <outlet property="lblTitle" destination="wGE-xn-N0N" id="Kgg-a2-OFI"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="CheckMark" width="16" height="16"/>
+    </resources>
+</document>

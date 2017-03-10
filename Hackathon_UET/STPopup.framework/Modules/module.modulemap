@@ -1,0 +1,6 @@
+framework module STPopup {
+  umbrella header "STPopup.h"
+
+  export *
+  module * { export * }
+}

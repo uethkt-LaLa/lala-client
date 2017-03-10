@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Hackathon_UET" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elD-Pj-VuT">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b9l-cM-NEd">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdX-26-nhU">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5JE-F5-72a">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSe-Yz-mOK">
+                                    <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EfV-fd-Nrv">
+                                            <rect key="frame" x="137.5" y="304.5" width="99" height="25"/>
+                                            <state key="normal">
+                                                <attributedString key="attributedTitle">
+                                                    <fragment content="Create new account">
+                                                        <attributes>
+                                                            <font key="NSFont" size="11" name=".SFNSText"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvQ-I5-PeL">
+                                            <rect key="frame" x="52" y="32" width="295" height="30"/>
+                                            <state key="normal" title="Login"/>
+                                            <connections>
+                                                <action selector="btnLoginTouchUp:" destination="-1" eventType="touchUpInside" id="TJb-Ya-ghH"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="EfV-fd-Nrv" secondAttribute="bottom" constant="4" id="1Uv-ve-qOE"/>
+                                        <constraint firstItem="EfV-fd-Nrv" firstAttribute="centerX" secondItem="jSe-Yz-mOK" secondAttribute="centerX" id="RZC-yU-gPB"/>
+                                        <constraint firstItem="VvQ-I5-PeL" firstAttribute="top" secondItem="jSe-Yz-mOK" secondAttribute="top" constant="4" id="Ta0-u5-DgF"/>
+                                        <constraint firstItem="VvQ-I5-PeL" firstAttribute="centerX" secondItem="jSe-Yz-mOK" secondAttribute="centerX" id="gA3-1x-BWe"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="jSe-Yz-mOK" firstAttribute="leading" secondItem="xdX-26-nhU" secondAttribute="leading" id="ICc-to-om5"/>
+                                <constraint firstItem="5JE-F5-72a" firstAttribute="top" secondItem="xdX-26-nhU" secondAttribute="top" id="P9x-5e-meU"/>
+                                <constraint firstAttribute="trailing" secondItem="5JE-F5-72a" secondAttribute="trailing" id="PRn-sB-Gud"/>
+                                <constraint firstAttribute="trailing" secondItem="jSe-Yz-mOK" secondAttribute="trailing" id="VnM-Rx-JQx"/>
+                                <constraint firstItem="jSe-Yz-mOK" firstAttribute="top" secondItem="5JE-F5-72a" secondAttribute="bottom" id="bLi-dR-exZ"/>
+                                <constraint firstItem="5JE-F5-72a" firstAttribute="leading" secondItem="xdX-26-nhU" secondAttribute="leading" id="d8x-h8-tIv"/>
+                                <constraint firstItem="5JE-F5-72a" firstAttribute="height" secondItem="xdX-26-nhU" secondAttribute="height" multiplier="1:2" id="jlm-M6-oCQ"/>
+                                <constraint firstAttribute="bottom" secondItem="jSe-Yz-mOK" secondAttribute="bottom" id="tOc-Ra-eVn"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="b9l-cM-NEd" firstAttribute="leading" secondItem="elD-Pj-VuT" secondAttribute="leading" id="52Q-7d-iNH"/>
+                        <constraint firstItem="xdX-26-nhU" firstAttribute="leading" secondItem="elD-Pj-VuT" secondAttribute="leading" id="Lwc-rh-IVC"/>
+                        <constraint firstItem="xdX-26-nhU" firstAttribute="top" secondItem="elD-Pj-VuT" secondAttribute="top" id="aw2-dD-ntw"/>
+                        <constraint firstItem="b9l-cM-NEd" firstAttribute="top" secondItem="elD-Pj-VuT" secondAttribute="top" id="d4M-w5-hY6"/>
+                        <constraint firstAttribute="trailing" secondItem="b9l-cM-NEd" secondAttribute="trailing" id="gVB-yg-AQn"/>
+                        <constraint firstAttribute="bottom" secondItem="xdX-26-nhU" secondAttribute="bottom" id="wrA-dz-PUn"/>
+                        <constraint firstAttribute="trailing" secondItem="xdX-26-nhU" secondAttribute="trailing" id="z4e-yB-paW"/>
+                        <constraint firstAttribute="bottom" secondItem="b9l-cM-NEd" secondAttribute="bottom" id="zld-ai-CgK"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="elD-Pj-VuT" secondAttribute="bottom" id="GTq-2X-zTS"/>
+                <constraint firstItem="elD-Pj-VuT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="aRo-MC-TGX"/>
+                <constraint firstAttribute="trailing" secondItem="elD-Pj-VuT" secondAttribute="trailing" id="bbC-KJ-7LE"/>
+                <constraint firstItem="elD-Pj-VuT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dBG-hF-bcJ"/>
+            </constraints>
+            <point key="canvasLocation" x="25.5" y="51.5"/>
+        </view>
+    </objects>
+</document>

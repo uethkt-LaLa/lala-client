@@ -1,0 +1,10 @@
+framework module NohanaImagePicker {
+  umbrella header "NohanaImagePicker.h"
+
+  export *
+  module * { export * }
+}
+
+module NohanaImagePicker.Swift {
+    header "NohanaImagePicker-Swift.h"
+}
