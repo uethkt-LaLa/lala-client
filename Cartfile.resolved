@@ -1,7 +1,1 @@
-github "Alamofire/Alamofire" "4.4.0"
-github "BoltsFramework/Bolts-ObjC" "1.8.4"
-github "nohana/NohanaImagePicker" "0.7.1"
-github "SnapKit/SnapKit" "3.2.0"
-github "Alamofire/AlamofireImage" "3.2.0"
-github "facebook/facebook-ios-sdk" "sdk-version-4.20.0"
-github "facebook/Facebook-SDK-Swift" "0.2.0"
+github "rs/SDWebImage" "4.0.0"
