@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="131" id="KGk-i7-Jjw" customClass="CommentCell" customModule="Hackathon_UET" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEa-86-5Bs">
+                        <rect key="frame" x="48" y="2" width="270" height="15"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNI-8V-FiU">
+                        <rect key="frame" x="48" y="19" width="270" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vRo-SX-ZB6">
+                        <rect key="frame" x="50" y="91.5" width="268" height="5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="5" id="C3K-SZ-GdJ"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bvw-X0-YNt">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4AX-d2-EFe">
+                        <rect key="frame" x="50" y="98.5" width="250" height="30"/>
+                        <color key="backgroundColor" red="0.16862745100000001" green="0.51764705879999995" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="xwy-Gl-fIY"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoholder" translatesAutoresizingMaskIntoConstraints="NO" id="h0O-w6-00Y">
+                        <rect key="frame" x="2" y="2" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="h0O-w6-00Y" secondAttribute="height" id="Pmj-rw-HCB"/>
+                            <constraint firstAttribute="width" constant="40" id="hFJ-sb-MiP"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="TEa-86-5Bs" secondAttribute="trailing" constant="2" id="1El-Ze-urP"/>
+                    <constraint firstItem="4AX-d2-EFe" firstAttribute="top" secondItem="vRo-SX-ZB6" secondAttribute="bottom" constant="2" id="86y-Wc-IMB"/>
+                    <constraint firstItem="vRo-SX-ZB6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="8Mv-l7-6tR"/>
+                    <constraint firstItem="h0O-w6-00Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="ChL-Ql-hnD"/>
+                    <constraint firstItem="ZNI-8V-FiU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="EnR-U8-Ds0"/>
+                    <constraint firstAttribute="trailing" secondItem="vRo-SX-ZB6" secondAttribute="trailing" constant="2" id="OO3-3j-4Yi"/>
+                    <constraint firstItem="vRo-SX-ZB6" firstAttribute="top" secondItem="ZNI-8V-FiU" secondAttribute="bottom" constant="2" id="T2P-tc-fqE"/>
+                    <constraint firstItem="4AX-d2-EFe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="X00-dT-YP4"/>
+                    <constraint firstItem="h0O-w6-00Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="2" id="dxP-GI-f52"/>
+                    <constraint firstItem="TEa-86-5Bs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="gHG-TB-RXn"/>
+                    <constraint firstAttribute="trailing" secondItem="4AX-d2-EFe" secondAttribute="trailing" constant="20" symbolic="YES" id="gwh-Fz-gzN"/>
+                    <constraint firstAttribute="bottom" secondItem="4AX-d2-EFe" secondAttribute="bottom" constant="2" id="imS-pr-nlt"/>
+                    <constraint firstAttribute="trailing" secondItem="ZNI-8V-FiU" secondAttribute="trailing" constant="2" id="jR6-I8-x2m"/>
+                    <constraint firstItem="ZNI-8V-FiU" firstAttribute="top" secondItem="TEa-86-5Bs" secondAttribute="bottom" constant="2" id="m7Z-JO-1M8"/>
+                    <constraint firstItem="TEa-86-5Bs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="shN-Pq-CM5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="collectionHeight" destination="C3K-SZ-GdJ" id="Gpt-2y-zlX"/>
+                <outlet property="lblCommentContent" destination="ZNI-8V-FiU" id="sbR-1y-V1z"/>
+                <outlet property="lblUsername" destination="TEa-86-5Bs" id="2ul-dZ-gw2"/>
+                <outlet property="photoCollection" destination="vRo-SX-ZB6" id="d5K-6Y-7xb"/>
+            </connections>
+            <point key="canvasLocation" x="-266" y="-179.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="photoholder" width="250" height="250"/>
+    </resources>
+</document>
