@@ -114,6 +114,13 @@
 		6EDBD64D1E72FF8A00B9FAE9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EDBD64B1E72FF8000B9FAE9 /* SDWebImage.framework */; };
 		6EDBD64E1E72FF8A00B9FAE9 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EDBD64B1E72FF8000B9FAE9 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6EDBD6521E7300D200B9FAE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBD6511E7300D200B9FAE9 /* Constants.swift */; };
+		6EDBD6561E731E9800B9FAE9 /* PostContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBD6541E731E9800B9FAE9 /* PostContentController.swift */; };
+		6EDBD6571E731E9800B9FAE9 /* PostContentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EDBD6551E731E9800B9FAE9 /* PostContentController.xib */; };
+		6EDBD65B1E731FCA00B9FAE9 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBD65A1E731FCA00B9FAE9 /* UITextView+Placeholder.m */; };
+		6EDBD65D1E73222100B9FAE9 /* ImageForPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBD65C1E73222100B9FAE9 /* ImageForPostView.swift */; };
+		6EDBD65F1E73223700B9FAE9 /* ImageForPostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EDBD65E1E73223700B9FAE9 /* ImageForPostView.xib */; };
+		6EDBD6621E73255700B9FAE9 /* ImageFromFolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBD6601E73255700B9FAE9 /* ImageFromFolderCell.swift */; };
+		6EDBD6631E73255700B9FAE9 /* ImageFromFolderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EDBD6611E73255700B9FAE9 /* ImageFromFolderCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -227,6 +234,14 @@
 		6EDBD6491E72FBEC00B9FAE9 /* photo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = photo.json; sourceTree = "<group>"; };
 		6EDBD64B1E72FF8000B9FAE9 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		6EDBD6511E7300D200B9FAE9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6EDBD6541E731E9800B9FAE9 /* PostContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostContentController.swift; sourceTree = "<group>"; };
+		6EDBD6551E731E9800B9FAE9 /* PostContentController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostContentController.xib; sourceTree = "<group>"; };
+		6EDBD6591E731FCA00B9FAE9 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		6EDBD65A1E731FCA00B9FAE9 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
+		6EDBD65C1E73222100B9FAE9 /* ImageForPostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageForPostView.swift; sourceTree = "<group>"; };
+		6EDBD65E1E73223700B9FAE9 /* ImageForPostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageForPostView.xib; sourceTree = "<group>"; };
+		6EDBD6601E73255700B9FAE9 /* ImageFromFolderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFromFolderCell.swift; sourceTree = "<group>"; };
+		6EDBD6611E73255700B9FAE9 /* ImageFromFolderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageFromFolderCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -471,6 +486,7 @@
 				36D8036D1E6C6C3B00AE1405 /* Assets.xcassets */,
 				36D8036F1E6C6C3B00AE1405 /* LaunchScreen.storyboard */,
 				36D803721E6C6C3B00AE1405 /* Info.plist */,
+				6EDBD6441E72F32000B9FAE9 /* Hackathon_UET-bridging-Header.h */,
 			);
 			path = Hackathon_UET;
 			sourceTree = "<group>";
@@ -478,6 +494,7 @@
 		36D803781E6C6C6400AE1405 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6EDBD6531E731E7200B9FAE9 /* PostContentVC */,
 				3677041A1E730C7F008706B5 /* PopularUserVC */,
 				362DBC6D1E7276DB00F211A1 /* BaseViewController.swift */,
 				36546B7B1E72633400028DE6 /* PreViewVC */,
@@ -592,9 +609,31 @@
 			children = (
 				6EDBD6411E72F2D200B9FAE9 /* KRLCollectionViewGridLayout.h */,
 				6EDBD6421E72F2D200B9FAE9 /* KRLCollectionViewGridLayout.m */,
-				6EDBD6441E72F32000B9FAE9 /* Hackathon_UET-bridging-Header.h */,
 			);
 			name = exLibs;
+			sourceTree = "<group>";
+		};
+		6EDBD6531E731E7200B9FAE9 /* PostContentVC */ = {
+			isa = PBXGroup;
+			children = (
+				6EDBD6581E731FB800B9FAE9 /* exLib */,
+				6EDBD6541E731E9800B9FAE9 /* PostContentController.swift */,
+				6EDBD6551E731E9800B9FAE9 /* PostContentController.xib */,
+				6EDBD65C1E73222100B9FAE9 /* ImageForPostView.swift */,
+				6EDBD65E1E73223700B9FAE9 /* ImageForPostView.xib */,
+				6EDBD6601E73255700B9FAE9 /* ImageFromFolderCell.swift */,
+				6EDBD6611E73255700B9FAE9 /* ImageFromFolderCell.xib */,
+			);
+			name = PostContentVC;
+			sourceTree = "<group>";
+		};
+		6EDBD6581E731FB800B9FAE9 /* exLib */ = {
+			isa = PBXGroup;
+			children = (
+				6EDBD6591E731FCA00B9FAE9 /* UITextView+Placeholder.h */,
+				6EDBD65A1E731FCA00B9FAE9 /* UITextView+Placeholder.m */,
+			);
+			name = exLib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -666,6 +705,7 @@
 				6EDBD63D1E72E6E200B9FAE9 /* CommentCell.xib in Resources */,
 				3672F58F1E7051AC00A80D24 /* CreateAccountViewController.xib in Resources */,
 				36546B7A1E72617100028DE6 /* DetailPostViewController.xib in Resources */,
+				6EDBD6571E731E9800B9FAE9 /* PostContentController.xib in Resources */,
 				36546B7F1E72634700028DE6 /* PreviewViewController.xib in Resources */,
 				3650AECA1E6F26A6005FA6F2 /* MyPostsViewController.xib in Resources */,
 				3677041E1E730C96008706B5 /* PopularUserViewController.xib in Resources */,
@@ -675,6 +715,8 @@
 				6EDBD6481E72F5B400B9FAE9 /* PhotoCollectionCell.xib in Resources */,
 				3672F5991E70621E00A80D24 /* ImageCollectionViewCell.xib in Resources */,
 				3650AEDB1E6F309A005FA6F2 /* TagTableViewCell.xib in Resources */,
+				6EDBD6631E73255700B9FAE9 /* ImageFromFolderCell.xib in Resources */,
+				6EDBD65F1E73223700B9FAE9 /* ImageForPostView.xib in Resources */,
 				36A658701E716CA700494445 /* PicktureViewController.xib in Resources */,
 				36D8036E1E6C6C3B00AE1405 /* Assets.xcassets in Resources */,
 				36D803841E6C6CBB00AE1405 /* MenuViewController.xib in Resources */,
@@ -699,6 +741,7 @@
 				3650AEDF1E6F3210005FA6F2 /* LoginViewController.swift in Sources */,
 				366606151E725DE10099BAFC /* DisplayPhotoViewController.swift in Sources */,
 				36A658741E716CC400494445 /* ChooseTagViewController.swift in Sources */,
+				6EDBD65D1E73222100B9FAE9 /* ImageForPostView.swift in Sources */,
 				36D803AC1E6C6D1E00AE1405 /* UIView+IBInspectable.swift in Sources */,
 				362DBC6E1E7276DB00F211A1 /* BaseViewController.swift in Sources */,
 				36D8037D1E6C6C9100AE1405 /* MainViewController.swift in Sources */,
@@ -709,6 +752,7 @@
 				3672F5981E70621E00A80D24 /* ImageCollectionViewCell.swift in Sources */,
 				6EDBD6471E72F5B400B9FAE9 /* PhotoCollectionCell.swift in Sources */,
 				3650AED51E6F305C005FA6F2 /* MyTagViewController.swift in Sources */,
+				6EDBD6561E731E9800B9FAE9 /* PostContentController.swift in Sources */,
 				366606101E725D9A0099BAFC /* SilderPhotoViewController.swift in Sources */,
 				3650AEDA1E6F309A005FA6F2 /* TagTableViewCell.swift in Sources */,
 				36D803AD1E6C6D1E00AE1405 /* Extension.swift in Sources */,
@@ -718,6 +762,7 @@
 				36A658771E71859400494445 /* Tag.swift in Sources */,
 				36D803AB1E6C6D1E00AE1405 /* UIColor-Hex-Swift.swift in Sources */,
 				36A658791E719B3400494445 /* URL_DEFINE.swift in Sources */,
+				6EDBD65B1E731FCA00B9FAE9 /* UITextView+Placeholder.m in Sources */,
 				36D803B61E6C74A500AE1405 /* MenuTableViewCell.swift in Sources */,
 				36D803671E6C6C3B00AE1405 /* AppDelegate.swift in Sources */,
 				36D803831E6C6CBB00AE1405 /* MenuViewController.swift in Sources */,
@@ -732,6 +777,7 @@
 				367704201E730D82008706B5 /* PopularUser.swift in Sources */,
 				36A6586F1E716CA700494445 /* PicktureViewController.swift in Sources */,
 				36D803B11E6C741300AE1405 /* WhatNewsViewController.swift in Sources */,
+				6EDBD6621E73255700B9FAE9 /* ImageFromFolderCell.swift in Sources */,
 				364A76391E6C7E3C00FB3199 /* NewPostViewController.swift in Sources */,
 				6EDBD63C1E72E6E200B9FAE9 /* CommentCell.swift in Sources */,
 			);
