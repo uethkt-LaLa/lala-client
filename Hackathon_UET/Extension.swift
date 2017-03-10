@@ -25,8 +25,7 @@ extension String {
 }
 extension DateFormatter {
     func convertFromISO(string : String) -> Date {
-        self.locale = Locale.init(identifier: "en_US_POSIX")
-        self.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
+        self.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         return(self.date(from: string))!
     }
 }

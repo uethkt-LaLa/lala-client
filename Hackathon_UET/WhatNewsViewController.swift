@@ -17,6 +17,7 @@ class WhatNewsViewController: BaseViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(WhatNewsViewController.reloadData(notification:)), name: NSNotification.Name.init("Menu0"), object: nil)
         tbl.register(UINib.init(nibName: "NewTableViewCell", bundle: nil), forCellReuseIdentifier: "NewTableViewCell")
+        tbl.tableFooterView = UIView.init(frame: CGRect.zero)
         tbl.estimatedRowHeight = 100
         tbl.rowHeight = UITableViewAutomaticDimension
         self.loadData()
@@ -50,11 +51,32 @@ class WhatNewsViewController: BaseViewController {
     }
     
     func setLikeforIndex(index : IndexPath, status : Bool) {
-        
+        //http://localhost:5000/api/posts/58b9a2fedaba1d539a2d7128/like
+        let idPost = self.listShow[index.row].id
+        if status == true { ////like
+            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/like", method: .put, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+                self.listShow[index.row].isLike = true
+            }
+        } else if status == false { //unlike
+            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/like", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+                self.listShow[index.row].isLike = false
+            }
+        }
+        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
     }
     
     func setDisLikeForIndex(index : IndexPath, status : Bool){
-        
+        let idPost = self.listShow[index.row].id
+        if status == true { ////like
+            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .put, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+                self.listShow[index.row].isDisLike = true
+            }
+        } else if status == false { //unlike
+            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+                self.listShow[index.row].isDisLike = false
+            }
+        }
+        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
     }
     func favForIndex(index : IndexPath, status : Bool){
         
@@ -75,11 +97,11 @@ extension WhatNewsViewController : UITableViewDataSource,UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let detailPost = DetailPostViewController(nibName: "DetailPostViewController", bundle: nil) as! DetailPostViewController
-        detailPost.delegate = self
-        detailPost.dataNews = self.listShow[indexPath.row]
-        self.navigationController?.pushViewController(detailPost, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
+//        let detailPost = DetailPostViewController(nibName: "DetailPostViewController", bundle: nil) as! DetailPostViewController
+//        detailPost.delegate = self
+//        detailPost.dataNews = self.listShow[indexPath.row]
+//        self.navigationController?.pushViewController(detailPost, animated: true)
     }
 
 }
@@ -96,10 +118,13 @@ extension WhatNewsViewController : DetailPostDelegate {
 }
 extension WhatNewsViewController : DelegateNewCell {
     func likeTouchUp(cell : NewTableViewCell , status : Bool){
+        let index = tbl.indexPath(for: cell)
+        self.setLikeforIndex(index: index!, status: status)
         
     }
     func dislikeTouchUp(cell : NewTableViewCell , status : Bool){
-        
+        let index = tbl.indexPath(for: cell)
+        self.setDisLikeForIndex(index: index!, status: status)
     }
     func favTouchUp(cell : NewTableViewCell , status : Bool){
         

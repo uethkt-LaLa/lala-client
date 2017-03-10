@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Alamofire
 
 class News: NSObject {
     var id : String
@@ -22,6 +23,8 @@ class News: NSObject {
     var is_published : Bool
     var tags : [String]
     var imagePath : [String]
+    var isLike : Bool
+    var isDisLike : Bool
     
     init(json : JSON) {
         self.id = json["_id"].stringValue
@@ -31,25 +34,44 @@ class News: NSObject {
         self.imagePath.append("https://www.w3schools.com/css/img_fjords.jpg")
         self.userId = json["userId"].stringValue
         self.categoryID = json["categoryId"].stringValue
-        self.descriptionData = json["description"].stringValue
-        let dateFormmater = DateFormatter()
+        self.descriptionData = json["description"].stringValue        
         let created_time = json["created_time"].stringValue
-        
-        //let date = dateFormmater.string(from: dateFormmater.date(from: created_time)!)
-        
-        self.created_time = ""
+        self.created_time = created_time
         self.followers = [String]()
         for item in json["followers"].array! {
             let val = item.stringValue
             self.followers.append(val)
         }
+        
         self.comments = [String]()
         for item in json["comments"].array! {
             let val = item.stringValue
             self.comments.append(val)
         }
-        self.dislikes_count = json["dislikes_count"].intValue
-        self.likes_count = json["likes_count"].intValue
+        let likeArr = json["likes"].arrayValue
+        
+        
+        self.likes_count = 0
+        self.isLike = false
+        let disLikeArr = json["dislikes"].arrayValue
+        for item in likeArr {
+            let val = item.stringValue
+            if UltilsUser.userId == val {
+                self.isLike = true
+            }
+            self.likes_count = self.likes_count + 1
+        }
+        
+        self.dislikes_count = 0
+        self.isDisLike = false
+        for item in disLikeArr {
+            let val = item.stringValue
+            if UltilsUser.userId == val {
+                self.isDisLike = true
+            }
+            self.dislikes_count = self.dislikes_count + 1
+        }
+        
         self.is_published = json["is_published"].boolValue
         self.tags = [String]()
         for item in json["tags"].array! {
@@ -57,24 +79,4 @@ class News: NSObject {
             self.tags.append(val)
         }
     }
-    /*
-    [
-    {
-    "_id": "58ba8fbc8407511b21d376ef",
-    "userId": "58ba468ddfae86239b973adc",
-    "categoryId": "58ba8e8068a77a1695cdb01a",
-    "description": "Something about computer hacking.",
-    "__v": 0,
-    "created_time": "2017-03-04T09:58:20.166Z",
-    "followers": [],
-    "comments": [
-    "58c18206aa13050004475ca6"
-    ],
-    "dislikes_count": 0,
-    "likes_count": 0,
-    "is_published": true,
-    "tags": []
-    }
-    ]
-    */
 }

@@ -36,6 +36,7 @@
 		3672F5931E705EBB00A80D24 /* NohanaImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3672F5901E705EB000A80D24 /* NohanaImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3672F5981E70621E00A80D24 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3672F5961E70621E00A80D24 /* ImageCollectionViewCell.swift */; };
 		3672F5991E70621E00A80D24 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3672F5971E70621E00A80D24 /* ImageCollectionViewCell.xib */; };
+		367704191E72F90C008706B5 /* UltilsUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367704181E72F90C008706B5 /* UltilsUser.swift */; };
 		368E2B751E70894300078F5A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368E2B741E70894300078F5A /* Bolts.framework */; };
 		368E2B7F1E7089B700078F5A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368E2B7C1E7089B700078F5A /* FBSDKCoreKit.framework */; };
 		368E2B801E7089B700078F5A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368E2B7D1E7089B700078F5A /* FBSDKLoginKit.framework */; };
@@ -156,6 +157,7 @@
 		3672F5901E705EB000A80D24 /* NohanaImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NohanaImagePicker.framework; sourceTree = "<group>"; };
 		3672F5961E70621E00A80D24 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		3672F5971E70621E00A80D24 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		367704181E72F90C008706B5 /* UltilsUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UltilsUser.swift; sourceTree = "<group>"; };
 		368E2B741E70894300078F5A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		368E2B7C1E7089B700078F5A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		368E2B7D1E7089B700078F5A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 				36A658781E719B3400494445 /* URL_DEFINE.swift */,
 				36B2F14B1E726AD000DE01A3 /* User.swift */,
 				36EE8A1D1E72CDE10049B84D /* Comment.swift */,
+				367704181E72F90C008706B5 /* UltilsUser.swift */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				362DBC6E1E7276DB00F211A1 /* BaseViewController.swift in Sources */,
 				36D8037D1E6C6C9100AE1405 /* MainViewController.swift in Sources */,
 				3650AEC91E6F26A6005FA6F2 /* MyPostsViewController.swift in Sources */,
+				367704191E72F90C008706B5 /* UltilsUser.swift in Sources */,
 				3650AECC1E6F2936005FA6F2 /* News.swift in Sources */,
 				36B2F14C1E726AD000DE01A3 /* User.swift in Sources */,
 				3672F5981E70621E00A80D24 /* ImageCollectionViewCell.swift in Sources */,

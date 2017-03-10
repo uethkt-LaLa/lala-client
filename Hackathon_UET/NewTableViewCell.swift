@@ -18,6 +18,10 @@ protocol DelegateNewCell {
 }
 
 class NewTableViewCell: UITableViewCell {
+    @IBOutlet weak var lblCountComment : UILabel!
+    @IBOutlet weak var lblCountLike : UILabel!
+    @IBOutlet weak var lblCountDisLike : UILabel!
+    @IBOutlet weak var lblTime : UILabel!
     @IBOutlet weak var btnDisLike : UIButton!
     @IBOutlet weak var btnLike : UIButton!
     @IBOutlet weak var btnComment : UIButton!
@@ -34,7 +38,6 @@ class NewTableViewCell: UITableViewCell {
         self.collection.delegate = self
         self.collection.dataSource = self        
         self.collection.register(UINib.init(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageCollectionViewCell")
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -48,13 +51,42 @@ class NewTableViewCell: UITableViewCell {
         let count_comment = new.comments.count
         let dis_like_count = new.dislikes_count
         let like_count = new.likes_count
-        Alamofire.request(URL_DEFINE.user_info_id+"\(new.userId)", method: .get, parameters: nil).authenticate(user: "admin", password: "123456").responseJSON{(response) in
+        Alamofire.request(URL_DEFINE.user_info_id+"\(new.userId)", method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON{(response) in
             let data = JSON.init(data: response.data!)
             let user = User(json: data)
             self.lblName.text = user.username
         }
-        self.btnLike.setTitle("\(like_count)", for: UIControlState.normal)
+        self.lblCountLike.text = "\(like_count) likes"
+        self.lblCountDisLike.text = "\(dis_like_count) dislikes"
+        self.lblCountComment.text = "\(count_comment) comments"
+        let dateFormmat = DateFormatter()
+        let date2 = dateFormmat.convertFromISO(string: new.created_time)
+        let minutes = Date().minutes(from: date2)
+        var timeText = ""
+        if minutes < 60 {
+            timeText = "\(minutes) minutes ago"
+        } else {
+            let hours = Date().hours(from: date2) + 1
+            if hours < 24 {
+                timeText = "\(hours) hours ago"
+            } else {
+                dateFormmat.dateFormat = "dd-MM-yyyy"
+                timeText = dateFormmat.string(from: date2)
+            }
+        }
+        self.lblTime.text = timeText
+        if new.isLike == true {
+            btnLike.setImage(UIImage.init(named: "Vote"), for: UIControlState.normal)
+        } else {
+            btnLike.setImage(UIImage.init(named: "Vote"), for: UIControlState.normal)
+        }
         
+        if new.isDisLike == true {
+            btnDisLike.setImage(UIImage.init(named: "Vote"), for: UIControlState.normal)
+        } else {
+            btnDisLike.setImage(UIImage.init(named: "Vote"), for: UIControlState.normal)
+        }
+        //new.created_time
     }
     
     func setUser(user : User){
@@ -63,7 +95,8 @@ class NewTableViewCell: UITableViewCell {
     
     @IBAction func btnLikeTouchUp(_ sender : UIButton) {
         if delegate != nil {
-            delegate?.likeTouchUp(cell: self, status: true)
+            let is_like = !(object?.isLike)!
+            delegate?.likeTouchUp(cell: self, status: is_like)
         }
     }
     @IBAction func btnCommentTouchUp(_ sender : UIButton) {
@@ -79,7 +112,8 @@ class NewTableViewCell: UITableViewCell {
     
     @IBAction func btnDisLike(_sender : UIButton){
         if delegate != nil {
-            delegate?.dislikeTouchUp(cell: self, status: true)
+            let is_disLike = !(object?.isDisLike)!
+            delegate?.dislikeTouchUp(cell: self, status: is_disLike)
         }
     }
 }

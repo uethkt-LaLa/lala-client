@@ -31,6 +31,12 @@ class BaseViewController: UIViewController {
         MBProgressHUD.hide(for: self.view, animated: true)
         //MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
     }
+    
+    func convertFromISO(str : String) -> Date {
+        var date = DateFormatter()
+        date.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        return(date.date(from: str))!
+    }
 }
 extension Date {
     /// Returns the amount of years from another date
