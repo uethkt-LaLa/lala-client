@@ -15,13 +15,18 @@ class PopularUserViewController: UIViewController {
     var listUser = [PopularUser]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tbl.tableFooterView = UIView.init(frame: CGRect.zero)
+        
+        tbl.register(UINib.init(nibName: "PopularTableViewCell", bundle: nil), forCellReuseIdentifier: "PopularTableViewCell")
+        self.loadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func loadData() {
@@ -32,8 +37,8 @@ class PopularUserViewController: UIViewController {
                 let pu = PopularUser(json: item)
                 tmp.append(pu)
             }
-            self.tbl.reloadData()
             self.listUser = tmp
+            self.tbl.reloadData()
         }
     }
 }
@@ -45,11 +50,19 @@ extension PopularUserViewController : UITableViewDataSource,UITableViewDelegate 
         return self.listUser.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TagTableViewCell", for: indexPath) as! TagTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PopularTableViewCell", for: indexPath) as! PopularTableViewCell
         cell.setData(user: self.listUser[indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = self.listUser[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
+        let vc = WhatNewsViewController(nibName: "WhatNewsViewController", bundle: nil)
+        vc.urlRequest = URL_DEFINE.user_info_id+"\(user.id)"+"/posts"
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }

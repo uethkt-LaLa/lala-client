@@ -34,7 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pickerView = PicktureViewController(nibName: "PicktureViewController", bundle: nil)
         let login = LoginViewController(nibName: "LoginViewController", bundle: nil)
         let myTag = MyTagViewController(nibName: "MyTagViewController", bundle: nil)
-        self.window?.rootViewController = nav
+        
+        //if FBSDKAccessToken.current() != nil {
+            self.window?.rootViewController = nav
+//        } else {
+//            self.window?.rootViewController = login
+//        }
+        
         self.window?.makeKeyAndVisible()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

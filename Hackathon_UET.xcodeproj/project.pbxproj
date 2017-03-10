@@ -40,6 +40,9 @@
 		3677041D1E730C96008706B5 /* PopularUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3677041B1E730C96008706B5 /* PopularUserViewController.swift */; };
 		3677041E1E730C96008706B5 /* PopularUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3677041C1E730C96008706B5 /* PopularUserViewController.xib */; };
 		367704201E730D82008706B5 /* PopularUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3677041F1E730D82008706B5 /* PopularUser.swift */; };
+		368038C31E73214000DBDA89 /* PopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368038C11E73214000DBDA89 /* PopularTableViewCell.swift */; };
+		368038C41E73214000DBDA89 /* PopularTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368038C21E73214000DBDA89 /* PopularTableViewCell.xib */; };
+		368038C61E732F4F00DBDA89 /* UploadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368038C51E732F4F00DBDA89 /* UploadImage.swift */; };
 		368E2B751E70894300078F5A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368E2B741E70894300078F5A /* Bolts.framework */; };
 		368E2B7F1E7089B700078F5A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368E2B7C1E7089B700078F5A /* FBSDKCoreKit.framework */; };
 		368E2B801E7089B700078F5A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368E2B7D1E7089B700078F5A /* FBSDKLoginKit.framework */; };
@@ -175,6 +178,9 @@
 		3677041B1E730C96008706B5 /* PopularUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularUserViewController.swift; sourceTree = "<group>"; };
 		3677041C1E730C96008706B5 /* PopularUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopularUserViewController.xib; sourceTree = "<group>"; };
 		3677041F1E730D82008706B5 /* PopularUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularUser.swift; sourceTree = "<group>"; };
+		368038C11E73214000DBDA89 /* PopularTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularTableViewCell.swift; sourceTree = "<group>"; };
+		368038C21E73214000DBDA89 /* PopularTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopularTableViewCell.xib; sourceTree = "<group>"; };
+		368038C51E732F4F00DBDA89 /* UploadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadImage.swift; sourceTree = "<group>"; };
 		368E2B741E70894300078F5A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		368E2B7C1E7089B700078F5A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		368E2B7D1E7089B700078F5A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -401,10 +407,20 @@
 		3677041A1E730C7F008706B5 /* PopularUserVC */ = {
 			isa = PBXGroup;
 			children = (
+				368038C01E73213100DBDA89 /* PopularCell */,
 				3677041B1E730C96008706B5 /* PopularUserViewController.swift */,
 				3677041C1E730C96008706B5 /* PopularUserViewController.xib */,
 			);
 			name = PopularUserVC;
+			sourceTree = "<group>";
+		};
+		368038C01E73213100DBDA89 /* PopularCell */ = {
+			isa = PBXGroup;
+			children = (
+				368038C11E73214000DBDA89 /* PopularTableViewCell.swift */,
+				368038C21E73214000DBDA89 /* PopularTableViewCell.xib */,
+			);
+			name = PopularCell;
 			sourceTree = "<group>";
 		};
 		36A6586C1E716C8300494445 /* ChooseImageVC */ = {
@@ -507,6 +523,7 @@
 				367704181E72F90C008706B5 /* UltilsUser.swift */,
 				3677041F1E730D82008706B5 /* PopularUser.swift */,
 				6EDBD6511E7300D200B9FAE9 /* Constants.swift */,
+				368038C51E732F4F00DBDA89 /* UploadImage.swift */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -666,6 +683,7 @@
 				6EDBD63D1E72E6E200B9FAE9 /* CommentCell.xib in Resources */,
 				3672F58F1E7051AC00A80D24 /* CreateAccountViewController.xib in Resources */,
 				36546B7A1E72617100028DE6 /* DetailPostViewController.xib in Resources */,
+				368038C41E73214000DBDA89 /* PopularTableViewCell.xib in Resources */,
 				36546B7F1E72634700028DE6 /* PreviewViewController.xib in Resources */,
 				3650AECA1E6F26A6005FA6F2 /* MyPostsViewController.xib in Resources */,
 				3677041E1E730C96008706B5 /* PopularUserViewController.xib in Resources */,
@@ -708,6 +726,7 @@
 				36B2F14C1E726AD000DE01A3 /* User.swift in Sources */,
 				3672F5981E70621E00A80D24 /* ImageCollectionViewCell.swift in Sources */,
 				6EDBD6471E72F5B400B9FAE9 /* PhotoCollectionCell.swift in Sources */,
+				368038C61E732F4F00DBDA89 /* UploadImage.swift in Sources */,
 				3650AED51E6F305C005FA6F2 /* MyTagViewController.swift in Sources */,
 				366606101E725D9A0099BAFC /* SilderPhotoViewController.swift in Sources */,
 				3650AEDA1E6F309A005FA6F2 /* TagTableViewCell.swift in Sources */,
@@ -727,6 +746,7 @@
 				36EE8A1E1E72CDE10049B84D /* Comment.swift in Sources */,
 				36546B7E1E72634700028DE6 /* PreviewViewController.swift in Sources */,
 				36546B791E72617100028DE6 /* DetailPostViewController.swift in Sources */,
+				368038C31E73214000DBDA89 /* PopularTableViewCell.swift in Sources */,
 				36EE8A211E72D88E0049B84D /* FavoritesPostViewController.swift in Sources */,
 				3677041D1E730C96008706B5 /* PopularUserViewController.swift in Sources */,
 				367704201E730D82008706B5 /* PopularUser.swift in Sources */,

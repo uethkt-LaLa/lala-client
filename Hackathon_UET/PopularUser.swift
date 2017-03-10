@@ -16,6 +16,7 @@ class PopularUser: NSObject {
     var popular : Int
     var join_date : String
     var follower_count : Int
+    var image_url : String
     
     init(json : JSON) {
         self.avatarUser = json["avatar"].stringValue
@@ -30,6 +31,7 @@ class PopularUser: NSObject {
         
         let fols = json["followers"].arrayValue
         self.follower_count = fols.count
+        self.image_url = json["image_url"].stringValue
     }
     
     /*"_id": "58ba468ddfae86239b973adc",

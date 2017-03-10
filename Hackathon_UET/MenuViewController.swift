@@ -74,8 +74,8 @@ extension MenuViewController : UITableViewDataSource,UITableViewDelegate {
             MainViewController.sharedInstance.slideMenu?.mainViewController = myPostVC
             NotificationCenter.default.post(name: NSNotification.Name.init("PostVC"), object: nil)
         case 3:
-            MainViewController.sharedInstance.slideMenu?.mainViewController = myTagVC
-            NotificationCenter.default.post(name: NSNotification.Name.init("PostVC"), object: nil)
+            let vc = MyTagViewController(nibName: "MyTagViewController", bundle: nil)
+            MainViewController.sharedInstance.slideMenu?.mainViewController = vc            
         case 4:
             let vc = PopularUserViewController(nibName: "PopularUserViewController", bundle: nil)
             MainViewController.sharedInstance.slideMenu?.mainViewController = vc

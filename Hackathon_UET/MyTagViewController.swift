@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class MyTagViewController: UIViewController {
     var listTags = [Tag]()
+    var listChoose = [String]()
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var tbl : UITableView!
     override func viewDidLoad() {
@@ -21,16 +22,33 @@ class MyTagViewController: UIViewController {
         self.tbl.tableFooterView = UIView.init(frame: CGRect.zero)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     func requestData() {
-        var tmp = [Tag]()
-        Alamofire.request(URL_DEFINE.tagAll, method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+        self.listChoose.removeAll()
+        self.listTags.removeAll()
+        Alamofire.request(URL_DEFINE.tagHome, method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
             let jsondata = JSON.init(data: response.data!)
             for item in jsondata.arrayValue {
-                let tag = Tag(json: item)
-                tmp.append(tag)
+                let id = item.stringValue
+                self.listChoose.append(id)
             }
-            self.listTags = tmp
+            Alamofire.request(URL_DEFINE.tagAll, method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+                let jsondata = JSON.init(data: response.data!)
+                for item in jsondata.arrayValue {
+                    let tag = Tag(json: item)
+                    if self.listChoose.contains(tag.id) == false {
+                        tag.select = false
+                        self.listTags.append(tag)
+                    } else {
+                        tag.select = true
+                        self.listTags.insert(tag, at: 0)
+                    }
+                }
             self.tbl.reloadData()
+            }
         }
     }
 
@@ -53,6 +71,7 @@ extension MyTagViewController : UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TagTableViewCell", for: indexPath) as! TagTableViewCell
         cell.setData(item: listTags[indexPath.row])
+        cell.delegate = self
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -61,6 +80,35 @@ extension MyTagViewController : UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let whatNews = WhatNewsViewController(nibName: "WhatNewsViewController", bundle: nil)
+        
         //set URL
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.pushViewController(whatNews, animated: true)
+    }
+}
+extension MyTagViewController : DelegateTag {
+    func chooseTouch(cell: TagTableViewCell) {
+        let index = tbl.indexPath(for: cell)
+        let item = self.listTags[(index?.row)!]
+        if item.select == true {
+            item.select = false
+            self.listTags[(index?.row)!] = item
+            self.tbl.reloadRows(at: [index!], with: UITableViewRowAnimation.fade)
+            let id = URL_DEFINE.followOrNotTag+"/\(item.id)"
+            NSLog("Hoho\(id)")
+            Alamofire.request(URL_DEFINE.followOrNotTag+"\(item.id)", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+                let json = JSON.init(data: response.data!)
+                NSLog("delete \(json)")
+            }
+        } else {
+            item.select = true
+            self.listTags[(index?.row)!] = item
+            self.tbl.reloadRows(at: [index!], with: UITableViewRowAnimation.fade)
+            Alamofire.request(URL_DEFINE.followOrNotTag+"\(item.id)", method: .put, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+                let json = JSON.init(data: response.data!)
+                NSLog("add \(json)")
+            }
+        }
+        
     }
 }
