@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class WhatNewsViewController: BaseViewController {
+class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEmptyDataSetDelegate {
     @IBOutlet weak var tbl : UITableView!
     var listShow = [News]()
     var urlRequest : String?
@@ -20,7 +20,25 @@ class WhatNewsViewController: BaseViewController {
         tbl.register(UINib.init(nibName: "NewTableViewCell", bundle: nil), forCellReuseIdentifier: "NewTableViewCell")
         tbl.tableFooterView = UIView.init(frame: CGRect.zero)
         tbl.estimatedRowHeight = 100
+        tbl.emptyDataSetSource = self
+        tbl.emptyDataSetDelegate = self
         tbl.rowHeight = UITableViewAutomaticDimension
+        self.loadData()
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        
+        return #imageLiteral(resourceName: "chat-question")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        
+        var text: String = "Ask Me A Happy Question"
+        var attributes: [String: Any] = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: CGFloat(18.0)), NSForegroundColorAttributeName: UIColor.darkGray]
+        return NSAttributedString(string: text, attributes: attributes)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.loadData()
     }
     
@@ -29,21 +47,27 @@ class WhatNewsViewController: BaseViewController {
     }
     
     func loadData() {
-        self.showLoadingHUD()
+//        self.showLoadingHUD()
+        
         var url = URL_DEFINE.post_all
         if urlRequest != nil {
             url = urlRequest!
         }
         NSLog("\(UltilsUser.kUserName)")
         NSLog("\(UltilsUser.kPassword)")
+        
+        var tmp = [News]()
         Alamofire.request(url, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             let jsondata = JSON.init(data: response.data!)
             NSLog("\(jsondata)")
             for item in jsondata.arrayValue {
                 let new = News(json: item)
-                self.listShow.append(new)
+//                self.listShow.append(new)
+                tmp.append(new)
             }
-            self.hideLoadingHUD()
+            self.listShow = tmp
+            
+//            self.hideLoadingHUD()
             self.tbl.reloadData()
         }
     }

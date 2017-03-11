@@ -119,12 +119,13 @@ class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionVie
     
     func displayWithComment(_ comment :  Comment)
     {
-//        self.userAvatar.
+        self.userAvatar.sd_setImage(with: URL(string: comment.userAvatr))
         self.cellComment = comment
         if comment.imgPaths.count > 0
         {
             collectionHeight.constant = 80;
             photoCollection.updateConstraints()
+            self.photoCollection.reloadData()
         }
         self.photoCollection.reloadData()
         self.lblUsername.text = comment.username

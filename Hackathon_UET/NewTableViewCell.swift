@@ -150,11 +150,12 @@ extension NewTableViewCell : UICollectionViewDataSource, UICollectionViewDelegat
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell
-        NSLog("Hihihihi()\(self.object?.imagePath[indexPath.row])")
-        Alamofire.request("\(self.object!.imagePath[indexPath.row])").responseData { (response) in
-            let img = UIImage(data: response.data!)
-            cell.imgview.image = img
-        }
+//        NSLog("Hihihihi()\(self.object?.imagePath[indexPath.row])")
+//        Alamofire.request("\(self.object!.imagePath[indexPath.row])").responseData { (response) in
+//            let img = UIImage(data: response.data!)
+//            cell.imgview.image = img
+//        }
+        cell.imgview.sd_setImage(with: URL.init(string: self.object!.imagePath[indexPath.row]), placeholderImage: kImagePlaceHoler)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
