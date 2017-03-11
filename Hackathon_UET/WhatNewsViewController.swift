@@ -14,10 +14,11 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
     @IBOutlet weak var tbl : UITableView!
     var listShow = [News]()
     var urlRequest : String?
+    let cellNewId = "cellNewId"
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(WhatNewsViewController.reloadData(notification:)), name: NSNotification.Name.init("Menu0"), object: nil)
-        tbl.register(UINib.init(nibName: "NewTableViewCell", bundle: nil), forCellReuseIdentifier: "NewTableViewCell")
+        tbl.register(UINib.init(nibName: "NewTableViewCell", bundle: nil), forCellReuseIdentifier:cellNewId)
         tbl.tableFooterView = UIView.init(frame: CGRect.zero)
         tbl.estimatedRowHeight = 100
         tbl.emptyDataSetSource = self
@@ -150,7 +151,7 @@ extension WhatNewsViewController : UITableViewDataSource,UITableViewDelegate {
         return listShow.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tbl.dequeueReusableCell(withIdentifier: "NewTableViewCell", for: indexPath) as! NewTableViewCell
+        let cell = tbl.dequeueReusableCell(withIdentifier:cellNewId) as! NewTableViewCell
         cell.object = listShow[indexPath.row]
         cell.setData(new: listShow[indexPath.row])
         cell.delegate = self

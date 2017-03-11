@@ -74,21 +74,42 @@ class PostContentController: UIViewController , ImageForPostViewDelegate ,Delega
     func naviButtonSendDidTap()
     {
         
-        let post = Post()
-        post.descriptionStr = self.txtContent.text
-        post.img_paths = (pickImageView?.listLinkSelected)!
-        
-        var listTagID : [String] = []
-        for tag in self.listTag {
+        if self.type == .newPost
+        {
+            let post = Post()
+            post.descriptionStr = self.txtContent.text
+            post.img_paths = (pickImageView?.listLinkSelected)!
             
-            listTagID.append(tag.id)
-        }
-        post.tag_id = listTagID
-        Alamofire.request(kURL+"posts", method: .post, parameters: post.toJSON()).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
-            let data = JSON.init(data: response.data!)
-            NSLog("\(data)")
+            var listTagID : [String] = []
+            for tag in self.listTag {
+                
+                listTagID.append(tag.id)
+            }
+            post.tag_id = listTagID
+            Alamofire.request(kURL+"posts", method: .post, parameters: post.toJSON()).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                let data = JSON.init(data: response.data!)
+                
+                self.dismiss(animated: false, completion: nil)
+            }
+            
         }
         
+        if self.type == .comment
+        {
+            
+            let dict :[String:AnyObject] =
+                [
+                "description" : txtContent.text as AnyObject,
+                "image_urls" : (pickImageView?.listLinkSelected)! as AnyObject,
+                ]
+            Alamofire.request(kURL+"posts", method: .post, parameters: dict).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                let data = JSON.init(data: response.data!)
+                self.dismiss(animated: false, completion: nil)
+            }
+            
+        }
+        
+   
         
         
 

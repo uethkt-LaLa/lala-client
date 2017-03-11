@@ -66,5 +66,13 @@ class Comment: NSObject {
     }
     
     
+    func toJSON() -> Dictionary<String, AnyObject> {
+        return [
+            "description" : descriptionData as AnyObject,
+            "image_urls" : self.imgPaths as AnyObject,
+        ]
+    }
+    
+    
     
 }
