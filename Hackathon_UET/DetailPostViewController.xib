@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,17 +22,54 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Bwl-LZ-jLO">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6p-FS-pKV">
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Comment" translatesAutoresizingMaskIntoConstraints="NO" id="xyK-RZ-JKU">
+                            <rect key="frame" x="60" y="2" width="46" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="xyK-RZ-JKU" secondAttribute="height" id="tcL-KK-EW6"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ywh-Cq-Pc6">
+                            <rect key="frame" x="111" y="8.5" width="153" height="33"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <state key="normal" title="Post new comment">
+                                <color key="titleColor" red="0.15857607490582989" green="0.11487775211209476" blue="0.28435863874345546" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="btnPostNewCommentDidTap:" destination="-1" eventType="touchUpInside" id="BgL-LO-b6p"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="ywh-Cq-Pc6" firstAttribute="leading" secondItem="xyK-RZ-JKU" secondAttribute="trailing" constant="5" id="IZX-05-cGN"/>
+                        <constraint firstAttribute="height" constant="50" id="OlP-J8-caY"/>
+                        <constraint firstItem="xyK-RZ-JKU" firstAttribute="top" secondItem="g6p-FS-pKV" secondAttribute="top" constant="2" id="g2Q-lw-G6i"/>
+                        <constraint firstItem="ywh-Cq-Pc6" firstAttribute="centerY" secondItem="g6p-FS-pKV" secondAttribute="centerY" id="iga-GR-H9i"/>
+                        <constraint firstItem="ywh-Cq-Pc6" firstAttribute="centerX" secondItem="g6p-FS-pKV" secondAttribute="centerX" id="nls-Tj-GDD"/>
+                        <constraint firstAttribute="bottom" secondItem="xyK-RZ-JKU" secondAttribute="bottom" constant="2" id="yZu-Ed-udF"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Bwl-LZ-jLO" secondAttribute="bottom" id="9SJ-Tz-C3s"/>
+                <constraint firstItem="g6p-FS-pKV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LYJ-qX-JkY"/>
+                <constraint firstItem="g6p-FS-pKV" firstAttribute="top" secondItem="Bwl-LZ-jLO" secondAttribute="bottom" id="PTV-P6-mLJ"/>
                 <constraint firstAttribute="trailing" secondItem="Bwl-LZ-jLO" secondAttribute="trailing" id="VoB-um-MEU"/>
                 <constraint firstItem="Bwl-LZ-jLO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Xhk-xK-3lH"/>
                 <constraint firstItem="Bwl-LZ-jLO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="e86-cG-Vj9"/>
+                <constraint firstAttribute="trailing" secondItem="g6p-FS-pKV" secondAttribute="trailing" id="pSf-oz-xnM"/>
+                <constraint firstAttribute="bottom" secondItem="g6p-FS-pKV" secondAttribute="bottom" id="vE9-Tk-nhA"/>
             </constraints>
+            <point key="canvasLocation" x="28" y="144"/>
         </view>
     </objects>
+    <resources>
+        <image name="Comment" width="50" height="50"/>
+    </resources>
 </document>

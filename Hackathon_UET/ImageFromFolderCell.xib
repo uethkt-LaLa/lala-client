@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ImageFromFolderCell" customModule="Hackathon_UET" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="128" height="96"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="128" height="96"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mpz-8F-dkl">
+                        <rect key="frame" x="0.0" y="0.0" width="128" height="96"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWu-yZ-zFe">
+                        <rect key="frame" x="96" y="2" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="jWu-yZ-zFe" secondAttribute="height" id="RLc-gb-zIE"/>
+                            <constraint firstAttribute="height" constant="30" id="pdU-Ip-d0R"/>
+                        </constraints>
+                        <connections>
+                            <action selector="btnActionDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Kpp-vs-Mw2"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Mpz-8F-dkl" secondAttribute="bottom" id="0SM-JZ-xJI"/>
+                <constraint firstItem="Mpz-8F-dkl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Agv-Gu-Ohl"/>
+                <constraint firstAttribute="trailing" secondItem="Mpz-8F-dkl" secondAttribute="trailing" id="N9k-hR-b8y"/>
+                <constraint firstItem="jWu-yZ-zFe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="Y0J-U0-OJi"/>
+                <constraint firstAttribute="trailing" secondItem="jWu-yZ-zFe" secondAttribute="trailing" constant="2" id="bm9-qa-Zyn"/>
+                <constraint firstItem="Mpz-8F-dkl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wqa-DX-Wdw"/>
+            </constraints>
+            <size key="customSize" width="128" height="96"/>
+            <connections>
+                <outlet property="btnAction" destination="jWu-yZ-zFe" id="cVR-SE-NLi"/>
+                <outlet property="photo" destination="Mpz-8F-dkl" id="SHu-kf-eYY"/>
+            </connections>
+            <point key="canvasLocation" x="-140" y="147"/>
+        </collectionViewCell>
+    </objects>
+</document>

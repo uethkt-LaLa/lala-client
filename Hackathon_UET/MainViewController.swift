@@ -70,6 +70,11 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func newPostTouchUp(_sender : UIButton){
+       
+        let post = PostContentController(nibName: "PostContentController", bundle: nil)
+        post.type = .newPost
+        let navi = UINavigationController(rootViewController: post)
+        self.present(navi, animated: false, completion: nil)
         
     }
 

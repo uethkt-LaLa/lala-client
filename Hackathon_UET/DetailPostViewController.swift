@@ -31,7 +31,7 @@ class DetailPostViewController: UIViewController , UITableViewDelegate , UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.navigationController?.navigationBar.isHidden = false
         requestComment()
         configTbl()
         
@@ -40,6 +40,16 @@ class DetailPostViewController: UIViewController , UITableViewDelegate , UITable
         
         // Do any additional setup after loading the view.
     }
+    
+    
+    @IBAction func btnPostNewCommentDidTap(_ sender: Any) {
+        
+        let post = PostContentController(nibName: "PostContentController", bundle: nil)
+        post.type = .comment
+        let navi = UINavigationController(rootViewController: post)
+        self.present(navi, animated: false, completion: nil)
+    }
+    
     
     private func configTbl()
     {
@@ -51,36 +61,45 @@ class DetailPostViewController: UIViewController , UITableViewDelegate , UITable
     }
     
     func requestComment() {
-//        Alamofire.request(URL_DEFINE.getComment+"\(dataNews?.id)/"+"comments", method: .post).responseJSON { (response) in
-//            let data = JSON.init(data: response.data!)
-//            for item in data.array! {
-//                let comment = Comment(json: item)
-//                self.listComment.append(comment)
-//            }
-//        }
+        let url = URL_DEFINE.getComment+"\(dataNews!.id)/"+"comments"
+        NSLog("\(url)  \(UltilsUser.kUserName)  \(UltilsUser.kPassword)")
         
-        if let path = Bundle.main.path(forResource: "photo", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-                let jsonObj = JSON(data: data)
-                if jsonObj != JSON.null {
-                    
-                    for item in jsonObj.array!
-                    {
-                        let comment = Comment(json: item)
-                        self.listComment.append(comment)
-                    }
-                    self.tbl.reloadData()
-                    
-                } else {
-                    print("Could not get json from file, make sure that file contains valid json.")
+        Alamofire.request(URL_DEFINE.getComment+"\(dataNews!.id ?? "")/"+"comments", method: .get).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+            let data = JSON.init(data: response.data!)
+                NSLog("\(data)")
+                for item in data.arrayValue {
+                    NSLog("\(item)")
+                    let comment = Comment(json: item)
+                    print("comment \(comment)")
+                    self.listComment.append(comment)
                 }
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        } else {
-            print("Invalid filename/path.")
+        
+           
+            self.tbl.reloadData()
         }
+        
+//        if let path = Bundle.main.path(forResource: "photo", ofType: "json") {
+//            do {
+//                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+//                let jsonObj = JSON(data: data)
+//                if jsonObj != JSON.null {
+//                    
+//                    for item in jsonObj.array!
+//                    {
+//                        let comment = Comment(json: item)
+//                        self.listComment.append(comment)
+//                    }
+//                    self.tbl.reloadData()
+//                    
+//                } else {
+//                    print("Could not get json from file, make sure that file contains valid json.")
+//                }
+//            } catch let error {
+//                print(error.localizedDescription)
+//            }
+//        } else {
+//            print("Invalid filename/path.")
+//        }
     }
     
     
@@ -102,10 +121,15 @@ class DetailPostViewController: UIViewController , UITableViewDelegate , UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier:commentCellId) as! CommentCell
+        cell.selectionStyle = .none
         let cmt  = listComment[indexPath.row]
         cell.displayWithComment(cmt)
         cell.delegate = self
         return cell
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
         
     }
 

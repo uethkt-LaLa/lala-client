@@ -15,7 +15,8 @@ protocol DelegateCommentCell {
 
 class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionViewDelegate {
     
-    
+    @IBOutlet weak var btnUpVote: UIButton!
+    @IBOutlet weak var btnDownVote: UIButton!
     
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var userAvatar: UIImageView!
@@ -34,13 +35,43 @@ class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionVie
     var delegate : DelegateCommentCell?
     
     
+    let imgUpVoteNormal = #imageLiteral(resourceName: "VoteNormal")
+    let imgUnvoteNormal = #imageLiteral(resourceName: "UnvoteNormal")
+    let imgVote = #imageLiteral(resourceName: "Vote")
+    let imgUnvote = #imageLiteral(resourceName: "Unvote")
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        configButton()
+        if userAvatar != nil
+        {
+            self.userAvatar.layer.cornerRadius = self.userAvatar.frame.height/2
+            self.userAvatar.clipsToBounds = true
+            
+        }
         configCollection()
         lblCommentContent.numberOfLines = 100
         
         
         // Initialization code
+    }
+    
+    func configButton()
+    {
+        let spacing = 6.0 // the amount of spacing to appear between image and title
+        btnUpVote.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, CGFloat(spacing));
+        btnUpVote.titleEdgeInsets = UIEdgeInsetsMake(0, CGFloat(spacing), 0, 0);
+    
+        btnDownVote.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, CGFloat(spacing));
+        btnDownVote.titleEdgeInsets = UIEdgeInsetsMake(0, CGFloat(spacing), 0, 0);
+        btnUpVote.imageView?.contentMode = .scaleAspectFit
+        btnDownVote.imageView?.contentMode = .scaleAspectFit
+        
+       btnUpVote.setImage(imgUpVoteNormal, for: .normal)
+       btnDownVote.setImage(imgUnvoteNormal, for: .normal)
+       btnUpVote.setTitle("0", for: .normal)
+       btnDownVote.setTitle("0", for: .normal)
     }
     
     private func configCollection()
@@ -99,6 +130,10 @@ class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionVie
         self.photoCollection.reloadData()
         self.lblUsername.text = comment.username
         self.lblCommentContent.text = comment.descriptionData
+    
+        
+        self.btnUpVote.setTitle("\(comment.likes.count)", for: .normal)
+        self.btnDownVote.setTitle("\(comment.dislikes.count)", for: .normal)
         
     }
 

@@ -33,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let login = LoginViewController(nibName: "LoginViewController", bundle: nil)
         let myTag = MyTagViewController(nibName: "MyTagViewController", bundle: nil)
         
+
+        
+
         let userId = UserDefaults.standard.value(forKey: "userId")
         if userId != nil {
             UltilsUser.userId = userId as? String ?? ""
@@ -58,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = login
         }
         
-        
+    
         
         self.window?.makeKeyAndVisible()
         

@@ -20,7 +20,7 @@ class PopularUser: NSObject {
     init(json : JSON) {
         self.avatarUser = json["image_url"].stringValue
         self.id = json["_id"].stringValue
-        self.username = json["username"].stringValue
+        self.username = json["display_name"].stringValue
         self.popular = json["popular"].intValue
         let join_date = json["join_date"].stringValue
         let dateformat = DateFormatter()

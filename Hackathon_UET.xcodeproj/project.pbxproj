@@ -112,6 +112,13 @@
 		36EE8A1E1E72CDE10049B84D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE8A1D1E72CDE10049B84D /* Comment.swift */; };
 		36EE8A211E72D88E0049B84D /* FavoritesPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE8A1F1E72D88E0049B84D /* FavoritesPostViewController.swift */; };
 		36EE8A221E72D88E0049B84D /* FavoritesPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36EE8A201E72D88E0049B84D /* FavoritesPostViewController.xib */; };
+		6E93C0DF1E7361E00035AA6A /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E93C0DD1E7361E00035AA6A /* TagCell.swift */; };
+		6E93C0E01E7361E00035AA6A /* TagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E93C0DE1E7361E00035AA6A /* TagCell.xib */; };
+		6E93C0E31E7367840035AA6A /* TagController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E93C0E11E7367840035AA6A /* TagController.swift */; };
+		6E93C0E41E7367840035AA6A /* TagController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E93C0E21E7367840035AA6A /* TagController.xib */; };
+		6E93C0E61E7384860035AA6A /* FontAwesomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E93C0E51E7384860035AA6A /* FontAwesomeKit.framework */; };
+		6E93C0E71E7384950035AA6A /* FontAwesomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E93C0E51E7384860035AA6A /* FontAwesomeKit.framework */; };
+		6E93C0E81E7384950035AA6A /* FontAwesomeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E93C0E51E7384860035AA6A /* FontAwesomeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6EDBD63C1E72E6E200B9FAE9 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBD63A1E72E6E200B9FAE9 /* CommentCell.swift */; };
 		6EDBD63D1E72E6E200B9FAE9 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EDBD63B1E72E6E200B9FAE9 /* CommentCell.xib */; };
 		6EDBD6431E72F2D200B9FAE9 /* KRLCollectionViewGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBD6421E72F2D200B9FAE9 /* KRLCollectionViewGridLayout.m */; };
@@ -122,6 +129,13 @@
 		6EDBD64D1E72FF8A00B9FAE9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EDBD64B1E72FF8000B9FAE9 /* SDWebImage.framework */; };
 		6EDBD64E1E72FF8A00B9FAE9 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6EDBD64B1E72FF8000B9FAE9 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6EDBD6521E7300D200B9FAE9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBD6511E7300D200B9FAE9 /* Constants.swift */; };
+		6EDBD6561E731E9800B9FAE9 /* PostContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBD6541E731E9800B9FAE9 /* PostContentController.swift */; };
+		6EDBD6571E731E9800B9FAE9 /* PostContentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EDBD6551E731E9800B9FAE9 /* PostContentController.xib */; };
+		6EDBD65B1E731FCA00B9FAE9 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBD65A1E731FCA00B9FAE9 /* UITextView+Placeholder.m */; };
+		6EDBD65D1E73222100B9FAE9 /* ImageForPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBD65C1E73222100B9FAE9 /* ImageForPostView.swift */; };
+		6EDBD65F1E73223700B9FAE9 /* ImageForPostView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EDBD65E1E73223700B9FAE9 /* ImageForPostView.xib */; };
+		6EDBD6621E73255700B9FAE9 /* ImageFromFolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDBD6601E73255700B9FAE9 /* ImageFromFolderCell.swift */; };
+		6EDBD6631E73255700B9FAE9 /* ImageFromFolderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EDBD6611E73255700B9FAE9 /* ImageFromFolderCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -140,6 +154,7 @@
 				368E2B831E7089DA00078F5A /* FBSDKCoreKit.framework in Embed Frameworks */,
 				3672F5931E705EBB00A80D24 /* NohanaImagePicker.framework in Embed Frameworks */,
 				368E2B891E7089DA00078F5A /* Bolts.framework in Embed Frameworks */,
+				6E93C0E81E7384950035AA6A /* FontAwesomeKit.framework in Embed Frameworks */,
 				36D803A31E6C6CF400AE1405 /* Alamofire.framework in Embed Frameworks */,
 				368E2B871E7089DA00078F5A /* FBSDKShareKit.framework in Embed Frameworks */,
 				368E2B851E7089DA00078F5A /* FBSDKLoginKit.framework in Embed Frameworks */,
@@ -233,6 +248,11 @@
 		36EE8A1D1E72CDE10049B84D /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		36EE8A1F1E72D88E0049B84D /* FavoritesPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesPostViewController.swift; sourceTree = "<group>"; };
 		36EE8A201E72D88E0049B84D /* FavoritesPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritesPostViewController.xib; sourceTree = "<group>"; };
+		6E93C0DD1E7361E00035AA6A /* TagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		6E93C0DE1E7361E00035AA6A /* TagCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagCell.xib; sourceTree = "<group>"; };
+		6E93C0E11E7367840035AA6A /* TagController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagController.swift; sourceTree = "<group>"; };
+		6E93C0E21E7367840035AA6A /* TagController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagController.xib; sourceTree = "<group>"; };
+		6E93C0E51E7384860035AA6A /* FontAwesomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FontAwesomeKit.framework; sourceTree = "<group>"; };
 		6EDBD63A1E72E6E200B9FAE9 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		6EDBD63B1E72E6E200B9FAE9 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		6EDBD6411E72F2D200B9FAE9 /* KRLCollectionViewGridLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRLCollectionViewGridLayout.h; sourceTree = "<group>"; };
@@ -243,6 +263,14 @@
 		6EDBD6491E72FBEC00B9FAE9 /* photo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = photo.json; sourceTree = "<group>"; };
 		6EDBD64B1E72FF8000B9FAE9 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		6EDBD6511E7300D200B9FAE9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6EDBD6541E731E9800B9FAE9 /* PostContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostContentController.swift; sourceTree = "<group>"; };
+		6EDBD6551E731E9800B9FAE9 /* PostContentController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostContentController.xib; sourceTree = "<group>"; };
+		6EDBD6591E731FCA00B9FAE9 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		6EDBD65A1E731FCA00B9FAE9 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
+		6EDBD65C1E73222100B9FAE9 /* ImageForPostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageForPostView.swift; sourceTree = "<group>"; };
+		6EDBD65E1E73223700B9FAE9 /* ImageForPostView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageForPostView.xib; sourceTree = "<group>"; };
+		6EDBD6601E73255700B9FAE9 /* ImageFromFolderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFromFolderCell.swift; sourceTree = "<group>"; };
+		6EDBD6611E73255700B9FAE9 /* ImageFromFolderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageFromFolderCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +294,7 @@
 				36D803981E6C6CF400AE1405 /* ToastSwiftFramework.framework in Frameworks */,
 				36D803941E6C6CEC00AE1405 /* Alamofire.framework in Frameworks */,
 				368E2B861E7089DA00078F5A /* FBSDKShareKit.framework in Frameworks */,
+				6E93C0E61E7384860035AA6A /* FontAwesomeKit.framework in Frameworks */,
 				368E2B801E7089B700078F5A /* FBSDKLoginKit.framework in Frameworks */,
 				36D8039A1E6C6CF400AE1405 /* STPopup.framework in Frameworks */,
 				368E2B841E7089DA00078F5A /* FBSDKLoginKit.framework in Frameworks */,
@@ -273,6 +302,7 @@
 				3672F5911E705EB000A80D24 /* NohanaImagePicker.framework in Frameworks */,
 				36D8039E1E6C6CF400AE1405 /* CarbonKit.framework in Frameworks */,
 				36D8039C1E6C6CF400AE1405 /* MBProgressHUD.framework in Frameworks */,
+				6E93C0E71E7384950035AA6A /* FontAwesomeKit.framework in Frameworks */,
 				36D8038F1E6C6CEC00AE1405 /* ToastSwiftFramework.framework in Frameworks */,
 				36D803961E6C6CF400AE1405 /* IQKeyboardManagerSwift.framework in Frameworks */,
 				368E2B821E7089DA00078F5A /* FBSDKCoreKit.framework in Frameworks */,
@@ -515,6 +545,7 @@
 				36D8036D1E6C6C3B00AE1405 /* Assets.xcassets */,
 				36D8036F1E6C6C3B00AE1405 /* LaunchScreen.storyboard */,
 				36D803721E6C6C3B00AE1405 /* Info.plist */,
+				6EDBD6441E72F32000B9FAE9 /* Hackathon_UET-bridging-Header.h */,
 			);
 			path = Hackathon_UET;
 			sourceTree = "<group>";
@@ -523,6 +554,7 @@
 			isa = PBXGroup;
 			children = (
 				369283D41E73E626001A13CD /* ChooseTagNewPost */,
+				6EDBD6531E731E7200B9FAE9 /* PostContentVC */,
 				369283CD1E73BE9E001A13CD /* SettingVC */,
 				3677041A1E730C7F008706B5 /* PopularUserVC */,
 				362DBC6D1E7276DB00F211A1 /* BaseViewController.swift */,
@@ -589,6 +621,7 @@
 		36D803851E6C6CE000AE1405 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				6E93C0E51E7384860035AA6A /* FontAwesomeKit.framework */,
 				6EDBD64B1E72FF8000B9FAE9 /* SDWebImage.framework */,
 				368E2B7C1E7089B700078F5A /* FBSDKCoreKit.framework */,
 				368E2B7D1E7089B700078F5A /* FBSDKLoginKit.framework */,
@@ -640,9 +673,35 @@
 			children = (
 				6EDBD6411E72F2D200B9FAE9 /* KRLCollectionViewGridLayout.h */,
 				6EDBD6421E72F2D200B9FAE9 /* KRLCollectionViewGridLayout.m */,
-				6EDBD6441E72F32000B9FAE9 /* Hackathon_UET-bridging-Header.h */,
 			);
 			name = exLibs;
+			sourceTree = "<group>";
+		};
+		6EDBD6531E731E7200B9FAE9 /* PostContentVC */ = {
+			isa = PBXGroup;
+			children = (
+				6EDBD6581E731FB800B9FAE9 /* exLib */,
+				6EDBD6541E731E9800B9FAE9 /* PostContentController.swift */,
+				6EDBD6551E731E9800B9FAE9 /* PostContentController.xib */,
+				6EDBD65C1E73222100B9FAE9 /* ImageForPostView.swift */,
+				6EDBD65E1E73223700B9FAE9 /* ImageForPostView.xib */,
+				6EDBD6601E73255700B9FAE9 /* ImageFromFolderCell.swift */,
+				6EDBD6611E73255700B9FAE9 /* ImageFromFolderCell.xib */,
+				6E93C0DD1E7361E00035AA6A /* TagCell.swift */,
+				6E93C0DE1E7361E00035AA6A /* TagCell.xib */,
+				6E93C0E11E7367840035AA6A /* TagController.swift */,
+				6E93C0E21E7367840035AA6A /* TagController.xib */,
+			);
+			name = PostContentVC;
+			sourceTree = "<group>";
+		};
+		6EDBD6581E731FB800B9FAE9 /* exLib */ = {
+			isa = PBXGroup;
+			children = (
+				6EDBD6591E731FCA00B9FAE9 /* UITextView+Placeholder.h */,
+				6EDBD65A1E731FCA00B9FAE9 /* UITextView+Placeholder.m */,
+			);
+			name = exLib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -712,8 +771,10 @@
 				36D803711E6C6C3B00AE1405 /* LaunchScreen.storyboard in Resources */,
 				364A763A1E6C7E3C00FB3199 /* NewPostViewController.xib in Resources */,
 				6EDBD63D1E72E6E200B9FAE9 /* CommentCell.xib in Resources */,
+				6E93C0E41E7367840035AA6A /* TagController.xib in Resources */,
 				3672F58F1E7051AC00A80D24 /* CreateAccountViewController.xib in Resources */,
 				36546B7A1E72617100028DE6 /* DetailPostViewController.xib in Resources */,
+				6EDBD6571E731E9800B9FAE9 /* PostContentController.xib in Resources */,
 				368038C41E73214000DBDA89 /* PopularTableViewCell.xib in Resources */,
 				36546B7F1E72634700028DE6 /* PreviewViewController.xib in Resources */,
 				3650AECA1E6F26A6005FA6F2 /* MyPostsViewController.xib in Resources */,
@@ -726,10 +787,13 @@
 				6EDBD6481E72F5B400B9FAE9 /* PhotoCollectionCell.xib in Resources */,
 				3672F5991E70621E00A80D24 /* ImageCollectionViewCell.xib in Resources */,
 				3650AEDB1E6F309A005FA6F2 /* TagTableViewCell.xib in Resources */,
+				6EDBD6631E73255700B9FAE9 /* ImageFromFolderCell.xib in Resources */,
+				6EDBD65F1E73223700B9FAE9 /* ImageForPostView.xib in Resources */,
 				36A658701E716CA700494445 /* PicktureViewController.xib in Resources */,
 				36D8036E1E6C6C3B00AE1405 /* Assets.xcassets in Resources */,
 				36D803841E6C6CBB00AE1405 /* MenuViewController.xib in Resources */,
 				36D803B21E6C741300AE1405 /* WhatNewsViewController.xib in Resources */,
+				6E93C0E01E7361E00035AA6A /* TagCell.xib in Resources */,
 				366606161E725DE10099BAFC /* DisplayPhotoViewController.xib in Resources */,
 				36D8036C1E6C6C3B00AE1405 /* Main.storyboard in Resources */,
 				3650AED61E6F305C005FA6F2 /* MyTagViewController.xib in Resources */,
@@ -750,6 +814,7 @@
 				3650AEDF1E6F3210005FA6F2 /* LoginViewController.swift in Sources */,
 				366606151E725DE10099BAFC /* DisplayPhotoViewController.swift in Sources */,
 				36A658741E716CC400494445 /* ChooseTagViewController.swift in Sources */,
+				6EDBD65D1E73222100B9FAE9 /* ImageForPostView.swift in Sources */,
 				36D803AC1E6C6D1E00AE1405 /* UIView+IBInspectable.swift in Sources */,
 				362DBC6E1E7276DB00F211A1 /* BaseViewController.swift in Sources */,
 				36D8037D1E6C6C9100AE1405 /* MainViewController.swift in Sources */,
@@ -762,6 +827,7 @@
 				369283D71E73E650001A13CD /* ChooseTagNewPostViewController.swift in Sources */,
 				368038C61E732F4F00DBDA89 /* UploadImage.swift in Sources */,
 				3650AED51E6F305C005FA6F2 /* MyTagViewController.swift in Sources */,
+				6EDBD6561E731E9800B9FAE9 /* PostContentController.swift in Sources */,
 				366606101E725D9A0099BAFC /* SilderPhotoViewController.swift in Sources */,
 				3650AEDA1E6F309A005FA6F2 /* TagTableViewCell.swift in Sources */,
 				36D803AD1E6C6D1E00AE1405 /* Extension.swift in Sources */,
@@ -771,12 +837,14 @@
 				36A658771E71859400494445 /* Tag.swift in Sources */,
 				36D803AB1E6C6D1E00AE1405 /* UIColor-Hex-Swift.swift in Sources */,
 				36A658791E719B3400494445 /* URL_DEFINE.swift in Sources */,
+				6EDBD65B1E731FCA00B9FAE9 /* UITextView+Placeholder.m in Sources */,
 				36D803B61E6C74A500AE1405 /* MenuTableViewCell.swift in Sources */,
 				36D803671E6C6C3B00AE1405 /* AppDelegate.swift in Sources */,
 				36D803831E6C6CBB00AE1405 /* MenuViewController.swift in Sources */,
 				36B9A3501E6C8B4600EB1290 /* CustomeKeyboard.swift in Sources */,
 				6EDBD6521E7300D200B9FAE9 /* Constants.swift in Sources */,
 				6EDBD6431E72F2D200B9FAE9 /* KRLCollectionViewGridLayout.m in Sources */,
+				6E93C0DF1E7361E00035AA6A /* TagCell.swift in Sources */,
 				36EE8A1E1E72CDE10049B84D /* Comment.swift in Sources */,
 				36546B7E1E72634700028DE6 /* PreviewViewController.swift in Sources */,
 				36546B791E72617100028DE6 /* DetailPostViewController.swift in Sources */,
@@ -785,8 +853,10 @@
 				36EE8A211E72D88E0049B84D /* FavoritesPostViewController.swift in Sources */,
 				3677041D1E730C96008706B5 /* PopularUserViewController.swift in Sources */,
 				367704201E730D82008706B5 /* PopularUser.swift in Sources */,
+				6E93C0E31E7367840035AA6A /* TagController.swift in Sources */,
 				36A6586F1E716CA700494445 /* PicktureViewController.swift in Sources */,
 				36D803B11E6C741300AE1405 /* WhatNewsViewController.swift in Sources */,
+				6EDBD6621E73255700B9FAE9 /* ImageFromFolderCell.swift in Sources */,
 				369283D01E73BEB2001A13CD /* SettingViewController.swift in Sources */,
 				364A76391E6C7E3C00FB3199 /* NewPostViewController.swift in Sources */,
 				6EDBD63C1E72E6E200B9FAE9 /* CommentCell.swift in Sources */,

@@ -16,6 +16,8 @@ class PopularTableViewCell: UITableViewCell {
     @IBOutlet weak var lblCountFollower : UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        imgThumNail.clipsToBounds = true
+        imgThumNail.cornerRadius = imgThumNail.frame.width / 2
         // Initialization code
     }
 
