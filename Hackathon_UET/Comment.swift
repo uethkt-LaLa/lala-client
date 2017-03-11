@@ -33,7 +33,7 @@ class Comment: NSObject {
         self.created_time = json["created_time"].stringValue
         self.dislike_count = json["dislikes_count"].intValue
         self.likes_count = json["likes_count"].intValue
-        self.username = json["username"].stringValue
+        self.username = json["userName"].stringValue
         self.imgPaths = []
         self.userAvatr = json["userAvatar"].stringValue
         likes = []

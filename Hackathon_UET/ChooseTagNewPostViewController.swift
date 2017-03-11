@@ -22,19 +22,61 @@ class ChooseTagNewPostViewController: UIViewController {
     var delegate : DelegateChooseTag?
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavi()
         tbl.register(UINib.init(nibName: "TagTableViewCell", bundle: nil), forCellReuseIdentifier: "TagTableViewCell")
         self.requestData()
         self.tbl.tableFooterView = UIView.init(frame: CGRect.zero)
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.edgesForExtendedLayout = []
+    }
+    
+    func setupNavi()
+    {
+        let sendImage = #imageLiteral(resourceName: "navigation_button_done_selected")
+        let send = UIBarButtonItem(image:sendImage , style: .done, target: self, action: #selector(naviButtonSendDidTap))
+        self.navigationItem.rightBarButtonItem = send
+        send.tintColor = .white
+        
+        let back = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(naviButtonCancelDidTap))
+        back.setTitleTextAttributes([NSFontAttributeName : UIFont.boldSystemFont(ofSize: 15) ,NSForegroundColorAttributeName : UIColor.white ], for: .normal)
+        
+        self.navigationItem.leftBarButtonItem = back
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:38/255, green: 53/255, blue: 66/255, alpha: 1)
+    }
+    
+    func naviButtonCancelDidTap()
+    {
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    func naviButtonSendDidTap()
+    {
+        self.result.removeAll()
+        for item in self.listTags {
+            if item.select == true {
+                result.append(item)
+            }
+        }
+        if delegate != nil {
+            delegate?.doneTouchUp(value: result)
+        }
+        
+        dismiss(animated: false, completion: nil)
+        
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     func requestData() {
-        self.listChoose.removeAll()
         self.listTags.removeAll()       
         Alamofire.request(URL_DEFINE.tagAll, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             let jsondata = JSON.init(data: response.data!)
@@ -53,15 +95,7 @@ class ChooseTagNewPostViewController: UIViewController {
     }
     
     @IBAction func doneTouchUp(_sender : UIButton){
-        self.result.removeAll()
-        for item in self.listTags {
-            if item.select == true {
-                result.append(item)
-            }
-        }
-        if delegate != nil {
-            delegate?.doneTouchUp(value: result)
-        }
+       
     }
 }
 extension ChooseTagNewPostViewController : UITableViewDataSource,UITableViewDelegate {

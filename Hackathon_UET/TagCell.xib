@@ -24,14 +24,25 @@
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRa-Wf-ey7">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRa-Wf-ey7">
                         <rect key="frame" x="230" y="2" width="20" height="20"/>
-                        <color key="backgroundColor" red="0.16862745100000001" green="0.51764705879999995" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="TRa-Wf-ey7" secondAttribute="height" id="OQ5-wU-qam"/>
                             <constraint firstAttribute="height" constant="20" id="eeW-4Y-qHV"/>
                         </constraints>
+                        <state key="normal" image="post_btn_removeattachment"/>
+                        <connections>
+                            <action selector="btnDeleteDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="I2c-hA-JNV"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
@@ -44,7 +55,13 @@
                 <constraint firstAttribute="trailing" secondItem="O1p-Tq-oDY" secondAttribute="trailing" id="XKF-RZ-fvq"/>
             </constraints>
             <size key="customSize" width="252" height="50"/>
+            <connections>
+                <outlet property="title" destination="O1p-Tq-oDY" id="nDo-yt-EXX"/>
+            </connections>
             <point key="canvasLocation" x="-68" y="58"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="post_btn_removeattachment" width="22" height="22"/>
+    </resources>
 </document>

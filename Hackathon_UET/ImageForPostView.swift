@@ -14,11 +14,14 @@ protocol ImageForPostViewDelegate {
     
     func btnPickImageDidTap()
     func imgFolderDidTap()
+    func tagButtonDidTap()
+    
+    func btnDeleteTagDidTap()
 
     
 }
 
-class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataSource , ImageFromFolderCellDelegate{
+class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataSource , ImageFromFolderCellDelegate,TagCellDelegate{
     
     @IBOutlet weak var barOptionView: UIView!
     
@@ -49,9 +52,10 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
     @IBOutlet weak var tagCollection: UICollectionView!
     
     var listPhotoSelectect : [UIImage]  =  []
-    var listTag : [String] = []
+    var listTag : [Tag] = []
     var listImageName : [String] = []
-    
+    var listLinkImg = ["http://imgur.com/wTgiD3n","http://imgur.com/y6nk5fT","http://imgur.com/WLCzl4A","http://imgur.com/djGyDVL","http://imgur.com/j2ENWro"]
+    var listLinkSelected :[String] = []
     
     @IBOutlet weak var imageSelectedCollection: UICollectionView!
     
@@ -89,6 +93,24 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
         
     }
     
+    func setListTag(value : [Tag])
+    {
+        
+        self.listTag = value
+        checkVisibleForTagCollection()
+        self.tagCollection.reloadData()
+        self.delegate?.btnDeleteTagDidTap()
+    }
+    
+    
+    
+    @IBAction func tagButtonDidTap(_ sender: Any) {
+        
+        self.delegate?.tagButtonDidTap()
+        
+        
+    }
+    
     
     @IBAction func btnKeyboardDidTap(_ sender: Any) {
         
@@ -109,16 +131,34 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
             imageSelectedCollection.isHidden = true
             photoSelectedHeight.constant = 0
             
-            ImageForPostView.frameMinInRoot = CGRect(x: 0.0, y: kscreenHeight -  40, width: kscreenWidth, height: 216+40)
-            ImageForPostView.frameFullInRoot = CGRect(x: 0.0, y: kscreenHeight - (216+40) , width: kscreenWidth, height: 216+40)
+            if listTag.count < 1
+            {
+                ImageForPostView.frameMinInRoot = CGRect(x: 0.0, y: kscreenHeight -  40, width: kscreenWidth, height: 216+40)
+                ImageForPostView.frameFullInRoot = CGRect(x: 0.0, y: kscreenHeight - (216+40) , width: kscreenWidth, height: 216+40)
+            }else
+            {
+                ImageForPostView.frameMinInRoot = CGRect(x: 0.0, y: kscreenHeight -  (40+40), width: kscreenWidth, height: 216+40+40)
+                ImageForPostView.frameFullInRoot = CGRect(x: 0.0, y: kscreenHeight - (216+40+40) , width: kscreenWidth, height: 216+40+40)
+            }
+            
+            
             
         }else
         {
             imageSelectedCollection.isHidden = false
             photoSelectedHeight.constant = 80.0
             
-            ImageForPostView.frameMinInRoot = CGRect(x: 0.0, y: kscreenHeight -  (40+80), width: kscreenWidth, height: 216+40)
-            ImageForPostView.frameFullInRoot = CGRect(x: 0.0, y: kscreenHeight - (216+40+80) , width: kscreenWidth, height: 216+40)
+            if listTag.count < 1
+            {
+                ImageForPostView.frameMinInRoot = CGRect(x: 0.0, y: kscreenHeight -  (40+80), width: kscreenWidth, height: 216+40)
+                ImageForPostView.frameFullInRoot = CGRect(x: 0.0, y: kscreenHeight - (216+40+80) , width: kscreenWidth, height: 216+40)
+            }else
+            {
+                ImageForPostView.frameMinInRoot = CGRect(x: 0.0, y: kscreenHeight -  (40+80+40), width: kscreenWidth, height: 216+40+40)
+                ImageForPostView.frameFullInRoot = CGRect(x: 0.0, y: kscreenHeight - (216+40+80+40) , width: kscreenWidth, height: 216+40+40)
+            }
+            
+            
 
         }
         
@@ -135,15 +175,36 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
         {
             tagCollection.isHidden = true
             tagCollectionHeight.constant = 0
-            GlobalVariable.pickImageFullHeight -= 40.0
-            GlobalVariable.pickImageExHeight -= 40.0
+            
+            if listPhotoSelectect.count < 1
+            {
+                ImageForPostView.frameMinInRoot = CGRect(x: 0.0, y: kscreenHeight -  40, width: kscreenWidth, height: 216+40)
+                ImageForPostView.frameFullInRoot = CGRect(x: 0.0, y: kscreenHeight - (216+40) , width: kscreenWidth, height: 216+40)
+                
+            }else
+            {
+                ImageForPostView.frameMinInRoot = CGRect(x: 0.0, y: kscreenHeight -  (40+80), width: kscreenWidth, height: 216 + 40 + 80)
+                ImageForPostView.frameFullInRoot = CGRect(x: 0.0, y: kscreenHeight - (216+40+80) , width: kscreenWidth, height: 216+40+80)
+            }
+            
+            
         }else
         {
             tagCollection.isHidden = false
             tagCollectionHeight.constant = 40.0
             tagCollection.updateConstraints()
-            GlobalVariable.pickImageFullHeight += 40.0
-            GlobalVariable.pickImageExHeight += 40.0
+            
+            if listPhotoSelectect.count < 1
+            {
+                ImageForPostView.frameMinInRoot = CGRect(x: 0.0, y: kscreenHeight -  (40 + 40), width: kscreenWidth, height: 216 + 40 + 40)
+                ImageForPostView.frameFullInRoot = CGRect(x: 0.0, y: kscreenHeight - (216 + 40 + 40) , width: kscreenWidth, height: 216+40 + 40)
+                
+            }else
+            {
+                ImageForPostView.frameMinInRoot = CGRect(x: 0.0, y: kscreenHeight -  (40 + 80 + 40 ), width: kscreenWidth, height: 216+40+80+40)
+                ImageForPostView.frameFullInRoot = CGRect(x: 0.0, y: kscreenHeight - (216 + 40 + 80 + 40+40) , width: kscreenWidth, height: 216+40+80+40)
+            }
+            
             
             
         }
@@ -182,7 +243,7 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
         layoutTag.numberOfItemsPerLine = 1
         layoutTag.aspectRatio = 2.5
         layoutTag.lineSpacing = 2.0
-        layoutTag.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layoutTag.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         layoutTag.scrollDirection = .horizontal
         
         
@@ -190,6 +251,7 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
         {
             photoFolderCollection.collectionViewLayout = layoutPhotoFolder
             photoFolderCollection.delegate = self
+     
             photoFolderCollection.dataSource = self
             self.photoFolderCollection.register(UINib(nibName: "ImageFromFolderCell", bundle: nil), forCellWithReuseIdentifier: photoFromFolderCellId)
             
@@ -202,7 +264,7 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
             tagCollection.collectionViewLayout = layoutTag
             tagCollection.delegate = self
             tagCollection.dataSource = self
-            self.imageSelectedCollection.register(UINib(nibName: "TagCell", bundle: nil), forCellWithReuseIdentifier: tagCellId)
+            self.tagCollection.register(UINib(nibName: "TagCell", bundle: nil), forCellWithReuseIdentifier: tagCellId)
             checkVisibleForTagCollection()
             
             
@@ -243,6 +305,9 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
         if collectionView == tagCollection
         {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: tagCellId, for: indexPath) as! TagCell
+            let tag = listTag[indexPath.item]
+            cell.delegate = self
+            cell.title.text = tag.name
             return cell
         }
         
@@ -287,19 +352,26 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
         if inCell.cellType == .photoFolder
         {
 
+           
             if listPhotoSelectect.contains(img!)
             {
-                listPhotoSelectect.remove(at: listPhotoSelectect.index(of: img!)!)
+                 let index = listPhotoSelectect.index(of: img!)!
+                listPhotoSelectect.remove(at: index)
+                self.listLinkSelected.remove(at:index )
             }else
             {
                 listPhotoSelectect.append(img!)
+                 let index = listPhotoSelectect.index(of: img!)!
+                self.listLinkSelected.append(listLinkImg[index])
             }
             
             
         }
         if inCell.cellType == .photoPicked
         {
-            listPhotoSelectect.remove(at: listPhotoSelectect.index(of: img!)!)
+            let index = listPhotoSelectect.index(of: img!)!
+            listPhotoSelectect.remove(at:index)
+            self.listLinkSelected.append(listLinkImg[index])
             
             for i in 0 ..< listImageName.count
             {
@@ -320,6 +392,17 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
         delegate?.imgFolderDidTap()
     }
     
+    
+    func btnDeleteDidTap(cell: TagCell) {
+        
+        let indexP = tagCollection.indexPath(for: cell)
+        listTag.remove(at: (indexP?.item)!)
+        checkVisibleForTagCollection()
+        tagCollection.reloadData()
+        
+        self.delegate?.btnDeleteTagDidTap()
+        
+    }
     
     
 
