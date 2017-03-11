@@ -51,6 +51,9 @@
                                 <constraint firstAttribute="width" secondItem="woz-DH-Qzo" secondAttribute="height" id="kDi-B0-MEW"/>
                             </constraints>
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="tagButtonDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="AtB-Hc-lgW"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

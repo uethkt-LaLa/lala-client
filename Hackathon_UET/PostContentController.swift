@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 enum PostContentControllerType {
     case newPost
     case comment
 }
 
-class PostContentController: UIViewController , ImageForPostViewDelegate {
+class PostContentController: UIViewController , ImageForPostViewDelegate ,DelegateChooseTag{
     
     @IBOutlet weak var txtContent: UITextView!
     
     var pickImageView : ImageForPostView?
-    var listTag : [String] = []
+    var listTag : [Tag] = []
     var type : PostContentControllerType?
     
     
@@ -46,10 +48,13 @@ class PostContentController: UIViewController , ImageForPostViewDelegate {
         // Do any additional setup after loading the view.
     }
     
+    
+
+    
     func setupNavi()
     {
         let sendImage = #imageLiteral(resourceName: "navigation_button_done_selected")
-        let send = UIBarButtonItem(image:sendImage , style: .done, target: self, action: #selector(naviButtonCancelDidTap))
+        let send = UIBarButtonItem(image:sendImage , style: .done, target: self, action: #selector(naviButtonSendDidTap))
         self.navigationItem.rightBarButtonItem = send
         send.tintColor = .white
         
@@ -69,14 +74,32 @@ class PostContentController: UIViewController , ImageForPostViewDelegate {
     func naviButtonSendDidTap()
     {
         
-        for img in  (pickImageView?.listPhotoSelectect)!
-        {
-           UploadImage.upload(image: img, complete: { (error, json) in
+        let post = Post()
+        post.descriptionStr = self.txtContent.text
+        post.img_paths = (pickImageView?.listLinkSelected)!
+        
+        var listTagID : [String] = []
+        for tag in self.listTag {
             
-           })
+            listTagID.append(tag.id)
         }
+        post.tag_id = listTagID
+        Alamofire.request(kURL+"posts", method: .post, parameters: post.toJSON()).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+            let data = JSON.init(data: response.data!)
+            NSLog("\(data)")
+        }
+        
+        
+        
 
         
+    }
+    
+    func doneTouchUp(value: [Tag]) {
+        
+        self.listTag = value
+        pickImageView?.setListTag(value: self.listTag)
+        fullSizePickPhotoView()
     }
     
     func keyboardWillShow(_ noti : Notification)
@@ -132,6 +155,23 @@ class PostContentController: UIViewController , ImageForPostViewDelegate {
         
         
     }
+    
+    func tagButtonDidTap() {
+        
+        let choose = ChooseTagNewPostViewController(nibName: "ChooseTagNewPostViewController", bundle: nil)
+        choose.listChoose = self.listTag
+        choose.delegate = self
+        let navi = UINavigationController(rootViewController:choose )
+        self.present(navi, animated: false, completion: nil)
+    }
+    
+    func btnDeleteTagDidTap() {
+        self.listTag = (pickImageView?.listTag)!
+        fullSizePickPhotoView()
+    }
+    
+    
+    
     
     func btnPickImageDidTap() {
         
