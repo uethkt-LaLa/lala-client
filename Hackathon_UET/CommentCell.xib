@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="130.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEa-86-5Bs">
@@ -33,7 +33,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vRo-SX-ZB6">
-                        <rect key="frame" x="50" y="92" width="268" height="5"/>
+                        <rect key="frame" x="50" y="91" width="268" height="5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="5" id="C3K-SZ-GdJ"/>
@@ -46,33 +46,53 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4AX-d2-EFe">
-                        <rect key="frame" x="50" y="99" width="262" height="30"/>
+                        <rect key="frame" x="50" y="98" width="262" height="30"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zg-Fn-yKV">
-                                <rect key="frame" x="212" y="2" width="50" height="26"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zg-Fn-yKV">
+                                <rect key="frame" x="236" y="2" width="26" height="26"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="DZq-Cz-UZG"/>
+                                    <constraint firstAttribute="width" secondItem="3Zg-Fn-yKV" secondAttribute="height" id="Hy3-wt-3v2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="5" image="Unvote"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqB-Ea-Wm4">
-                                <rect key="frame" x="157" y="2" width="50" height="26"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqB-Ea-Wm4">
+                                <rect key="frame" x="132" y="2" width="26" height="26"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="TrA-uJ-N49"/>
+                                    <constraint firstAttribute="width" secondItem="sqB-Ea-Wm4" secondAttribute="height" id="tgv-5F-iRJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="10" image="Vote"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPx-CG-g6w">
+                                <rect key="frame" x="190" y="5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xv-uc-d8N">
+                                <rect key="frame" x="86" y="5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="QPx-CG-g6w" firstAttribute="centerY" secondItem="3Zg-Fn-yKV" secondAttribute="centerY" id="3kG-to-vVp"/>
                             <constraint firstAttribute="bottom" secondItem="3Zg-Fn-yKV" secondAttribute="bottom" constant="2" id="8nX-5U-EV6"/>
                             <constraint firstAttribute="bottom" secondItem="sqB-Ea-Wm4" secondAttribute="bottom" constant="2" id="BmG-iw-giI"/>
-                            <constraint firstItem="3Zg-Fn-yKV" firstAttribute="leading" secondItem="sqB-Ea-Wm4" secondAttribute="trailing" constant="5" id="EzE-9s-hWJ"/>
+                            <constraint firstItem="3Zg-Fn-yKV" firstAttribute="leading" secondItem="QPx-CG-g6w" secondAttribute="trailing" constant="4" id="Eie-5e-W6w"/>
                             <constraint firstItem="sqB-Ea-Wm4" firstAttribute="top" secondItem="4AX-d2-EFe" secondAttribute="top" constant="2" id="dXg-fI-kub"/>
                             <constraint firstItem="3Zg-Fn-yKV" firstAttribute="top" secondItem="4AX-d2-EFe" secondAttribute="top" constant="2" id="lKl-Nv-JPj"/>
+                            <constraint firstItem="sqB-Ea-Wm4" firstAttribute="leading" secondItem="8Xv-uc-d8N" secondAttribute="trailing" constant="4" id="nKE-Lq-Dss"/>
                             <constraint firstAttribute="trailing" secondItem="3Zg-Fn-yKV" secondAttribute="trailing" id="sKI-fG-toN"/>
                             <constraint firstAttribute="height" constant="30" id="xwy-Gl-fIY"/>
+                            <constraint firstItem="QPx-CG-g6w" firstAttribute="leading" secondItem="sqB-Ea-Wm4" secondAttribute="trailing" constant="32" id="yCA-mz-W9F"/>
+                            <constraint firstItem="8Xv-uc-d8N" firstAttribute="centerY" secondItem="QPx-CG-g6w" secondAttribute="centerY" id="zpj-VU-GYH"/>
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoholder" translatesAutoresizingMaskIntoConstraints="NO" id="h0O-w6-00Y">
@@ -106,6 +126,8 @@
                 <outlet property="btnUpVote" destination="sqB-Ea-Wm4" id="xLB-Nc-mLt"/>
                 <outlet property="collectionHeight" destination="C3K-SZ-GdJ" id="Gpt-2y-zlX"/>
                 <outlet property="lblCommentContent" destination="ZNI-8V-FiU" id="sbR-1y-V1z"/>
+                <outlet property="lblCountDisLike" destination="QPx-CG-g6w" id="EvS-WN-TSl"/>
+                <outlet property="lblCountLike" destination="8Xv-uc-d8N" id="jm9-Lp-7mb"/>
                 <outlet property="lblUsername" destination="TEa-86-5Bs" id="2ul-dZ-gw2"/>
                 <outlet property="photoCollection" destination="vRo-SX-ZB6" id="d5K-6Y-7xb"/>
                 <outlet property="userAvatar" destination="h0O-w6-00Y" id="GbJ-Vt-C6p"/>
@@ -114,8 +136,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Unvote" width="100" height="100"/>
-        <image name="Vote" width="100" height="100"/>
         <image name="photoholder" width="250" height="250"/>
     </resources>
 </document>

@@ -64,14 +64,16 @@ class WhatNewsViewController: BaseViewController {
         if status == true { ////like
             item.isLike = true
             item.likes_count = item.likes_count + 1
-            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/like", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
-                
+            let url = URL_DEFINE.home_post+"/\(idPost)"+"/like"
+            NSLog("\(url)")
+            Alamofire.request(URL_DEFINE.post_all+"/\(idPost)"+"/like", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                NSLog("\(JSON.init(data: response.data!))")
             }
         } else if status == false { //unlike
             item.isLike = false
             item.likes_count = item.likes_count - 1
-            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/like", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
-                
+            Alamofire.request(URL_DEFINE.post_all+"/\(idPost)"+"/like", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                NSLog("\(JSON.init(data: response.data!))")
             }
         }
         self.listShow[index.row] = item
@@ -84,13 +86,13 @@ class WhatNewsViewController: BaseViewController {
         if status == true { ////like
             item.isDisLike = true
             item.dislikes_count = item.dislikes_count + 1
-            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+            Alamofire.request(URL_DEFINE.post_all+"/\(idPost)"+"/dislike", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 
             }
         } else if status == false { //unlike
             item.isDisLike = false
             item.dislikes_count = item.dislikes_count - 1
-            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+            Alamofire.request(URL_DEFINE.post_all+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             }
         }
         self.listShow[index.row] = item

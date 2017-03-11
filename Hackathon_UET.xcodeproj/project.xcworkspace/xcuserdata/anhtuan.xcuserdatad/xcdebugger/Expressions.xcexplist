@@ -3,13 +3,13 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "AppDelegate.application(UIApplication, didFinishLaunchingWithOptions : [UIApplicationLaunchOptionsKey : Any]?) -&gt; Bool:AppDelegate.swift">
+         contextName = "NewTableViewCell.setData(new : News) -&gt; ():NewTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "WhatNewsViewController.loadData() -&gt; ():WhatNewsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "UltilsUser">
-            </PersistentString>
-            <PersistentString
-               value = "UltilsUser.userId">
+               value = "kUserName">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -22,10 +22,32 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "WhatNewsViewController.loadData() -&gt; ():WhatNewsViewController.swift">
+         contextName = "News.init(json : JSON) -&gt; News:News.swift">
          <PersistentStrings>
             <PersistentString
-               value = "kUserName">
+               value = "UltilsUser.userId">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AppDelegate.application(UIApplication, didFinishLaunchingWithOptions : [UIApplicationLaunchOptionsKey : Any]?) -&gt; Bool:AppDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UltilsUser">
+            </PersistentString>
+            <PersistentString
+               value = "UltilsUser.userId">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WhatNewsViewController.setLikeforIndex(index : IndexPath, status : Bool) -&gt; ():WhatNewsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UltilsUser.kUserName">
+            </PersistentString>
+            <PersistentString
+               value = "UltilsUser.kPassword">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

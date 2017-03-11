@@ -150,7 +150,7 @@ extension NewTableViewCell : UICollectionViewDataSource, UICollectionViewDelegat
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell
-        NSLog("\(self.object?.imagePath[indexPath.row])")
+        NSLog("Hihihihi()\(self.object?.imagePath[indexPath.row])")
         Alamofire.request("\(self.object!.imagePath[indexPath.row])").responseData { (response) in
             let img = UIImage(data: response.data!)
             cell.imgview.image = img

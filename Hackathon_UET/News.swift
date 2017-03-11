@@ -67,7 +67,6 @@ class News: NSObject {
             self.likes_count = self.likes_count + 1
             if UltilsUser.userId == val {
                 self.isLike = true
-                break
             }
         }
         
@@ -88,8 +87,7 @@ class News: NSObject {
         for item in followArr {
             let val = item.string
             if UltilsUser.userId == val {
-                self.isFollow = true
-                break
+                self.isFollow = true                
             }
         }
         

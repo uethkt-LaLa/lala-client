@@ -15,10 +15,11 @@ class DisplayPhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        Alamofire.request(imgObj!).responseData { (response) in
-            let data = response.data!
-            self.img.image = UIImage(data: data)
-        }
+        self.img.sd_setImage(with: URL.init(string: imgObj!), placeholderImage: kImagePlaceHoler)
+//        Alamofire.request(imgObj!).responseData { (response) in
+//            let data = response.data!
+//            self.img.image = UIImage(data: data)
+//        }
     }
 
     override func didReceiveMemoryWarning() {

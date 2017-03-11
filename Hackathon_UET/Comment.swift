@@ -21,6 +21,8 @@ class Comment: NSObject {
     var username : String
     var likes :[String]
     var  dislikes : [String]
+    var isLike : Bool
+    var isDislike : Bool
     
     init(json : JSON) {
         self.id = json["_id"].stringValue
@@ -39,14 +41,24 @@ class Comment: NSObject {
             imgPaths.append(item.stringValue)
             
         }
+        
+        self.isLike = false
         for item  in json["likes"].arrayValue
         {
             likes.append(item.stringValue)
-            
+            if item.stringValue == UltilsUser.userId {
+                self.isLike = true
+            }
         }
+        
+        
+        self.isDislike = false
         for item  in json["dislikes"].arrayValue
         {
             dislikes.append(item.stringValue)
+            if item.stringValue == UltilsUser.userId {
+                self.isDislike = true
+            }
             
         }
     }

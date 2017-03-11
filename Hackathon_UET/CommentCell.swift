@@ -17,7 +17,8 @@ class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionVie
     
     @IBOutlet weak var btnUpVote: UIButton!
     @IBOutlet weak var btnDownVote: UIButton!
-    
+    @IBOutlet weak var lblCountLike : UILabel!
+    @IBOutlet weak var lblCountDisLike : UILabel!
     @IBOutlet weak var collectionHeight: NSLayoutConstraint!
     @IBOutlet weak var userAvatar: UIImageView!
     
@@ -70,8 +71,6 @@ class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionVie
         
        btnUpVote.setImage(imgUpVoteNormal, for: .normal)
        btnDownVote.setImage(imgUnvoteNormal, for: .normal)
-       btnUpVote.setTitle("0", for: .normal)
-       btnDownVote.setTitle("0", for: .normal)
     }
     
     private func configCollection()
@@ -132,9 +131,21 @@ class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionVie
         self.lblCommentContent.text = comment.descriptionData
     
         
-        self.btnUpVote.setTitle("\(comment.likes.count)", for: .normal)
-        self.btnDownVote.setTitle("\(comment.dislikes.count)", for: .normal)
+//        self.btnUpVote.setTitle("\(comment.likes.count)", for: .normal)
+//        self.btnDownVote.setTitle("\(comment.dislikes.count)", for: .normal)
+        self.lblCountLike.text = "\(comment.likes.count)"
+        self.lblCountDisLike.text = "\(comment.dislikes.count)"
+        if comment.isLike == true {
+            self.btnUpVote.setImage(UIImage.init(named: "Vote"), for: .normal)
+        } else {
+            self.btnUpVote.setImage(UIImage.init(named: "VoteNormal"), for: .normal)
+        }
         
+        if comment.isDislike == true {
+            self.btnDownVote.setImage(UIImage.init(named: "Unvote"), for: UIControlState.normal)
+        } else {
+            self.btnDownVote.setImage(UIImage.init(named: "UnvoteNormal"), for: UIControlState.normal)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
