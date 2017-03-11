@@ -55,6 +55,8 @@
 		368E2B871E7089DA00078F5A /* FBSDKShareKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 368E2B7E1E7089B700078F5A /* FBSDKShareKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		368E2B881E7089DA00078F5A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368E2B741E70894300078F5A /* Bolts.framework */; };
 		368E2B891E7089DA00078F5A /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 368E2B741E70894300078F5A /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		369283D01E73BEB2001A13CD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369283CE1E73BEB2001A13CD /* SettingViewController.swift */; };
+		369283D11E73BEB2001A13CD /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 369283CF1E73BEB2001A13CD /* SettingViewController.xib */; };
 		36A6586F1E716CA700494445 /* PicktureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6586D1E716CA700494445 /* PicktureViewController.swift */; };
 		36A658701E716CA700494445 /* PicktureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A6586E1E716CA700494445 /* PicktureViewController.xib */; };
 		36A658741E716CC400494445 /* ChooseTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A658721E716CC400494445 /* ChooseTagViewController.swift */; };
@@ -185,6 +187,8 @@
 		368E2B7C1E7089B700078F5A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		368E2B7D1E7089B700078F5A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		368E2B7E1E7089B700078F5A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		369283CE1E73BEB2001A13CD /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		369283CF1E73BEB2001A13CD /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		36A6586D1E716CA700494445 /* PicktureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicktureViewController.swift; sourceTree = "<group>"; };
 		36A6586E1E716CA700494445 /* PicktureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicktureViewController.xib; sourceTree = "<group>"; };
 		36A658721E716CC400494445 /* ChooseTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTagViewController.swift; sourceTree = "<group>"; };
@@ -423,6 +427,15 @@
 			name = PopularCell;
 			sourceTree = "<group>";
 		};
+		369283CD1E73BE9E001A13CD /* SettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				369283CE1E73BEB2001A13CD /* SettingViewController.swift */,
+				369283CF1E73BEB2001A13CD /* SettingViewController.xib */,
+			);
+			name = SettingVC;
+			sourceTree = "<group>";
+		};
 		36A6586C1E716C8300494445 /* ChooseImageVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +507,7 @@
 		36D803781E6C6C6400AE1405 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				369283CD1E73BE9E001A13CD /* SettingVC */,
 				3677041A1E730C7F008706B5 /* PopularUserVC */,
 				362DBC6D1E7276DB00F211A1 /* BaseViewController.swift */,
 				36546B7B1E72633400028DE6 /* PreViewVC */,
@@ -688,6 +702,7 @@
 				3650AECA1E6F26A6005FA6F2 /* MyPostsViewController.xib in Resources */,
 				3677041E1E730C96008706B5 /* PopularUserViewController.xib in Resources */,
 				36D803B71E6C74A500AE1405 /* MenuTableViewCell.xib in Resources */,
+				369283D11E73BEB2001A13CD /* SettingViewController.xib in Resources */,
 				366606111E725D9A0099BAFC /* SilderPhotoViewController.xib in Resources */,
 				36B9A3521E6C8B7A00EB1290 /* CustomeKeyboard.xib in Resources */,
 				6EDBD6481E72F5B400B9FAE9 /* PhotoCollectionCell.xib in Resources */,
@@ -752,6 +767,7 @@
 				367704201E730D82008706B5 /* PopularUser.swift in Sources */,
 				36A6586F1E716CA700494445 /* PicktureViewController.swift in Sources */,
 				36D803B11E6C741300AE1405 /* WhatNewsViewController.swift in Sources */,
+				369283D01E73BEB2001A13CD /* SettingViewController.swift in Sources */,
 				364A76391E6C7E3C00FB3199 /* NewPostViewController.swift in Sources */,
 				6EDBD63C1E72E6E200B9FAE9 /* CommentCell.swift in Sources */,
 			);

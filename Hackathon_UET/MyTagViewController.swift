@@ -82,7 +82,7 @@ extension MyTagViewController : UITableViewDataSource,UITableViewDelegate {
         let whatNews = WhatNewsViewController(nibName: "WhatNewsViewController", bundle: nil)
         whatNews.urlRequest = URL_DEFINE.tagAll + "/\(tagID)/"+"posts"
         self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.title = "#\(self.listTags[indexPath.row].name)"
+        self.navigationItem.title = "#\(self.listTags[indexPath.row].name)"
         self.navigationController?.pushViewController(whatNews, animated: true)
     }
 }

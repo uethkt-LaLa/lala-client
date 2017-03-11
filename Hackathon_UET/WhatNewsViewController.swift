@@ -160,6 +160,7 @@ extension WhatNewsViewController : DelegateNewCell {
     }
     func favTouchUp(cell : NewTableViewCell , status : Bool){
         let index = tbl.indexPath(for: cell)
+        let status = !self.listShow[(index?.row)!].isFollow
         self.setfavForIndex(index: index!, status: status)
     }
     func commentTouchUp(cell : NewTableViewCell){

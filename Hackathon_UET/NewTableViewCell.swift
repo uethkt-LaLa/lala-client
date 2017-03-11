@@ -31,6 +31,7 @@ class NewTableViewCell: UITableViewCell {
     @IBOutlet weak var lblName : UILabel!
     @IBOutlet weak var heightCollection: NSLayoutConstraint!
     @IBOutlet weak var imgThumbNail : UIImageView!
+    @IBOutlet weak var lblTag : UILabel!
     var delegate : DelegateNewCell?
     var object: News?
     
@@ -50,7 +51,6 @@ class NewTableViewCell: UITableViewCell {
     }
     
     func setData(new : News) {
-        
         if new.descriptionData.characters.count > 500 {
             let text = new.descriptionData.substring(to: 499) + "..."
             self.lblStatus.text = new.descriptionData

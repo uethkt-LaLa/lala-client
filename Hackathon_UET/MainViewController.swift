@@ -98,9 +98,12 @@ extension MainViewController : CarbonTabSwipeNavigationDelegate {
         case 3:
             let vc = MyTagViewController(nibName: "MyTagViewController", bundle: nil)
             return vc
-        default :
+        case 4 :
             let vc = PopularUserViewController(nibName: "PopularUserViewController", bundle: nil)
-            return vc        
+            return vc
+        default :
+            let vc = SettingViewController(nibName: "SettingViewController", bundle: nil)
+            return vc
         }
     }
 }
