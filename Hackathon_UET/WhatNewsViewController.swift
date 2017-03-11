@@ -48,8 +48,8 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
     
     func loadData() {
 //        self.showLoadingHUD()
-        
-        var url = URL_DEFINE.post_all
+        //https://lala-test.herokuapp.com/api/home/new_feeds
+        var url = kURL + "home/new_feeds"
         if urlRequest != nil {
             url = urlRequest!
         }
@@ -100,6 +100,7 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
                 NSLog("\(JSON.init(data: response.data!))")
             }
         }
+        //self.listShow[index.row] = item
         self.tbl.reloadData()
 //        self.listShow[index.row] = item
 //        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
@@ -120,6 +121,7 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
             Alamofire.request(URL_DEFINE.post_all+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             }
         }
+        //self.listShow[index.row] = item
          self.tbl.reloadData()
 //        self.listShow[index.row] = item
 //        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
@@ -129,17 +131,24 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
         let item = self.listShow[index.row]
         if status == true { ////like
             item.isFollow = true
-            Alamofire.request(kURL + "home/following_posts/" + "/\(idPost)", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+            Alamofire.request(kURL + "home/following_posts" + "/\(idPost)", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                
+            }
+            //PUT: /posts/:post_id/followers
+            Alamofire.request(kURL + "posts" + "/\(idPost)/followers", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 
             }
         } else if status == false { //unlike
             item.isFollow = false
-            Alamofire.request(kURL + "home/following_posts/" + "/\(idPost)", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+            Alamofire.request(kURL + "home/following_posts" + "/\(idPost)", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                
+            }
+            Alamofire.request(kURL + "posts" + "/\(idPost)/followers", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 
             }
         }
-        self.listShow[index.row] = item
-        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
+        //self.listShow[index.row] = item
+        self.tbl.reloadData()
     }
 }
 extension WhatNewsViewController : UITableViewDataSource,UITableViewDelegate {
@@ -151,8 +160,8 @@ extension WhatNewsViewController : UITableViewDataSource,UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tbl.dequeueReusableCell(withIdentifier: "NewTableViewCell", for: indexPath) as! NewTableViewCell
-        cell.object = listShow[indexPath.row]
-        cell.setData(new: listShow[indexPath.row])
+        cell.object = self.listShow[indexPath.row]
+        cell.setData()
         cell.delegate = self
         return cell
     }
@@ -168,13 +177,13 @@ extension WhatNewsViewController : UITableViewDataSource,UITableViewDelegate {
 }
 extension WhatNewsViewController : DetailPostDelegate {
     func likeTouch(index: IndexPath, status: Bool) {
-        self.setLikeforIndex(index: index, status: status)
+        self.loadData()
     }
     func favTouch(index: IndexPath, status: Bool) {
-        self.setfavForIndex(index: index, status: status)
+        self.loadData()
     }
     func disLikeTouch(index: IndexPath, status: Bool) {
-        self.disLikeTouch(index: index, status: status)
+        self.loadData()
     }
 }
 extension WhatNewsViewController : DelegateNewCell {

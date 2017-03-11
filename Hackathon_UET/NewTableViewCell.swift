@@ -62,7 +62,8 @@ class NewTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setData(new : News) {
+    func setData() {
+        let new = self.object!
         if object?.imagePath.count == 0 {
             heightCollection.constant = 0
         } else {

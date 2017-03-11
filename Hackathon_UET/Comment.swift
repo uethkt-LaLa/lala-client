@@ -52,6 +52,7 @@ class Comment: NSObject {
                 self.isLike = true
             }
         }
+        self.likes_count = likes.count
         
         
         self.isDislike = false
@@ -63,6 +64,7 @@ class Comment: NSObject {
             }
             
         }
+        self.dislike_count = self.dislikes.count
     }
     
     

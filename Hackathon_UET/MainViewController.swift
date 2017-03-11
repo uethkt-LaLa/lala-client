@@ -105,6 +105,7 @@ extension MainViewController : CarbonTabSwipeNavigationDelegate {
             return vc
         case 1:
             let vc = WhatNewsViewController(nibName: "WhatNewsViewController", bundle: nil)
+            vc.urlRequest = URL_DEFINE.foorunFollow
             //vc.urlRequest = URL_DEFINE.
             return vc
         case 2:

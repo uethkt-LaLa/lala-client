@@ -11,6 +11,8 @@ import SDWebImage
 
 protocol DelegateCommentCell {
     func touchImage(cell : CommentCell, index : Int)
+    func likeTouchUp(cell : CommentCell)
+    func dislikeTouchUp(cell : CommentCell)
 }
 
 class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionViewDelegate {
@@ -114,7 +116,17 @@ class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionVie
         }
     }
     
+    @IBAction func btnVoteTouchUp(_sender : UIButton){
+        if delegate != nil {
+            delegate?.likeTouchUp(cell: self)
+        }
+    }
     
+    @IBAction func btnUnVoteTouchUp(_sender : UIButton){
+        if delegate != nil {
+            delegate?.dislikeTouchUp(cell: self)
+        }
+    }
     
     
     func displayWithComment(_ comment :  Comment)
@@ -134,8 +146,8 @@ class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionVie
         
 //        self.btnUpVote.setTitle("\(comment.likes.count)", for: .normal)
 //        self.btnDownVote.setTitle("\(comment.dislikes.count)", for: .normal)
-        self.lblCountLike.text = "\(comment.likes.count)"
-        self.lblCountDisLike.text = "\(comment.dislikes.count)"
+        self.lblCountLike.text = "\(comment.likes_count)"
+        self.lblCountDisLike.text = "\(comment.dislike_count)"
         if comment.isLike == true {
             self.btnUpVote.setImage(UIImage.init(named: "Vote"), for: .normal)
         } else {
@@ -154,5 +166,7 @@ class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionVie
 
         // Configure the view for the selected state
     }
+    
+    
     
 }

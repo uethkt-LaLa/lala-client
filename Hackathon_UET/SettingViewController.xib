@@ -40,11 +40,11 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZv-Hr-kS2">
-                            <rect key="frame" x="4" y="28" width="46" height="46"/>
+                            <rect key="frame" x="4" y="28" width="37" height="37"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="gZv-Hr-kS2" secondAttribute="height" multiplier="1:1" id="XWH-6t-rdQ"/>
                             </constraints>
-                            <state key="normal" title="Button"/>
+                            <state key="normal" title="Done"/>
                             <connections>
                                 <action selector="dismissWith_sender:" destination="-1" eventType="touchUpInside" id="afD-V7-Ldv"/>
                             </connections>

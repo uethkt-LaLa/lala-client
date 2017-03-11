@@ -14,6 +14,7 @@ protocol DetailPostDelegate {
     func likeTouch(index : IndexPath,status : Bool)
     func favTouch(index : IndexPath,status : Bool)
     func disLikeTouch(index : IndexPath, status : Bool)
+    
 }
 
 class DetailPostViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
@@ -134,7 +135,7 @@ class DetailPostViewController: UIViewController , UITableViewDelegate , UITable
         } else {
             let cell = tbl.dequeueReusableCell(withIdentifier: "NewTableViewCell", for: indexPath) as! NewTableViewCell
             cell.object = dataNews!
-            cell.setData(new: dataNews!)
+            cell.setData()
             cell.delegate = self
             return cell
         }        
@@ -158,10 +159,54 @@ extension DetailPostViewController : DelegateCommentCell {
         slidePhotoVC.currentIndex = index
         self.present(slidePhotoVC, animated: true, completion: nil)
     }
+    func likeTouchUp(cell: CommentCell) {
+        let index = tbl.indexPath(for: cell)
+        let item = self.listComment[(index?.row)!]
+        let url = kURL+"comments/\(item.id)/like"
+        NSLog("\(url)")
+        if item.isLike {
+            item.likes_count = item.likes_count - 1
+            Alamofire.request(kURL+"comments/\(item.id)/like", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON(completionHandler: { (response) in
+              NSLog("likeUnVote \(JSON.init(data: response.data!))")
+            })
+        } else {
+            item.likes_count = item.likes_count + 1
+            Alamofire.request(kURL+"comments/\(item.id)/like", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON(completionHandler: { (response) in
+              NSLog("likeVote \(JSON.init(data: response.data!))")
+            })
+        }
+        item.isLike = !item.isLike
+        self.listComment[(index?.row)!] = item
+        tbl.reloadData()
+        
+    }
+    func dislikeTouchUp(cell: CommentCell) {
+        let index = tbl.indexPath(for: cell)
+        let item = self.listComment[(index?.row)!]
+        
+        if item.isDislike {
+            item.dislike_count = item.dislike_count - 1
+            Alamofire.request(kURL+"comments/\(item.id)/dislike", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON(completionHandler: { (response) in
+                NSLog("dislikeUnVote \(JSON.init(data: response.data!))")
+            })
+        } else {
+            item.dislike_count = item.dislike_count + 1
+            Alamofire.request(kURL+"comments/\(item.id)/dislike", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON(completionHandler: { (response) in
+                NSLog("dislikeVote \(JSON.init(data: response.data!))")
+            })
+        }
+        item.isDislike = !item.isDislike
+        self.listComment[(index?.row)!] = item
+        tbl.reloadData()
+    }
 }
 extension DetailPostViewController : DelegateNewCell {
     func likeTouchUp(cell : NewTableViewCell , status : Bool){
+        
         let index = tbl.indexPath(for: cell)
+        if delegate != nil {
+            delegate?.likeTouch(index: index!, status: true)
+        }
         let idPost = dataNews!.id
         let item = dataNews!
         if status == true { ////like
@@ -183,6 +228,10 @@ extension DetailPostViewController : DelegateNewCell {
     }
     func dislikeTouchUp(cell : NewTableViewCell , status : Bool){
         let index = tbl.indexPath(for: cell)
+        
+        if delegate != nil {
+            delegate?.disLikeTouch(index: index!, status: true)
+        }
         let idPost = dataNews!.id
         let item = dataNews!
         if status == true { ////like
@@ -202,6 +251,10 @@ extension DetailPostViewController : DelegateNewCell {
     }
     func favTouchUp(cell : NewTableViewCell , status : Bool){
         let index = tbl.indexPath(for: cell)
+        
+        if delegate != nil {
+            delegate?.favTouch(index: index!, status: true)
+        }
         let idPost = dataNews!.id
         let item = dataNews!
         if status == true { ////like

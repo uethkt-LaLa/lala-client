@@ -93,11 +93,11 @@ class LoginViewController: UIViewController {
                                     UserDefaults.standard.setValue(username, forKey: "username")
                                     UserDefaults.standard.setValue(password, forKey: "password")
                                     
-                                    let mainVC = MainViewController(nibName: "MainViewController", bundle: nil)
-                                    let nav = UINavigationController(rootViewController: mainVC)
-                                    nav.navigationController?.isNavigationBarHidden = true
-                                    nav.navigationController?.setNavigationBarHidden(true, animated: false)
-                                    UIApplication.shared.keyWindow?.rootViewController = nav
+//                                    let mainVC = MainViewController(nibName: "MainViewController", bundle: nil)
+//                                    let nav = UINavigationController(rootViewController: mainVC)
+//                                    nav.navigationController?.isNavigationBarHidden = true
+//                                    nav.navigationController?.setNavigationBarHidden(true, animated: false)
+//                                    UIApplication.shared.keyWindow?.rootViewController = nav
                                 })
                             }
                         })

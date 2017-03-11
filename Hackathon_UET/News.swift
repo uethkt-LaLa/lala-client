@@ -41,7 +41,7 @@ class News: NSObject {
         let created_time = json["created_time"].stringValue
         self.created_time = created_time
         self.userAvatar = json["userAvatar"].stringValue
-        self.userName = json["display_name"].stringValue
+        self.userName = json["userName"].stringValue
         self.followers = [String]()
         
         self.isFollow = false
