@@ -10,9 +10,6 @@ import UIKit
 import FontAwesomeKit
 
 class UltilsUser: NSObject {
-    static let userId = "58ba468ddfae86239b973adc"
-    
-    
     
     static func keyboardImg() -> UIImage
     {
@@ -34,4 +31,7 @@ class UltilsUser: NSObject {
         let iconImage = icon?.image(with: CGSize(width: 30.0, height: 30.0))
         return iconImage!
     }
+    static var userId = ""
+    static var kUserName = ""
+    static var kPassword = ""
 }

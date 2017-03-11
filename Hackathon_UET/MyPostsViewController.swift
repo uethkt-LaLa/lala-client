@@ -34,7 +34,7 @@ class MyPostsViewController: BaseViewController {
     func loadData() {
         self.showLoadingHUD()
         var tmp = [News]()
-        Alamofire.request(URL_DEFINE.home_post, method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+        Alamofire.request(URL_DEFINE.home_post, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             let jsondata = JSON.init(data: response.data!)
             NSLog("\(jsondata)")
             for item in jsondata.array! {

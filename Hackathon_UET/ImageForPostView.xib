@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tqh-Om-FyX" customClass="ImageForPostView" customModule="Hackathon_UET" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tqh-Om-FyX">
                     <rect key="frame" x="0.0" y="120" width="375" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwC-Wq-Hfz">
@@ -24,7 +24,8 @@
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="uwC-Wq-Hfz" secondAttribute="height" id="LIj-92-FFl"/>
                             </constraints>
-                            <state key="normal" image="ImageFolder"/>
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="chat_launcher_photo"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="3"/>
@@ -39,12 +40,17 @@
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="eFh-xe-Z7J" secondAttribute="height" id="XaV-Fj-GOe"/>
                             </constraints>
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="btnKeyboardDidTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="wrC-ps-dHj"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="woz-DH-Qzo">
                             <rect key="frame" x="165" y="5" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="woz-DH-Qzo" secondAttribute="height" id="kDi-B0-MEW"/>
                             </constraints>
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,6 +66,14 @@
                         <constraint firstItem="uwC-Wq-Hfz" firstAttribute="top" secondItem="Tqh-Om-FyX" secondAttribute="top" constant="5" id="m3L-Se-fWz"/>
                         <constraint firstItem="woz-DH-Qzo" firstAttribute="top" secondItem="Tqh-Om-FyX" secondAttribute="top" constant="5" id="sgL-Bk-IQf"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="DfG-WV-5cr">
                     <rect key="frame" x="0.0" y="160" width="375" height="216"/>
@@ -117,7 +131,7 @@
                 <constraint firstAttribute="trailing" secondItem="DfG-WV-5cr" secondAttribute="trailing" id="nqz-ak-k1R"/>
             </constraints>
             <connections>
-                <outlet property="barOption" destination="Tqh-Om-FyX" id="rk6-4C-pUv"/>
+                <outlet property="barOptionView" destination="Tqh-Om-FyX" id="Sce-6b-YTU"/>
                 <outlet property="imageSelectedCollection" destination="43n-Pc-Ql9" id="HJX-7g-aVe"/>
                 <outlet property="keyboarButton" destination="eFh-xe-Z7J" id="ZN5-Zg-rlr"/>
                 <outlet property="photoFolderCollection" destination="DfG-WV-5cr" id="7FS-w5-IcT"/>
@@ -130,6 +144,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ImageFolder" width="150" height="115"/>
+        <image name="chat_launcher_photo" width="26" height="21"/>
     </resources>
 </document>

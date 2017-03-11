@@ -12,8 +12,6 @@ import FBSDKLoginKit
 
 let kUserId = "58ba468ddfae86239b973adc"
 let kURL = "https://lala-test.herokuapp.com/api/"
-var kUserName = "admin"
-var kPassword = "123456"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -24,26 +22,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        let newpost = NewPostViewController(nibName: "NewPostViewController", bundle: nil)
-        let mainVC = MainViewController(nibName: "MainViewController", bundle: nil)
-        
-        let nav = UINavigationController(rootViewController: mainVC)
-        nav.navigationController?.isNavigationBarHidden = true
-        nav.navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        let pickerView = PicktureViewController(nibName: "PicktureViewController", bundle: nil)
-        let login = LoginViewController(nibName: "LoginViewController", bundle: nil)
-        let myTag = MyTagViewController(nibName: "MyTagViewController", bundle: nil)
+//        let newpost = NewPostViewController(nibName: "NewPostViewController", bundle: nil)
+//        let mainVC = MainViewController(nibName: "MainViewController", bundle: nil)
+//        
+//        let nav = UINavigationController(rootViewController: mainVC)
+//        nav.navigationController?.isNavigationBarHidden = true
+//        nav.navigationController?.setNavigationBarHidden(true, animated: false)
+//        
+//        let pickerView = PicktureViewController(nibName: "PicktureViewController", bundle: nil)
+//        let login = LoginViewController(nibName: "LoginViewController", bundle: nil)
+//        let myTag = MyTagViewController(nibName: "MyTagViewController", bundle: nil)
         
         let post = PostContentController(nibName: "PostContentController", bundle: nil)
-        let navigation = UINavigationController(rootViewController:post )
+        let navi = UINavigationController(rootViewController: post)
         
-        
-        //if FBSDKAccessToken.current() != nil {
-            self.window?.rootViewController = navigation
+
+//        let userId = UserDefaults.standard.value(forKey: "userId")
+//        if userId != nil {
+//            UltilsUser.userId = userId as? String ?? ""
+//        }
+//        
+//        let userna = UserDefaults.standard.value(forKey: "username")
+//        if userna != nil {
+//            UltilsUser.kUserName = userna as? String ?? ""
+//        }
+//        
+//        let pass = UserDefaults.standard.value(forKey: "password")
+//        if pass != nil {
+//            UltilsUser.kPassword = pass as? String ?? ""
+//        }
+//        UserDefaults.standard.setValue(id, forKey: "userId")
+//        UserDefaults.standard.setValue(username, forKey: "username")
+//        UserDefaults.standard.setValue(password, forKey: "password")
+
+//        
+//        if UltilsUser.userId != "" {
+            self.window?.rootViewController = navi
 //        } else {
 //            self.window?.rootViewController = login
 //        }
+//        
+        
         
         self.window?.makeKeyAndVisible()
         

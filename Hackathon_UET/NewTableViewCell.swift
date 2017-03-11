@@ -30,6 +30,8 @@ class NewTableViewCell: UITableViewCell {
     @IBOutlet weak var collection : UICollectionView!
     @IBOutlet weak var lblName : UILabel!
     @IBOutlet weak var heightCollection: NSLayoutConstraint!
+    @IBOutlet weak var imgThumbNail : UIImageView!
+    @IBOutlet weak var lblTag : UILabel!
     var delegate : DelegateNewCell?
     var object: News?
     
@@ -38,6 +40,8 @@ class NewTableViewCell: UITableViewCell {
         self.collection.delegate = self
         self.collection.dataSource = self        
         self.collection.register(UINib.init(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageCollectionViewCell")
+        imgThumbNail.clipsToBounds = true
+        imgThumbNail.cornerRadius = imgThumbNail.frame.width / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -47,7 +51,6 @@ class NewTableViewCell: UITableViewCell {
     }
     
     func setData(new : News) {
-        
         if new.descriptionData.characters.count > 500 {
             let text = new.descriptionData.substring(to: 499) + "..."
             self.lblStatus.text = new.descriptionData
@@ -57,11 +60,14 @@ class NewTableViewCell: UITableViewCell {
         let count_comment = new.comments.count
         let dis_like_count = new.dislikes_count
         let like_count = new.likes_count
-        Alamofire.request(URL_DEFINE.user_info_id+"\(new.userId)", method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON{(response) in
-            let data = JSON.init(data: response.data!)
-            let user = User(json: data)
-            self.lblName.text = user.username
-        }
+        self.lblName.text = new.userName
+        
+//        Alamofire.request(URL_DEFINE.user_info_id+"\(new.userId)", method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON{(response) in
+//            let data = JSON.init(data: response.data!)
+//            let user = User(json: data)
+//            self.lblName.text = user.username
+//        }
+        self.imgThumbNail.sd_setImage(with: URL.init(string: new.userAvatar), placeholderImage: kImagePlaceHoler)
         self.lblCountLike.text = "\(like_count) likes"
         self.lblCountDisLike.text = "\(dis_like_count) dislikes"
         self.lblCountComment.text = "\(count_comment) comments"
@@ -91,6 +97,12 @@ class NewTableViewCell: UITableViewCell {
             btnDisLike.setImage(UIImage.init(named: "Unvote"), for: UIControlState.normal)
         } else {
             btnDisLike.setImage(UIImage.init(named: "UnvoteNormal"), for: UIControlState.normal)
+        }
+        
+        if new.isFollow == true {
+            btnFav.setImage(UIImage.init(named: "Favorite"), for: UIControlState.normal)
+        } else {
+            btnFav.setImage(UIImage.init(named: "UnFavorite"), for: UIControlState.normal)
         }
         //new.created_time
     }

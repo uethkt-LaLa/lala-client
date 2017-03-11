@@ -20,9 +20,13 @@ class PostContentController: UIViewController , ImageForPostViewDelegate {
     var listTag : [String] = []
     
     
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
+        
         
         let center = NotificationCenter.default
         center.addObserver(self,
@@ -44,17 +48,17 @@ class PostContentController: UIViewController , ImageForPostViewDelegate {
     
     func setupNavi()
     {
-        let send = UIBarButtonItem(title: "Gửi", style: .plain, target: self, action: #selector(naviButtonCancelDidTap))
-        send.setTitleTextAttributes([NSFontAttributeName : UIFont.systemFont(ofSize: 12) ,NSForegroundColorAttributeName : UIColor.white ], for: .normal)
-        
+        let sendImage = #imageLiteral(resourceName: "navigation_button_done_selected")
+        let send = UIBarButtonItem(image:sendImage , style: .done, target: self, action: #selector(naviButtonCancelDidTap))
         self.navigationItem.rightBarButtonItem = send
+        send.tintColor = .white
         
-        let back = UIBarButtonItem(title: "Hủy", style: .plain, target: self, action: #selector(naviButtonSendDidTap))
-        back.setTitleTextAttributes([NSFontAttributeName : UIFont.boldSystemFont(ofSize: 19) ,NSForegroundColorAttributeName : UIColor.white ], for: .normal)
+        let back = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(naviButtonSendDidTap))
+        back.setTitleTextAttributes([NSFontAttributeName : UIFont.boldSystemFont(ofSize: 15) ,NSForegroundColorAttributeName : UIColor.white ], for: .normal)
         
         self.navigationItem.leftBarButtonItem = back
         
-//        self.navigationController?.navigationBar.barTintColor = barTintColor
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:38/255, green: 53/255, blue: 66/255, alpha: 1)
     }
     
     func naviButtonCancelDidTap()

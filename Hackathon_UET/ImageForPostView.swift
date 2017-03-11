@@ -17,8 +17,9 @@ protocol ImageForPostViewDelegate {
     
 }
 
-class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataSource {
+class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataSource , ImageFromFolderCellDelegate{
     
+    @IBOutlet weak var barOptionView: UIView!
     
     @IBOutlet weak var keyboarButton: UIButton!
     @IBOutlet weak var tagButton: UIButton!
@@ -30,10 +31,11 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
   
     
     @IBOutlet weak var photoFolderCollection: UICollectionView!
-    @IBOutlet weak var barOption: ImageForPostView!
+
     @IBOutlet weak var btnPickImage: UIButton!
     
     let photoFromFolderCellId  = "photoFromFolderCellId"
+     let photoPickedCellId  = "photoPickedCellId"
     let tagCellId = "tagCellId"
     var layoutPhotoFolder = KRLCollectionViewGridLayout()
     var layoutPhotoPicked = KRLCollectionViewGridLayout()
@@ -47,8 +49,50 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
     
     var listPhotoSelectect : [UIImage]  =  []
     var listTag : [String] = []
+    var listImageName : [String] = []
+    
     
     @IBOutlet weak var imageSelectedCollection: UICollectionView!
+    
+    let keyboardImage = #imageLiteral(resourceName: "chat_button_keyboard")
+    let tagImage = #imageLiteral(resourceName: "post_btn_tag")
+    let pictureImage = #imageLiteral(resourceName: "chat_launcher_photo")
+    
+    
+    
+    
+    override func awakeFromNib() {
+        
+        
+        for i in 1...8
+        {
+            let name = "Question\(i)"
+            listImageName.append(name)
+            
+        }
+        
+        ImageForPostView.frameMinInRoot = CGRect(x: 0.0, y: kscreenHeight -  40, width: kscreenWidth, height: 216+40)
+        ImageForPostView.frameFullInRoot = CGRect(x: 0.0, y: kscreenHeight - (216+40) , width: kscreenWidth, height: 216+40)
+        
+        if tagButton != nil && keyboarButton != nil {
+            
+            keyboarButton.setImage(keyboardImage, for: .normal)
+            tagButton.setImage(tagImage, for: .normal)
+            
+        }
+        
+        
+        
+       
+        
+    }
+    
+    
+    @IBAction func btnKeyboardDidTap(_ sender: Any) {
+        
+        
+    }
+
     
     @IBAction func btnPickImageDidTap(_ sender: Any) {
         
@@ -107,23 +151,7 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
         
     }
     
-    override func awakeFromNib() {
-        
-        
-        
-        ImageForPostView.frameMinInRoot = CGRect(x: 0.0, y: kscreenHeight -  40, width: kscreenWidth, height: 216+40)
-        ImageForPostView.frameFullInRoot = CGRect(x: 0.0, y: kscreenHeight - (216+40) , width: kscreenWidth, height: 216+40)
-        
-        if tagButton != nil && keyboarButton != nil {
-            
-            keyboarButton.setImage(UltilsUser.keyboardImg(), for: .normal)
-            tagButton.setImage(UltilsUser.tagImage(), for: .normal)
-        }
-        
-//        GlobalVariable.pickImageFullHeight = 216.0 + 40.0
-//        GlobalVariable.pickImageExHeight = 40.0
-        
-    }
+
     
     override func willMove(toSuperview newSuperview: UIView?) {
         
@@ -166,7 +194,7 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
             imageSelectedCollection.collectionViewLayout = layoutPhotoPicked
             imageSelectedCollection.delegate = self
             imageSelectedCollection.dataSource = self
-            self.imageSelectedCollection.register(UINib(nibName: "ImageFromFolderCell", bundle: nil), forCellWithReuseIdentifier: photoFromFolderCellId)
+            self.imageSelectedCollection.register(UINib(nibName: "ImageFromFolderCell", bundle: nil), forCellWithReuseIdentifier: photoPickedCellId)
             checkVisibleForPickedImageCollection()
             
             tagCollection.collectionViewLayout = layoutTag
@@ -197,7 +225,14 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
             return listTag.count
         }
         
-        return 6;
+        if collectionView == photoFolderCollection
+        {
+            return listImageName.count
+        }
+        
+        return 0
+        
+        
 
     }
     
@@ -209,41 +244,77 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
             return cell
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:photoFromFolderCellId , for: indexPath) as! ImageFromFolderCell
-        cell.photo.image =  #imageLiteral(resourceName: "ImageFolder")
-        return cell
+        if collectionView == photoFolderCollection
+        {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier:photoFromFolderCellId , for: indexPath) as! ImageFromFolderCell
+            cell.setCellType(type : .photoFolder)
+            let imgname = listImageName[indexPath.item]
+            cell.photo.image = UIImage(named:imgname)
+            cell.delegate = self
+            
+            return cell
+        }
+        
+//        if collectionView == imageSelectedCollection
+//        {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:photoPickedCellId , for: indexPath) as! ImageFromFolderCell
+        cell.setCellType(type : .photoPicked)
+        cell.photo.image =  listPhotoSelectect[indexPath.item]
+        cell.delegate = self
+        
+            return cell
+//        }
+        
+       
+
+        
+        
         
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if collectionView == imageSelectedCollection
+  
+    }
+    
+    func btnActionDidTap(inCell: ImageFromFolderCell) {
+        
+        let img =  inCell.photo.image
+        
+        if inCell.cellType == .photoFolder
         {
-            
-        }else
-        {
-            let cell = collectionView.cellForItem(at: indexPath) as! ImageFromFolderCell
-            let image = cell.photo.image!
-            if listPhotoSelectect.contains(image)
+
+            if listPhotoSelectect.contains(img!)
             {
-                listPhotoSelectect.remove(at: listPhotoSelectect.index(of: image)!)
+                listPhotoSelectect.remove(at: listPhotoSelectect.index(of: img!)!)
             }else
             {
-                listPhotoSelectect.append(image)
+                listPhotoSelectect.append(img!)
             }
-            
-            imageSelectedCollection.reloadData()
-            checkVisibleForPickedImageCollection()
-            delegate?.imgFolderDidTap()
             
             
         }
+        if inCell.cellType == .photoPicked
+        {
+            listPhotoSelectect.remove(at: listPhotoSelectect.index(of: img!)!)
+            
+            for i in 0 ..< listImageName.count
+            {
+                let indexPath = IndexPath(item: i, section: 0)
+                
+            }
+            
+        }
+        
+        imageSelectedCollection.reloadData()
+        checkVisibleForPickedImageCollection()
+        delegate?.imgFolderDidTap()
     }
     
     
-    //MARK: load Image from Libs
     
+
 
 
 }

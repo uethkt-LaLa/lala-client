@@ -22,15 +22,14 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mpz-8F-dkl">
                         <rect key="frame" x="0.0" y="0.0" width="128" height="96"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKk-Uq-99W">
-                        <rect key="frame" x="101" y="2" width="25" height="25"/>
-                        <color key="backgroundColor" red="0.16862745100000001" green="0.51764705879999995" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWu-yZ-zFe">
+                        <rect key="frame" x="96" y="2" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="eKk-Uq-99W" secondAttribute="height" id="aW0-Bx-ZwB"/>
-                            <constraint firstAttribute="height" constant="25" id="vFK-ea-P5S"/>
+                            <constraint firstAttribute="width" secondItem="jWu-yZ-zFe" secondAttribute="height" id="RLc-gb-zIE"/>
+                            <constraint firstAttribute="height" constant="30" id="pdU-Ip-d0R"/>
                         </constraints>
                         <connections>
-                            <action selector="btnActionDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Ylo-qi-KHX"/>
+                            <action selector="btnActionDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Kpp-vs-Mw2"/>
                         </connections>
                     </button>
                 </subviews>
@@ -39,13 +38,13 @@
                 <constraint firstAttribute="bottom" secondItem="Mpz-8F-dkl" secondAttribute="bottom" id="0SM-JZ-xJI"/>
                 <constraint firstItem="Mpz-8F-dkl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Agv-Gu-Ohl"/>
                 <constraint firstAttribute="trailing" secondItem="Mpz-8F-dkl" secondAttribute="trailing" id="N9k-hR-b8y"/>
-                <constraint firstAttribute="trailing" secondItem="eKk-Uq-99W" secondAttribute="trailing" constant="2" id="Nx2-A1-HO4"/>
-                <constraint firstItem="eKk-Uq-99W" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="dJ1-qC-uy4"/>
+                <constraint firstItem="jWu-yZ-zFe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="Y0J-U0-OJi"/>
+                <constraint firstAttribute="trailing" secondItem="jWu-yZ-zFe" secondAttribute="trailing" constant="2" id="bm9-qa-Zyn"/>
                 <constraint firstItem="Mpz-8F-dkl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wqa-DX-Wdw"/>
             </constraints>
             <size key="customSize" width="128" height="96"/>
             <connections>
-                <outlet property="btnAction" destination="eKk-Uq-99W" id="0ij-mY-6BU"/>
+                <outlet property="btnAction" destination="jWu-yZ-zFe" id="cVR-SE-NLi"/>
                 <outlet property="photo" destination="Mpz-8F-dkl" id="SHu-kf-eYY"/>
             </connections>
             <point key="canvasLocation" x="-140" y="147"/>

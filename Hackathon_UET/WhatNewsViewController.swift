@@ -34,10 +34,12 @@ class WhatNewsViewController: BaseViewController {
         if urlRequest != nil {
             url = urlRequest!
         }
-        Alamofire.request(url, method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+        NSLog("\(UltilsUser.kUserName)")
+        NSLog("\(UltilsUser.kPassword)")
+        Alamofire.request(url, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             let jsondata = JSON.init(data: response.data!)
             NSLog("\(jsondata)")
-            for item in jsondata.array! {
+            for item in jsondata.arrayValue {
                 let new = News(json: item)
                 self.listShow.append(new)
             }
@@ -62,18 +64,18 @@ class WhatNewsViewController: BaseViewController {
         if status == true { ////like
             item.isLike = true
             item.likes_count = item.likes_count + 1
-            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/like", method: .put, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/like", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 
             }
         } else if status == false { //unlike
             item.isLike = false
             item.likes_count = item.likes_count - 1
-            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/like", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/like", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 
             }
         }
         self.listShow[index.row] = item
-        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
+        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
     }
     
     func setDisLikeForIndex(index : IndexPath, status : Bool){
@@ -82,30 +84,32 @@ class WhatNewsViewController: BaseViewController {
         if status == true { ////like
             item.isDisLike = true
             item.dislikes_count = item.dislikes_count + 1
-            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .put, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 
             }
         } else if status == false { //unlike
             item.isDisLike = false
             item.dislikes_count = item.dislikes_count - 1
-            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in                
+            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             }
         }
         self.listShow[index.row] = item
-        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
+        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
     }
     func setfavForIndex(index : IndexPath, status : Bool){
         let idPost = self.listShow[index.row].id
+        let item = self.listShow[index.row]
         if status == true { ////like
-            Alamofire.request(URL_DEFINE.foorunFollow+"/\(idPost)", method: .put, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
-                self.listShow[index.row].isDisLike = true
+            Alamofire.request(kURL + "home/following_posts/" + "/\(idPost)", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                item.isFollow = true
             }
         } else if status == false { //unlike
-            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
-                self.listShow[index.row].isDisLike = false
+            Alamofire.request(kURL + "home/following_posts/" + "/\(idPost)", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                item.isFollow = false
             }
         }
-        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
+        self.listShow[index.row] = item
+        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
     }
 }
 extension WhatNewsViewController : UITableViewDataSource,UITableViewDelegate {
@@ -156,6 +160,7 @@ extension WhatNewsViewController : DelegateNewCell {
     }
     func favTouchUp(cell : NewTableViewCell , status : Bool){
         let index = tbl.indexPath(for: cell)
+        let status = !self.listShow[(index?.row)!].isFollow
         self.setfavForIndex(index: index!, status: status)
     }
     func commentTouchUp(cell : NewTableViewCell){
