@@ -19,6 +19,8 @@ class Comment: NSObject {
     var likes_count : Int
     var imgPaths : [String]
     var username : String
+    var likes :[String]
+    var  dislikes : [String]
     
     init(json : JSON) {
         self.id = json["_id"].stringValue
@@ -28,11 +30,23 @@ class Comment: NSObject {
         self.created_time = json["created_time"].stringValue
         self.dislike_count = json["dislikes_count"].intValue
         self.likes_count = json["likes_count"].intValue
-        self.username = json["username"].stringValue
+        self.username = json["display_name"].stringValue
         self.imgPaths = []
-        for item  in json["img_paths"].arrayValue
+        likes = []
+        dislikes = []
+        for item  in json["img_urls"].arrayValue
         {
             imgPaths.append(item.stringValue)
+            
+        }
+        for item  in json["likes"].arrayValue
+        {
+            likes.append(item.stringValue)
+            
+        }
+        for item  in json["dislikes"].arrayValue
+        {
+            dislikes.append(item.stringValue)
             
         }
     }

@@ -8,20 +8,20 @@
 
 import UIKit
 
+enum PostContentControllerType {
+    case newPost
+    case comment
+}
+
 class PostContentController: UIViewController , ImageForPostViewDelegate {
     
     @IBOutlet weak var txtContent: UITextView!
     
     var pickImageView : ImageForPostView?
-    
-
-    
-    
     var listTag : [String] = []
+    var type : PostContentControllerType?
     
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,7 +53,7 @@ class PostContentController: UIViewController , ImageForPostViewDelegate {
         self.navigationItem.rightBarButtonItem = send
         send.tintColor = .white
         
-        let back = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(naviButtonSendDidTap))
+        let back = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(naviButtonCancelDidTap))
         back.setTitleTextAttributes([NSFontAttributeName : UIFont.boldSystemFont(ofSize: 15) ,NSForegroundColorAttributeName : UIColor.white ], for: .normal)
         
         self.navigationItem.leftBarButtonItem = back

@@ -5,7 +5,8 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -27,21 +28,65 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rr2-Yh-7Ro">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GCq-Jh-O28">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7R-qA-dVQ">
+                            <rect key="frame" x="335" y="8" width="28" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="g7R-qA-dVQ" secondAttribute="height" multiplier="1:1" id="dff-Pc-e6S"/>
+                            </constraints>
+                            <state key="normal" image="Setting"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LALA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rjx-dZ-yup">
+                            <rect key="frame" x="157" y="8" width="61" height="29"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                            <color key="textColor" red="0.0" green="0.63529411764705879" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWh-PV-024">
+                            <rect key="frame" x="8" y="4" width="42" height="36"/>
+                            <state key="normal" image="NewPost"/>
+                            <connections>
+                                <action selector="newPostTouchUpWith_sender:" destination="-1" eventType="touchUpInside" id="vN9-qT-Yck"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="g7R-qA-dVQ" firstAttribute="top" secondItem="GCq-Jh-O28" secondAttribute="top" constant="8" id="JDm-fR-Sdi"/>
+                        <constraint firstItem="Rjx-dZ-yup" firstAttribute="centerX" secondItem="GCq-Jh-O28" secondAttribute="centerX" id="NMt-ME-Zvx"/>
+                        <constraint firstAttribute="bottom" secondItem="g7R-qA-dVQ" secondAttribute="bottom" constant="8" id="Nyr-i6-Qlk"/>
+                        <constraint firstItem="FWh-PV-024" firstAttribute="leading" secondItem="GCq-Jh-O28" secondAttribute="leading" constant="8" id="Zcr-br-Er7"/>
+                        <constraint firstAttribute="bottom" secondItem="FWh-PV-024" secondAttribute="bottom" constant="4" id="mXp-KE-1Xi"/>
+                        <constraint firstItem="FWh-PV-024" firstAttribute="top" secondItem="GCq-Jh-O28" secondAttribute="top" constant="4" id="oFO-Gi-0qO"/>
+                        <constraint firstAttribute="trailing" secondItem="g7R-qA-dVQ" secondAttribute="trailing" constant="12" id="uYs-aC-zCg"/>
+                        <constraint firstItem="Rjx-dZ-yup" firstAttribute="centerY" secondItem="GCq-Jh-O28" secondAttribute="centerY" id="vod-Md-HiX"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="rr2-Yh-7Ro" secondAttribute="trailing" id="0f0-bI-c4F"/>
+                <constraint firstAttribute="trailing" secondItem="GCq-Jh-O28" secondAttribute="trailing" id="5uF-VT-mJg"/>
                 <constraint firstItem="rr2-Yh-7Ro" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Hsc-xj-NuE"/>
                 <constraint firstItem="LcM-Bw-LrE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="M0I-1b-wPl"/>
                 <constraint firstAttribute="trailing" secondItem="LcM-Bw-LrE" secondAttribute="trailing" id="RGv-w9-wFW"/>
-                <constraint firstItem="rr2-Yh-7Ro" firstAttribute="top" secondItem="LcM-Bw-LrE" secondAttribute="bottom" id="YYv-Ch-deO"/>
+                <constraint firstItem="GCq-Jh-O28" firstAttribute="top" secondItem="LcM-Bw-LrE" secondAttribute="bottom" id="WTp-Lr-kiR"/>
+                <constraint firstItem="GCq-Jh-O28" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="g0z-Fe-9La"/>
+                <constraint firstItem="rr2-Yh-7Ro" firstAttribute="top" secondItem="LcM-Bw-LrE" secondAttribute="bottom" constant="44" id="jwS-xU-hPq"/>
                 <constraint firstItem="LcM-Bw-LrE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oZY-7l-RU3"/>
+                <constraint firstItem="rr2-Yh-7Ro" firstAttribute="top" secondItem="GCq-Jh-O28" secondAttribute="bottom" id="w64-hS-9Kv"/>
                 <constraint firstAttribute="bottom" secondItem="rr2-Yh-7Ro" secondAttribute="bottom" id="zaf-X7-3os"/>
             </constraints>
             <point key="canvasLocation" x="32.5" y="101.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="NewPost" width="42" height="19"/>
+        <image name="Setting" width="16" height="16"/>
+    </resources>
 </document>

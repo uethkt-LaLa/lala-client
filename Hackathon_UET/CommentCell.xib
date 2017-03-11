@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,23 +17,23 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TEa-86-5Bs">
                         <rect key="frame" x="48" y="2" width="270" height="15"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNI-8V-FiU">
                         <rect key="frame" x="48" y="19" width="270" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vRo-SX-ZB6">
-                        <rect key="frame" x="50" y="91.5" width="268" height="5"/>
+                        <rect key="frame" x="50" y="92" width="268" height="5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="5" id="C3K-SZ-GdJ"/>
@@ -45,9 +46,32 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4AX-d2-EFe">
-                        <rect key="frame" x="50" y="98.5" width="250" height="30"/>
-                        <color key="backgroundColor" red="0.16862745100000001" green="0.51764705879999995" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="50" y="99" width="262" height="30"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zg-Fn-yKV">
+                                <rect key="frame" x="212" y="2" width="50" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="DZq-Cz-UZG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="5" image="Unvote"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqB-Ea-Wm4">
+                                <rect key="frame" x="157" y="2" width="50" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="TrA-uJ-N49"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="10" image="Vote"/>
+                            </button>
+                        </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="3Zg-Fn-yKV" secondAttribute="bottom" constant="2" id="8nX-5U-EV6"/>
+                            <constraint firstAttribute="bottom" secondItem="sqB-Ea-Wm4" secondAttribute="bottom" constant="2" id="BmG-iw-giI"/>
+                            <constraint firstItem="3Zg-Fn-yKV" firstAttribute="leading" secondItem="sqB-Ea-Wm4" secondAttribute="trailing" constant="5" id="EzE-9s-hWJ"/>
+                            <constraint firstItem="sqB-Ea-Wm4" firstAttribute="top" secondItem="4AX-d2-EFe" secondAttribute="top" constant="2" id="dXg-fI-kub"/>
+                            <constraint firstItem="3Zg-Fn-yKV" firstAttribute="top" secondItem="4AX-d2-EFe" secondAttribute="top" constant="2" id="lKl-Nv-JPj"/>
+                            <constraint firstAttribute="trailing" secondItem="3Zg-Fn-yKV" secondAttribute="trailing" id="sKI-fG-toN"/>
                             <constraint firstAttribute="height" constant="30" id="xwy-Gl-fIY"/>
                         </constraints>
                     </view>
@@ -63,6 +87,7 @@
                     <constraint firstAttribute="trailing" secondItem="TEa-86-5Bs" secondAttribute="trailing" constant="2" id="1El-Ze-urP"/>
                     <constraint firstItem="4AX-d2-EFe" firstAttribute="top" secondItem="vRo-SX-ZB6" secondAttribute="bottom" constant="2" id="86y-Wc-IMB"/>
                     <constraint firstItem="vRo-SX-ZB6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="8Mv-l7-6tR"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="4AX-d2-EFe" secondAttribute="trailing" id="BZf-8M-4oQ"/>
                     <constraint firstItem="h0O-w6-00Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="ChL-Ql-hnD"/>
                     <constraint firstItem="ZNI-8V-FiU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="EnR-U8-Ds0"/>
                     <constraint firstAttribute="trailing" secondItem="vRo-SX-ZB6" secondAttribute="trailing" constant="2" id="OO3-3j-4Yi"/>
@@ -70,7 +95,6 @@
                     <constraint firstItem="4AX-d2-EFe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="X00-dT-YP4"/>
                     <constraint firstItem="h0O-w6-00Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="2" id="dxP-GI-f52"/>
                     <constraint firstItem="TEa-86-5Bs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="gHG-TB-RXn"/>
-                    <constraint firstAttribute="trailing" secondItem="4AX-d2-EFe" secondAttribute="trailing" constant="20" symbolic="YES" id="gwh-Fz-gzN"/>
                     <constraint firstAttribute="bottom" secondItem="4AX-d2-EFe" secondAttribute="bottom" constant="2" id="imS-pr-nlt"/>
                     <constraint firstAttribute="trailing" secondItem="ZNI-8V-FiU" secondAttribute="trailing" constant="2" id="jR6-I8-x2m"/>
                     <constraint firstItem="ZNI-8V-FiU" firstAttribute="top" secondItem="TEa-86-5Bs" secondAttribute="bottom" constant="2" id="m7Z-JO-1M8"/>
@@ -78,15 +102,20 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnDownVote" destination="3Zg-Fn-yKV" id="Gzj-H2-Hw3"/>
+                <outlet property="btnUpVote" destination="sqB-Ea-Wm4" id="xLB-Nc-mLt"/>
                 <outlet property="collectionHeight" destination="C3K-SZ-GdJ" id="Gpt-2y-zlX"/>
                 <outlet property="lblCommentContent" destination="ZNI-8V-FiU" id="sbR-1y-V1z"/>
                 <outlet property="lblUsername" destination="TEa-86-5Bs" id="2ul-dZ-gw2"/>
                 <outlet property="photoCollection" destination="vRo-SX-ZB6" id="d5K-6Y-7xb"/>
+                <outlet property="userAvatar" destination="h0O-w6-00Y" id="GbJ-Vt-C6p"/>
             </connections>
             <point key="canvasLocation" x="-266" y="-179.5"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Unvote" width="100" height="100"/>
+        <image name="Vote" width="100" height="100"/>
         <image name="photoholder" width="250" height="250"/>
     </resources>
 </document>
