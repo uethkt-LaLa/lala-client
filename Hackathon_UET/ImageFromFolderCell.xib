@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,16 +22,30 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mpz-8F-dkl">
                         <rect key="frame" x="0.0" y="0.0" width="128" height="96"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKk-Uq-99W">
+                        <rect key="frame" x="101" y="2" width="25" height="25"/>
+                        <color key="backgroundColor" red="0.16862745100000001" green="0.51764705879999995" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="eKk-Uq-99W" secondAttribute="height" id="aW0-Bx-ZwB"/>
+                            <constraint firstAttribute="height" constant="25" id="vFK-ea-P5S"/>
+                        </constraints>
+                        <connections>
+                            <action selector="btnActionDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Ylo-qi-KHX"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Mpz-8F-dkl" secondAttribute="bottom" id="0SM-JZ-xJI"/>
                 <constraint firstItem="Mpz-8F-dkl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Agv-Gu-Ohl"/>
                 <constraint firstAttribute="trailing" secondItem="Mpz-8F-dkl" secondAttribute="trailing" id="N9k-hR-b8y"/>
+                <constraint firstAttribute="trailing" secondItem="eKk-Uq-99W" secondAttribute="trailing" constant="2" id="Nx2-A1-HO4"/>
+                <constraint firstItem="eKk-Uq-99W" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="dJ1-qC-uy4"/>
                 <constraint firstItem="Mpz-8F-dkl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wqa-DX-Wdw"/>
             </constraints>
             <size key="customSize" width="128" height="96"/>
             <connections>
+                <outlet property="btnAction" destination="eKk-Uq-99W" id="0ij-mY-6BU"/>
                 <outlet property="photo" destination="Mpz-8F-dkl" id="SHu-kf-eYY"/>
             </connections>
             <point key="canvasLocation" x="-140" y="147"/>

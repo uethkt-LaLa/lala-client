@@ -9,6 +9,10 @@
 import UIKit
 import SDWebImage
 
+protocol DelegateCommentCell {
+    func touchImage(cell : CommentCell, index : Int)
+}
+
 class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionViewDelegate {
     
     
@@ -27,7 +31,7 @@ class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionVie
     var layout  = KRLCollectionViewGridLayout()
     
     let photoCellId =  "photoCellId"
-    
+    var delegate : DelegateCommentCell?
     
     
     override func awakeFromNib() {
@@ -72,6 +76,12 @@ class CommentCell: UITableViewCell, UICollectionViewDataSource , UICollectionVie
         return cell
         
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if delegate != nil {
+            delegate?.touchImage(cell: self, index: indexPath.row)
+        }
     }
     
     

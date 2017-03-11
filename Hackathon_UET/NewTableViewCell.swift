@@ -84,13 +84,13 @@ class NewTableViewCell: UITableViewCell {
         if new.isLike == true {
             btnLike.setImage(UIImage.init(named: "Vote"), for: UIControlState.normal)
         } else {
-            btnLike.setImage(UIImage.init(named: "Vote"), for: UIControlState.normal)
+            btnLike.setImage(UIImage.init(named: "VoteNormal"), for: UIControlState.normal)
         }
         
         if new.isDisLike == true {
-            btnDisLike.setImage(UIImage.init(named: "Vote"), for: UIControlState.normal)
+            btnDisLike.setImage(UIImage.init(named: "Unvote"), for: UIControlState.normal)
         } else {
-            btnDisLike.setImage(UIImage.init(named: "Vote"), for: UIControlState.normal)
+            btnDisLike.setImage(UIImage.init(named: "UnvoteNormal"), for: UIControlState.normal)
         }
         //new.created_time
     }

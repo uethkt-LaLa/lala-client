@@ -1,0 +1,6 @@
+framework module CarbonKit {
+  umbrella header "CarbonKit.h"
+
+  export *
+  module * { export * }
+}

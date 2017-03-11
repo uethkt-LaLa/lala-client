@@ -7,7 +7,31 @@
 //
 
 import UIKit
+import FontAwesomeKit
 
 class UltilsUser: NSObject {
     static let userId = "58ba468ddfae86239b973adc"
+    
+    
+    
+    static func keyboardImg() -> UIImage
+    {
+        let icon = FAKFontAwesome.keyboardOIcon(withSize: 30)
+        let iconImage = icon?.image(with: CGSize(width: 30.0, height: 30.0))
+        return iconImage!
+    }
+    
+    class func tagImage() -> UIImage
+    {
+        let icon = FAKFontAwesome.tagIcon(withSize: 30)
+        let iconImage = icon?.image(with: CGSize(width: 30.0, height: 30.0))
+        return iconImage!
+    }
+    
+    func pictureImage() -> UIImage
+    {
+        let icon = FAKFontAwesome.pictureOIcon(withSize: 30)
+        let iconImage = icon?.image(with: CGSize(width: 30.0, height: 30.0))
+        return iconImage!
+    }
 }

@@ -17,10 +17,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtUserPass : UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -35,7 +35,11 @@ class LoginViewController: UIViewController {
                 
             } else {
                 FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"]).start(completionHandler: { (connect, result, error) in
-                    NSLog("\(result)")
+                    let mainVC = MainViewController(nibName: "MainViewController", bundle: nil)
+                    let nav = UINavigationController(rootViewController: mainVC)
+                    nav.navigationController?.isNavigationBarHidden = true
+                    nav.navigationController?.setNavigationBarHidden(true, animated: false)
+                    UIApplication.shared.keyWindow?.rootViewController = nav
                 })
             }
         }

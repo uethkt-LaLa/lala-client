@@ -14,6 +14,8 @@ class Tag: NSObject {
     var name : String
     var followers_count : Int
     var post_count : Int
+    var select : Bool = false
+    var image_url : String
 //    var followers : [String]
 //    var posts : [String]
     init(json : JSON) {
@@ -32,6 +34,7 @@ class Tag: NSObject {
             posts.append(str)
         }
         self.post_count = posts.count
+        self.image_url = json["image_url"].stringValue
     }
     
 }

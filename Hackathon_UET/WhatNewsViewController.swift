@@ -21,7 +21,6 @@ class WhatNewsViewController: BaseViewController {
         tbl.tableFooterView = UIView.init(frame: CGRect.zero)
         tbl.estimatedRowHeight = 100
         tbl.rowHeight = UITableViewAutomaticDimension
-        tbl.allowsSelection = false
         self.loadData()
     }
     
@@ -59,29 +58,40 @@ class WhatNewsViewController: BaseViewController {
     func setLikeforIndex(index : IndexPath, status : Bool) {
         //http://localhost:5000/api/posts/58b9a2fedaba1d539a2d7128/like
         let idPost = self.listShow[index.row].id
+        let item = self.listShow[index.row]
         if status == true { ////like
+            item.isLike = true
+            item.likes_count = item.likes_count + 1
             Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/like", method: .put, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
-                self.listShow[index.row].isLike = true
+                
             }
         } else if status == false { //unlike
+            item.isLike = false
+            item.likes_count = item.likes_count - 1
             Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/like", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
-                self.listShow[index.row].isLike = false
+                
             }
         }
+        self.listShow[index.row] = item
         tbl.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
     }
     
     func setDisLikeForIndex(index : IndexPath, status : Bool){
         let idPost = self.listShow[index.row].id
+        let item = self.listShow[index.row]
         if status == true { ////like
+            item.isDisLike = true
+            item.dislikes_count = item.dislikes_count + 1
             Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .put, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
-                self.listShow[index.row].isDisLike = true
+                
             }
         } else if status == false { //unlike
-            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
-                self.listShow[index.row].isDisLike = false
+            item.isDisLike = false
+            item.dislikes_count = item.dislikes_count - 1
+            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in                
             }
         }
+        self.listShow[index.row] = item
         tbl.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
     }
     func setfavForIndex(index : IndexPath, status : Bool){
@@ -114,31 +124,34 @@ extension WhatNewsViewController : UITableViewDataSource,UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-//        let detailPost = DetailPostViewController(nibName: "DetailPostViewController", bundle: nil) as! DetailPostViewController
-//        detailPost.delegate = self
-//        detailPost.dataNews = self.listShow[indexPath.row]
-//        self.navigationController?.pushViewController(detailPost, animated: true)
+        let detailPost = DetailPostViewController(nibName: "DetailPostViewController", bundle: nil) as! DetailPostViewController
+        detailPost.delegate = self
+        detailPost.dataNews = self.listShow[indexPath.row]
+        self.navigationController?.pushViewController(detailPost, animated: true)
     }
 
 }
 extension WhatNewsViewController : DetailPostDelegate {
     func likeTouch(index: IndexPath, status: Bool) {
+        self.setLikeforIndex(index: index, status: status)
     }
     func favTouch(index: IndexPath, status: Bool) {
-        
+        self.setfavForIndex(index: index, status: status)
     }
     func disLikeTouch(index: IndexPath, status: Bool) {
-        
+        self.disLikeTouch(index: index, status: status)
     }
 }
 extension WhatNewsViewController : DelegateNewCell {
     func likeTouchUp(cell : NewTableViewCell , status : Bool){
         let index = tbl.indexPath(for: cell)
+        let status = !self.listShow[(index?.row)!].isLike
         self.setLikeforIndex(index: index!, status: status)
         
     }
     func dislikeTouchUp(cell : NewTableViewCell , status : Bool){
         let index = tbl.indexPath(for: cell)
+        let status = !self.listShow[(index?.row)!].isDisLike
         self.setDisLikeForIndex(index: index!, status: status)
     }
     func favTouchUp(cell : NewTableViewCell , status : Bool){
@@ -149,10 +162,10 @@ extension WhatNewsViewController : DelegateNewCell {
         
     }
     func selectImage(cell : NewTableViewCell, index : Int){
-        let index = tbl.indexPath(for: cell)
+        let indexPath = tbl.indexPath(for: cell)
         let slidePhotoVC = SilderPhotoViewController(nibName: "SilderPhotoViewController", bundle: nil)
-        slidePhotoVC.listPhotoItem = self.listShow[(index?.row)!].imagePath
+        slidePhotoVC.listPhotoItem = self.listShow[(indexPath?.row)!].imagePath
+        slidePhotoVC.currentIndex = index
         self.present(slidePhotoVC, animated: true, completion: nil)
-        // = self.listShow[index?.row].ima
     }
 }

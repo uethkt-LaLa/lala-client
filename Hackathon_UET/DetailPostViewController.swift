@@ -104,9 +104,19 @@ class DetailPostViewController: UIViewController , UITableViewDelegate , UITable
         let cell = tableView.dequeueReusableCell(withIdentifier:commentCellId) as! CommentCell
         let cmt  = listComment[indexPath.row]
         cell.displayWithComment(cmt)
+        cell.delegate = self
         return cell
         
     }
 
 
+}
+extension DetailPostViewController : DelegateCommentCell {
+    func touchImage(cell: CommentCell, index: Int) {
+        let indexPath = tbl.indexPath(for: cell)
+        let slidePhotoVC = SilderPhotoViewController(nibName: "SilderPhotoViewController", bundle: nil)
+        slidePhotoVC.listPhotoItem = self.listComment[(indexPath?.row)!].imgPaths
+        slidePhotoVC.currentIndex = index
+        self.present(slidePhotoVC, animated: true, completion: nil)
+    }
 }
