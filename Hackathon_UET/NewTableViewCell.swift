@@ -51,6 +51,11 @@ class NewTableViewCell: UITableViewCell {
     }
     
     func setData(new : News) {
+        if object?.imagePath.count == 0 {
+            heightCollection.constant = 0
+        } else {
+            heightCollection.constant = 100
+        }
         if new.descriptionData.characters.count > 500 {
             let text = new.descriptionData.substring(to: 499) + "..."
             self.lblStatus.text = new.descriptionData

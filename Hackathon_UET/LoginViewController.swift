@@ -77,7 +77,8 @@ class LoginViewController: UIViewController {
                                                                  "display_name" : name,
                                                                  "email" : email,
                                                                  "fb_id": id,
-                                                                 "token" : token]
+                                                                 "token" : token,
+                                                                 "image_url" : "https://graph.facebook.com/\(id)/picture?type=large"]
                                 Alamofire.request(URL_DEFINE.kURLRegis, method: .post, parameters: param).responseJSON(completionHandler: { (response) in
                                     let data = JSON.init(data: response.data!)
                                     NSLog("\(data)")

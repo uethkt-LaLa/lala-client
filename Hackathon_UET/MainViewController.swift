@@ -24,6 +24,10 @@ class MainViewController: UIViewController {
         settingVc = SettingViewController(nibName: "SettingViewController", bundle: nil)
         initCarbonTabs()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -46,7 +50,7 @@ class MainViewController: UIViewController {
         tabsName.append("What's new")
         tabsName.append("Favorite Posts")
         tabsName.append("My Posts")
-        tabsName.append("My Tag")
+        //tabsName.append("My Tag")
         tabsName.append("Popular Users")
         let carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: tabsName, delegate: self)
         carbonTabSwipeNavigation.insert(intoRootViewController: self, andTargetView: contentView)
@@ -62,7 +66,7 @@ class MainViewController: UIViewController {
     
     @IBAction func settingTouchUp(_sender : UIButton){
         
-        self.navigationController?.pushViewController(settingVc!, animated: true)
+        self.present(settingVc!, animated: true, completion: nil)
     }
     
     @IBAction func newPostTouchUp(_sender : UIButton){
@@ -102,10 +106,10 @@ extension MainViewController : CarbonTabSwipeNavigationDelegate {
             let vc = WhatNewsViewController(nibName: "WhatNewsViewController", bundle: nil)
             vc.urlRequest = URL_DEFINE.home_post
             return vc
-        case 3:
-            let vc = MyTagViewController(nibName: "MyTagViewController", bundle: nil)
-            return vc
-        case 4 :
+//        case 3:
+//            let vc = MyTagViewController(nibName: "MyTagViewController", bundle: nil)
+//            return vc
+        case 3 :
             let vc = PopularUserViewController(nibName: "PopularUserViewController", bundle: nil)
             return vc
         default :

@@ -58,6 +58,8 @@
 		369283D01E73BEB2001A13CD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369283CE1E73BEB2001A13CD /* SettingViewController.swift */; };
 		369283D11E73BEB2001A13CD /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 369283CF1E73BEB2001A13CD /* SettingViewController.xib */; };
 		369283D31E73C65E001A13CD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369283D21E73C65E001A13CD /* Post.swift */; };
+		369283D71E73E650001A13CD /* ChooseTagNewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369283D51E73E650001A13CD /* ChooseTagNewPostViewController.swift */; };
+		369283D81E73E650001A13CD /* ChooseTagNewPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 369283D61E73E650001A13CD /* ChooseTagNewPostViewController.xib */; };
 		36A6586F1E716CA700494445 /* PicktureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6586D1E716CA700494445 /* PicktureViewController.swift */; };
 		36A658701E716CA700494445 /* PicktureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A6586E1E716CA700494445 /* PicktureViewController.xib */; };
 		36A658741E716CC400494445 /* ChooseTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A658721E716CC400494445 /* ChooseTagViewController.swift */; };
@@ -191,6 +193,8 @@
 		369283CE1E73BEB2001A13CD /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		369283CF1E73BEB2001A13CD /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		369283D21E73C65E001A13CD /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		369283D51E73E650001A13CD /* ChooseTagNewPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTagNewPostViewController.swift; sourceTree = "<group>"; };
+		369283D61E73E650001A13CD /* ChooseTagNewPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseTagNewPostViewController.xib; sourceTree = "<group>"; };
 		36A6586D1E716CA700494445 /* PicktureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicktureViewController.swift; sourceTree = "<group>"; };
 		36A6586E1E716CA700494445 /* PicktureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicktureViewController.xib; sourceTree = "<group>"; };
 		36A658721E716CC400494445 /* ChooseTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTagViewController.swift; sourceTree = "<group>"; };
@@ -438,6 +442,15 @@
 			name = SettingVC;
 			sourceTree = "<group>";
 		};
+		369283D41E73E626001A13CD /* ChooseTagNewPost */ = {
+			isa = PBXGroup;
+			children = (
+				369283D51E73E650001A13CD /* ChooseTagNewPostViewController.swift */,
+				369283D61E73E650001A13CD /* ChooseTagNewPostViewController.xib */,
+			);
+			name = ChooseTagNewPost;
+			sourceTree = "<group>";
+		};
 		36A6586C1E716C8300494445 /* ChooseImageVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,6 +522,7 @@
 		36D803781E6C6C6400AE1405 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				369283D41E73E626001A13CD /* ChooseTagNewPost */,
 				369283CD1E73BE9E001A13CD /* SettingVC */,
 				3677041A1E730C7F008706B5 /* PopularUserVC */,
 				362DBC6D1E7276DB00F211A1 /* BaseViewController.swift */,
@@ -708,6 +722,7 @@
 				369283D11E73BEB2001A13CD /* SettingViewController.xib in Resources */,
 				366606111E725D9A0099BAFC /* SilderPhotoViewController.xib in Resources */,
 				36B9A3521E6C8B7A00EB1290 /* CustomeKeyboard.xib in Resources */,
+				369283D81E73E650001A13CD /* ChooseTagNewPostViewController.xib in Resources */,
 				6EDBD6481E72F5B400B9FAE9 /* PhotoCollectionCell.xib in Resources */,
 				3672F5991E70621E00A80D24 /* ImageCollectionViewCell.xib in Resources */,
 				3650AEDB1E6F309A005FA6F2 /* TagTableViewCell.xib in Resources */,
@@ -744,6 +759,7 @@
 				36B2F14C1E726AD000DE01A3 /* User.swift in Sources */,
 				3672F5981E70621E00A80D24 /* ImageCollectionViewCell.swift in Sources */,
 				6EDBD6471E72F5B400B9FAE9 /* PhotoCollectionCell.swift in Sources */,
+				369283D71E73E650001A13CD /* ChooseTagNewPostViewController.swift in Sources */,
 				368038C61E732F4F00DBDA89 /* UploadImage.swift in Sources */,
 				3650AED51E6F305C005FA6F2 /* MyTagViewController.swift in Sources */,
 				366606101E725D9A0099BAFC /* SilderPhotoViewController.swift in Sources */,

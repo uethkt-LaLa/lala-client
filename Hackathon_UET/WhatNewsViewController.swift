@@ -133,6 +133,7 @@ extension WhatNewsViewController : UITableViewDataSource,UITableViewDelegate {
         let detailPost = DetailPostViewController(nibName: "DetailPostViewController", bundle: nil) as! DetailPostViewController
         detailPost.delegate = self
         detailPost.dataNews = self.listShow[indexPath.row]
+        self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.pushViewController(detailPost, animated: true)
     }
 

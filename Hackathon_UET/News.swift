@@ -31,9 +31,10 @@ class News: NSObject {
     init(json : JSON) {
         self.id = json["_id"].stringValue
         self.imagePath = [String]()
-        self.imagePath.append("https://www.w3schools.com/css/img_fjords.jpg")
-        self.imagePath.append("https://www.w3schools.com/css/img_fjords.jpg")
-        self.imagePath.append("https://www.w3schools.com/css/img_fjords.jpg")
+        for item in json["image_urls"].arrayValue {
+            let val = item.stringValue
+            self.imagePath.append(val)
+        }
         self.userId = json["userId"].stringValue
         self.categoryID = json["categoryId"].stringValue
         self.descriptionData = json["description"].stringValue

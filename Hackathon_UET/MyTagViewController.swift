@@ -28,9 +28,10 @@ class MyTagViewController: UIViewController {
     
     func requestData() {
         self.listChoose.removeAll()
-        self.listTags.removeAll()
+        self.listTags.removeAll()        
         Alamofire.request(URL_DEFINE.tagHome, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             let jsondata = JSON.init(data: response.data!)
+            NSLog("\(jsondata)")
             for item in jsondata.arrayValue {
                 let tag = Tag.init(json: item)
                 tag.select = true
@@ -39,6 +40,7 @@ class MyTagViewController: UIViewController {
             }
             Alamofire.request(URL_DEFINE.tagAll, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 let jsondata = JSON.init(data: response.data!)
+                NSLog("\(jsondata)")
                 for item in jsondata.arrayValue {
                     let tag = Tag(json: item)
                     if self.listChoose.contains(tag.id) == false {
