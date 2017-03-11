@@ -69,6 +69,14 @@ class PostContentController: UIViewController , ImageForPostViewDelegate {
     func naviButtonSendDidTap()
     {
         
+        for img in  (pickImageView?.listPhotoSelectect)!
+        {
+           UploadImage.upload(image: img, complete: { (error, json) in
+            
+           })
+        }
+
+        
     }
     
     func keyboardWillShow(_ noti : Notification)

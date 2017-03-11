@@ -35,11 +35,23 @@ class NewTableViewCell: UITableViewCell {
     var delegate : DelegateNewCell?
     var object: News?
     
+    var layout = KRLCollectionViewGridLayout()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
+        layout.numberOfItemsPerLine = 1
+        layout.aspectRatio = 1.0
+        layout.lineSpacing = 2.0
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.scrollDirection = .horizontal
+        
         self.collection.delegate = self
         self.collection.dataSource = self        
         self.collection.register(UINib.init(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageCollectionViewCell")
+        self.collection.collectionViewLayout = layout
+        self.collection.backgroundColor = .white
         imgThumbNail.clipsToBounds = true
         imgThumbNail.cornerRadius = imgThumbNail.frame.width / 2
     }
@@ -150,11 +162,7 @@ extension NewTableViewCell : UICollectionViewDataSource, UICollectionViewDelegat
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell
-//        NSLog("Hihihihi()\(self.object?.imagePath[indexPath.row])")
-//        Alamofire.request("\(self.object!.imagePath[indexPath.row])").responseData { (response) in
-//            let img = UIImage(data: response.data!)
-//            cell.imgview.image = img
-//        }
+        cell.imgview.contentMode = .scaleAspectFill
         cell.imgview.sd_setImage(with: URL.init(string: self.object!.imagePath[indexPath.row]), placeholderImage: kImagePlaceHoler)
         return cell
     }

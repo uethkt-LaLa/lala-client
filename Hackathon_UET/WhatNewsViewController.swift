@@ -100,8 +100,9 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
                 NSLog("\(JSON.init(data: response.data!))")
             }
         }
-        self.listShow[index.row] = item
-        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
+        self.tbl.reloadData()
+//        self.listShow[index.row] = item
+//        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
     }
     
     func setDisLikeForIndex(index : IndexPath, status : Bool){
@@ -119,8 +120,9 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
             Alamofire.request(URL_DEFINE.post_all+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             }
         }
-        self.listShow[index.row] = item
-        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
+         self.tbl.reloadData()
+//        self.listShow[index.row] = item
+//        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
     }
     func setfavForIndex(index : IndexPath, status : Bool){
         let idPost = self.listShow[index.row].id
