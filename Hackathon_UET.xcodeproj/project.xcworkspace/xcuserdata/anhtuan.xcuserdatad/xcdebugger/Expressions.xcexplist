@@ -3,13 +3,24 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "WhatNewsViewController.setLikeforIndex(index : IndexPath, status : Bool) -&gt; ():WhatNewsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UltilsUser.kUserName">
+            </PersistentString>
+            <PersistentString
+               value = "UltilsUser.kPassword">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "NewTableViewCell.setData(new : News) -&gt; ():NewTableViewCell.swift">
       </ContextState>
       <ContextState
-         contextName = "WhatNewsViewController.loadData() -&gt; ():WhatNewsViewController.swift">
+         contextName = "ChoosePostWhenLoginVC.requestData() -&gt; ():ChoosePostWhenLoginVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "kUserName">
+               value = "UltilsUser.kUserName">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -18,14 +29,6 @@
          <PersistentStrings>
             <PersistentString
                value = "self.object?.imagePath[indexPath.row]">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "News.init(json : JSON) -&gt; News:News.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "UltilsUser.userId">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -41,13 +44,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "WhatNewsViewController.setLikeforIndex(index : IndexPath, status : Bool) -&gt; ():WhatNewsViewController.swift">
+         contextName = "News.init(json : JSON) -&gt; News:News.swift">
          <PersistentStrings>
             <PersistentString
-               value = "UltilsUser.kUserName">
+               value = "UltilsUser.userId">
             </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WhatNewsViewController.loadData() -&gt; ():WhatNewsViewController.swift">
+         <PersistentStrings>
             <PersistentString
-               value = "UltilsUser.kPassword">
+               value = "kUserName">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -33,8 +33,8 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
     
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         
-        var text: String = "Ask Me A Happy Question"
-        var attributes: [String: Any] = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: CGFloat(18.0)), NSForegroundColorAttributeName: UIColor.darkGray]
+        let text: String = "Ask Me A Happy Question"
+        let attributes: [String: Any] = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: CGFloat(18.0)), NSForegroundColorAttributeName: UIColor.darkGray]
         return NSAttributedString(string: text, attributes: attributes)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +47,7 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
     }
     
     func loadData() {
-//        self.showLoadingHUD()
+        //        self.showLoadingHUD()
         //https://lala-test.herokuapp.com/api/home/new_feeds
         var url = kURL + "home/new_feeds"
         if urlRequest != nil {
@@ -62,12 +62,12 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
             NSLog("\(jsondata)")
             for item in jsondata.arrayValue {
                 let new = News(json: item)
-//                self.listShow.append(new)
+                //                self.listShow.append(new)
                 tmp.append(new)
             }
             self.listShow = tmp
             
-//            self.hideLoadingHUD()
+            //            self.hideLoadingHUD()
             self.tbl.reloadData()
         }
     }
@@ -75,7 +75,7 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
     func reloadData(notification : Notification) {
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -100,10 +100,8 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
                 NSLog("\(JSON.init(data: response.data!))")
             }
         }
-        //self.listShow[index.row] = item
+        self.listShow[index.row] = item
         self.tbl.reloadData()
-//        self.listShow[index.row] = item
-//        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
     }
     
     func setDisLikeForIndex(index : IndexPath, status : Bool){
@@ -121,10 +119,10 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
             Alamofire.request(URL_DEFINE.post_all+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             }
         }
-        //self.listShow[index.row] = item
-         self.tbl.reloadData()
-//        self.listShow[index.row] = item
-//        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
+        self.listShow[index.row] = item
+        self.tbl.reloadData()
+        //        self.listShow[index.row] = item
+        //        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
     }
     func setfavForIndex(index : IndexPath, status : Bool){
         let idPost = self.listShow[index.row].id
@@ -147,7 +145,7 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
                 
             }
         }
-        //self.listShow[index.row] = item
+        self.listShow[index.row] = item
         self.tbl.reloadData()
     }
 }
@@ -159,21 +157,20 @@ extension WhatNewsViewController : UITableViewDataSource,UITableViewDelegate {
         return listShow.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tbl.dequeueReusableCell(withIdentifier: "NewTableViewCell", for: indexPath) as! NewTableViewCell
-        cell.object = self.listShow[indexPath.row]
-        cell.setData()
+        let cell = tbl.dequeueReusableCell(withIdentifier: "NewTableViewCell") as! NewTableViewCell
+        cell.setData(new: self.listShow[indexPath.row])
         cell.delegate = self
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        let detailPost = DetailPostViewController(nibName: "DetailPostViewController", bundle: nil) as! DetailPostViewController
+        let detailPost = DetailPostViewController(nibName: "DetailPostViewController", bundle: nil)
         detailPost.delegate = self
         detailPost.dataNews = self.listShow[indexPath.row]
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.pushViewController(detailPost, animated: true)
     }
-
+    
 }
 extension WhatNewsViewController : DetailPostDelegate {
     func likeTouch(index: IndexPath, status: Bool) {

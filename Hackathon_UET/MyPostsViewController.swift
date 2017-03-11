@@ -57,8 +57,7 @@ extension MyPostsViewController : UITableViewDataSource,UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewTableViewCell", for: indexPath) as! NewTableViewCell
-        cell.object = listShow[indexPath.row]
-        cell.setData()
+        cell.setData(new: listShow[indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

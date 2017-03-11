@@ -133,9 +133,8 @@ class DetailPostViewController: UIViewController , UITableViewDelegate , UITable
             return cell
             
         } else {
-            let cell = tbl.dequeueReusableCell(withIdentifier: "NewTableViewCell", for: indexPath) as! NewTableViewCell
-            cell.object = dataNews!
-            cell.setData()
+            let cell = tbl.dequeueReusableCell(withIdentifier: "NewTableViewCell", for: indexPath) as! NewTableViewCell            
+            cell.setData(new: dataNews!)
             cell.delegate = self
             return cell
         }        
@@ -260,11 +259,17 @@ extension DetailPostViewController : DelegateNewCell {
         if status == true { ////like
             item.isFollow = true
             Alamofire.request(kURL + "home/following_posts/" + "/\(idPost)", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                NSLog("\(JSON.init(data: response.data!))")
+            }
+            Alamofire.request(kURL + "posts" + "/\(idPost)/followers", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 
             }
         } else if status == false { //unlike
             item.isFollow = false
             Alamofire.request(kURL + "home/following_posts/" + "/\(idPost)", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                
+            }
+            Alamofire.request(kURL + "posts" + "/\(idPost)/followers", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 
             }
         }

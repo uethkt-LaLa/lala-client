@@ -35,6 +35,7 @@ class NewTableViewCell: UITableViewCell {
     var delegate : DelegateNewCell?
     var object: News?
     
+    let cellId = "ImageCollectionViewCellID"
     var layout = KRLCollectionViewGridLayout()
     
     override func awakeFromNib() {
@@ -49,7 +50,7 @@ class NewTableViewCell: UITableViewCell {
         
         self.collection.delegate = self
         self.collection.dataSource = self        
-        self.collection.register(UINib.init(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageCollectionViewCell")
+        self.collection.register(UINib.init(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellId)
         self.collection.collectionViewLayout = layout
         self.collection.backgroundColor = .white
         imgThumbNail.clipsToBounds = true
@@ -62,8 +63,8 @@ class NewTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setData() {
-        let new = self.object!
+    func setData(new : News) {
+        self.object = new
         if object?.imagePath.count == 0 {
             heightCollection.constant = 0
         } else {
@@ -122,6 +123,7 @@ class NewTableViewCell: UITableViewCell {
         } else {
             btnFav.setImage(UIImage.init(named: "UnFavorite"), for: UIControlState.normal)
         }
+        self.collection.reloadData()
         //new.created_time
     }
     
@@ -162,14 +164,14 @@ extension NewTableViewCell : UICollectionViewDataSource, UICollectionViewDelegat
         return object!.imagePath.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ImageCollectionViewCell
         cell.imgview.contentMode = .scaleAspectFill
         cell.imgview.sd_setImage(with: URL.init(string: self.object!.imagePath[indexPath.row]), placeholderImage: kImagePlaceHoler)
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collection.frame.height,height: collection.frame.height)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: collection.frame.height,height: collection.frame.height)
+//    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if delegate != nil {
             delegate?.selectImage(cell: self, index: indexPath.row)
