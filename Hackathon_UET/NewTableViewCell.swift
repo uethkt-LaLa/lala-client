@@ -39,6 +39,8 @@ class NewTableViewCell: UITableViewCell {
         self.collection.delegate = self
         self.collection.dataSource = self        
         self.collection.register(UINib.init(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ImageCollectionViewCell")
+        imgThumbNail.clipsToBounds = true
+        imgThumbNail.cornerRadius = imgThumbNail.frame.width / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -95,6 +97,12 @@ class NewTableViewCell: UITableViewCell {
             btnDisLike.setImage(UIImage.init(named: "Unvote"), for: UIControlState.normal)
         } else {
             btnDisLike.setImage(UIImage.init(named: "UnvoteNormal"), for: UIControlState.normal)
+        }
+        
+        if new.isFollow == true {
+            btnFav.setImage(UIImage.init(named: "Favorite"), for: UIControlState.normal)
+        } else {
+            btnFav.setImage(UIImage.init(named: "UnFavorite"), for: UIControlState.normal)
         }
         //new.created_time
     }

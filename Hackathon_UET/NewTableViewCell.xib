@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="385" height="335"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="385" height="334"/>
+                <rect key="frame" x="0.0" y="0.0" width="385" height="334.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mI9-nA-ZrC">
@@ -101,27 +101,31 @@
                                     <action selector="btnLikeTouchUp:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="p8d-6W-Iyh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36D-Es-B04">
-                                <rect key="frame" x="347" y="7" width="30" height="30"/>
-                                <state key="normal" title="FAv"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36D-Es-B04">
+                                <rect key="frame" x="361" y="11" width="16" height="22"/>
+                                <state key="normal" image="Favorite"/>
                                 <connections>
                                     <action selector="btnFavTouchUp:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Tts-NV-myD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49L-uR-4cm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49L-uR-4cm">
                                 <rect key="frame" x="48" y="4" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="49L-uR-4cm" secondAttribute="height" multiplier="1:1" id="JkU-5S-ggV"/>
                                 </constraints>
+                                <state key="normal" image="Unvote">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="btnDisLikeWith_sender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rQ9-8W-jcV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agY-oh-KJr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agY-oh-KJr">
                                 <rect key="frame" x="92" y="4" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="agY-oh-KJr" secondAttribute="height" multiplier="1:1" id="LR9-y9-Bzf"/>
                                 </constraints>
+                                <state key="normal" image="Comment"/>
                                 <connections>
                                     <action selector="btnCommentTouchUp:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="NBH-xn-aDr"/>
                                 </connections>
@@ -215,4 +219,9 @@
             <point key="canvasLocation" x="57.5" y="197.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Comment" width="16" height="16"/>
+        <image name="Favorite" width="16" height="16"/>
+        <image name="Unvote" width="16" height="16"/>
+    </resources>
 </document>

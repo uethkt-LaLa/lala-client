@@ -3,6 +3,17 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "AppDelegate.application(UIApplication, didFinishLaunchingWithOptions : [UIApplicationLaunchOptionsKey : Any]?) -&gt; Bool:AppDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UltilsUser">
+            </PersistentString>
+            <PersistentString
+               value = "UltilsUser.userId">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "NewTableViewCell.(collectionView(UICollectionView, cellForItemAt : IndexPath) -&gt; UICollectionViewCell).(closure #1):NewTableViewCell.swift">
          <PersistentStrings>
             <PersistentString

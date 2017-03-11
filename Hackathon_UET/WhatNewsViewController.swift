@@ -75,7 +75,7 @@ class WhatNewsViewController: BaseViewController {
             }
         }
         self.listShow[index.row] = item
-        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
+        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
     }
     
     func setDisLikeForIndex(index : IndexPath, status : Bool){
@@ -94,20 +94,20 @@ class WhatNewsViewController: BaseViewController {
             }
         }
         self.listShow[index.row] = item
-        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
+        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
     }
     func setfavForIndex(index : IndexPath, status : Bool){
         let idPost = self.listShow[index.row].id
         if status == true { ////like
-            Alamofire.request(URL_DEFINE.foorunFollow+"/\(idPost)", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
-                self.listShow[index.row].isDisLike = true
+            Alamofire.request(kURL + "home/following_posts/" + "/\(idPost)", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                self.listShow[index.row].isFollow = true
             }
         } else if status == false { //unlike
-            Alamofire.request(URL_DEFINE.home_post+"/\(idPost)"+"/dislike", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
-                self.listShow[index.row].isDisLike = false
+            Alamofire.request(kURL + "home/following_posts/" + "/\(idPost)", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                self.listShow[index.row].isFollow = false
             }
         }
-        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.fade)
+        tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
     }
 }
 extension WhatNewsViewController : UITableViewDataSource,UITableViewDelegate {

@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         if UltilsUser.userId != "" {
-            self.window?.rootViewController = login
+            self.window?.rootViewController = nav
         } else {
             self.window?.rootViewController = login
         }

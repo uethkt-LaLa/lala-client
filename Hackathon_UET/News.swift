@@ -42,9 +42,14 @@ class News: NSObject {
         self.userAvatar = json["userAvatar"].stringValue
         self.userName = json["display_name"].stringValue
         self.followers = [String]()
+        
+        self.isFollow = false
         for item in json["followers"].array! {
             let val = item.stringValue
-            self.followers.append(val)
+            if UltilsUser.userId == val {
+                self.isFollow = true
+                break
+            }
         }
         
         self.comments = [String]()

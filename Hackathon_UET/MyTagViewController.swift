@@ -78,10 +78,11 @@ extension MyTagViewController : UITableViewDataSource,UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let tagID = self.listTags[indexPath.row].id
         let whatNews = WhatNewsViewController(nibName: "WhatNewsViewController", bundle: nil)
-        
-        //set URL
+        whatNews.urlRequest = URL_DEFINE.tagAll + "/\(tagID)/"+"posts"
         self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.title = "#\(self.listTags[indexPath.row].name)"
         self.navigationController?.pushViewController(whatNews, animated: true)
     }
 }
