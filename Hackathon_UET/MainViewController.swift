@@ -44,6 +44,9 @@ class MainViewController: UIViewController {
         tabsName.append("What's new")
         tabsName.append("Favorite Posts")
         tabsName.append("My Posts")
+        tabsName.append("My Tag")
+        tabsName.append("Popular Users")
+        tabsName.append("Setting")
         let carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: tabsName, delegate: self)
         carbonTabSwipeNavigation.insert(intoRootViewController: self, andTargetView: contentView)
         carbonTabSwipeNavigation.toolbar.isTranslucent = false
@@ -77,7 +80,7 @@ extension MainViewController : CarbonTabSwipeNavigationDelegate {
         default:
             str = "Setting"
         }
-        self.lblTitle.text = str
+        //self.lblTitle.text = str
     }
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         switch index {
