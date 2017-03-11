@@ -57,6 +57,7 @@
 		368E2B891E7089DA00078F5A /* Bolts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 368E2B741E70894300078F5A /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		369283D01E73BEB2001A13CD /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369283CE1E73BEB2001A13CD /* SettingViewController.swift */; };
 		369283D11E73BEB2001A13CD /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 369283CF1E73BEB2001A13CD /* SettingViewController.xib */; };
+		369283D31E73C65E001A13CD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369283D21E73C65E001A13CD /* Post.swift */; };
 		36A6586F1E716CA700494445 /* PicktureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6586D1E716CA700494445 /* PicktureViewController.swift */; };
 		36A658701E716CA700494445 /* PicktureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A6586E1E716CA700494445 /* PicktureViewController.xib */; };
 		36A658741E716CC400494445 /* ChooseTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A658721E716CC400494445 /* ChooseTagViewController.swift */; };
@@ -189,6 +190,7 @@
 		368E2B7E1E7089B700078F5A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		369283CE1E73BEB2001A13CD /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		369283CF1E73BEB2001A13CD /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		369283D21E73C65E001A13CD /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		36A6586D1E716CA700494445 /* PicktureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicktureViewController.swift; sourceTree = "<group>"; };
 		36A6586E1E716CA700494445 /* PicktureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicktureViewController.xib; sourceTree = "<group>"; };
 		36A658721E716CC400494445 /* ChooseTagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTagViewController.swift; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 				3677041F1E730D82008706B5 /* PopularUser.swift */,
 				6EDBD6511E7300D200B9FAE9 /* Constants.swift */,
 				368038C51E732F4F00DBDA89 /* UploadImage.swift */,
+				369283D21E73C65E001A13CD /* Post.swift */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -762,6 +765,7 @@
 				36546B7E1E72634700028DE6 /* PreviewViewController.swift in Sources */,
 				36546B791E72617100028DE6 /* DetailPostViewController.swift in Sources */,
 				368038C31E73214000DBDA89 /* PopularTableViewCell.swift in Sources */,
+				369283D31E73C65E001A13CD /* Post.swift in Sources */,
 				36EE8A211E72D88E0049B84D /* FavoritesPostViewController.swift in Sources */,
 				3677041D1E730C96008706B5 /* PopularUserViewController.swift in Sources */,
 				367704201E730D82008706B5 /* PopularUser.swift in Sources */,
