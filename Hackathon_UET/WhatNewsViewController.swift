@@ -98,15 +98,17 @@ class WhatNewsViewController: BaseViewController {
     }
     func setfavForIndex(index : IndexPath, status : Bool){
         let idPost = self.listShow[index.row].id
+        let item = self.listShow[index.row]
         if status == true { ////like
             Alamofire.request(kURL + "home/following_posts/" + "/\(idPost)", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
-                self.listShow[index.row].isFollow = true
+                item.isFollow = true
             }
         } else if status == false { //unlike
             Alamofire.request(kURL + "home/following_posts/" + "/\(idPost)", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
-                self.listShow[index.row].isFollow = false
+                item.isFollow = false
             }
         }
+        self.listShow[index.row] = item
         tbl.reloadRows(at: [index], with: UITableViewRowAnimation.none)
     }
 }
