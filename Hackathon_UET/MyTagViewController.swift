@@ -29,7 +29,7 @@ class MyTagViewController: UIViewController {
     func requestData() {
         self.listChoose.removeAll()
         self.listTags.removeAll()
-        Alamofire.request(URL_DEFINE.tagHome, method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+        Alamofire.request(URL_DEFINE.tagHome, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             let jsondata = JSON.init(data: response.data!)
             for item in jsondata.arrayValue {
                 let tag = Tag.init(json: item)
@@ -37,7 +37,7 @@ class MyTagViewController: UIViewController {
                 self.listChoose.append(tag.id)
                 self.listTags.append(tag)
             }
-            Alamofire.request(URL_DEFINE.tagAll, method: .get, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+            Alamofire.request(URL_DEFINE.tagAll, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 let jsondata = JSON.init(data: response.data!)
                 for item in jsondata.arrayValue {
                     let tag = Tag(json: item)
@@ -95,7 +95,7 @@ extension MyTagViewController : DelegateTag {
             self.tbl.reloadRows(at: [index!], with: UITableViewRowAnimation.fade)
             let id = URL_DEFINE.followOrNotTag+"/\(item.id)"
             NSLog("Hoho\(id)")
-            Alamofire.request(URL_DEFINE.followOrNotTag+"\(item.id)", method: .delete, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+            Alamofire.request(URL_DEFINE.followOrNotTag+"\(item.id)", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 let json = JSON.init(data: response.data!)
                 NSLog("delete \(json)")
             }
@@ -103,7 +103,7 @@ extension MyTagViewController : DelegateTag {
             item.select = true
             self.listTags[(index?.row)!] = item
             self.tbl.reloadRows(at: [index!], with: UITableViewRowAnimation.fade)
-            Alamofire.request(URL_DEFINE.followOrNotTag+"\(item.id)", method: .put, parameters: nil).authenticate(user: kUserName, password: kPassword).responseJSON { (response) in
+            Alamofire.request(URL_DEFINE.followOrNotTag+"\(item.id)", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 let json = JSON.init(data: response.data!)
                 NSLog("add \(json)")
             }

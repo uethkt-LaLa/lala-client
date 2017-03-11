@@ -12,8 +12,6 @@ import FBSDKLoginKit
 
 let kUserId = "58ba468ddfae86239b973adc"
 let kURL = "https://lala-test.herokuapp.com/api/"
-var kUserName = "admin"
-var kPassword = "123456"
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -35,11 +33,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let login = LoginViewController(nibName: "LoginViewController", bundle: nil)
         let myTag = MyTagViewController(nibName: "MyTagViewController", bundle: nil)
         
-        //if FBSDKAccessToken.current() != nil {
-            self.window?.rootViewController = nav
-//        } else {
-//            self.window?.rootViewController = login
-//        }
+        let userId = UserDefaults.standard.value(forKey: "userId")
+        if userId != nil {
+            UltilsUser.userId = userId as? String ?? ""
+        }
+        
+        let userna = UserDefaults.standard.value(forKey: "username")
+        if userna != nil {
+            UltilsUser.kUserName = userna as? String ?? ""
+        }
+        
+        let pass = UserDefaults.standard.value(forKey: "password")
+        if pass != nil {
+            UltilsUser.kPassword = pass as? String ?? ""
+        }
+//        UserDefaults.standard.setValue(id, forKey: "userId")
+//        UserDefaults.standard.setValue(username, forKey: "username")
+//        UserDefaults.standard.setValue(password, forKey: "password")
+
+        
+        if UltilsUser.userId != "" {
+            self.window?.rootViewController = login
+        } else {
+            self.window?.rootViewController = login
+        }
+        
+        
         
         self.window?.makeKeyAndVisible()
         

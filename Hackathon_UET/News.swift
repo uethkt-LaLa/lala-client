@@ -26,7 +26,8 @@ class News: NSObject {
     var isLike : Bool
     var isDisLike : Bool
     var isFollow : Bool
-    
+    var userAvatar : String
+    var userName : String
     init(json : JSON) {
         self.id = json["_id"].stringValue
         self.imagePath = [String]()
@@ -38,6 +39,8 @@ class News: NSObject {
         self.descriptionData = json["description"].stringValue
         let created_time = json["created_time"].stringValue
         self.created_time = created_time
+        self.userAvatar = json["userAvatar"].stringValue
+        self.userName = json["display_name"].stringValue
         self.followers = [String]()
         for item in json["followers"].array! {
             let val = item.stringValue

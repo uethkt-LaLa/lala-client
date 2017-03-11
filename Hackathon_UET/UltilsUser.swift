@@ -9,5 +9,7 @@
 import UIKit
 
 class UltilsUser: NSObject {
-    static let userId = "58ba468ddfae86239b973adc"
+    static var userId = ""
+    static var kUserName = ""
+    static var kPassword = ""
 }

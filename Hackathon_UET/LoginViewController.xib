@@ -23,69 +23,69 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elD-Pj-VuT">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b9l-cM-NEd">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Backgroud" translatesAutoresizingMaskIntoConstraints="NO" id="b9l-cM-NEd">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         </imageView>
+                        <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ur-5z-a8q">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdX-26-nhU">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5JE-F5-72a">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <rect key="frame" x="16" y="0.0" width="343" height="334"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lala" translatesAutoresizingMaskIntoConstraints="NO" id="uCc-jn-Ctr">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="334"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="uCc-jn-Ctr" secondAttribute="trailing" id="4Qn-FY-ost"/>
+                                        <constraint firstAttribute="bottom" secondItem="uCc-jn-Ctr" secondAttribute="bottom" id="KYm-PB-nlr"/>
+                                        <constraint firstItem="uCc-jn-Ctr" firstAttribute="leading" secondItem="5JE-F5-72a" secondAttribute="leading" id="e3l-gv-9dz"/>
+                                        <constraint firstItem="uCc-jn-Ctr" firstAttribute="top" secondItem="5JE-F5-72a" secondAttribute="top" id="fpj-7j-2BX"/>
+                                    </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSe-Yz-mOK">
-                                    <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                                    <rect key="frame" x="0.0" y="334" width="375" height="333"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EfV-fd-Nrv">
-                                            <rect key="frame" x="137.5" y="304.5" width="99" height="25"/>
-                                            <state key="normal">
-                                                <attributedString key="attributedTitle">
-                                                    <fragment content="Create new account">
-                                                        <attributes>
-                                                            <font key="NSFont" size="11" name=".SFNSText"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                            </state>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvQ-I5-PeL">
-                                            <rect key="frame" x="52" y="32" width="295" height="30"/>
+                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvQ-I5-PeL">
+                                            <rect key="frame" x="165.5" y="4" width="45" height="34"/>
                                             <state key="normal" title="Login"/>
                                             <connections>
                                                 <action selector="btnLoginTouchUp:" destination="-1" eventType="touchUpInside" id="TJb-Ya-ghH"/>
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="EfV-fd-Nrv" secondAttribute="bottom" constant="4" id="1Uv-ve-qOE"/>
-                                        <constraint firstItem="EfV-fd-Nrv" firstAttribute="centerX" secondItem="jSe-Yz-mOK" secondAttribute="centerX" id="RZC-yU-gPB"/>
                                         <constraint firstItem="VvQ-I5-PeL" firstAttribute="top" secondItem="jSe-Yz-mOK" secondAttribute="top" constant="4" id="Ta0-u5-DgF"/>
                                         <constraint firstItem="VvQ-I5-PeL" firstAttribute="centerX" secondItem="jSe-Yz-mOK" secondAttribute="centerX" id="gA3-1x-BWe"/>
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="jSe-Yz-mOK" firstAttribute="leading" secondItem="xdX-26-nhU" secondAttribute="leading" id="ICc-to-om5"/>
                                 <constraint firstItem="5JE-F5-72a" firstAttribute="top" secondItem="xdX-26-nhU" secondAttribute="top" id="P9x-5e-meU"/>
-                                <constraint firstAttribute="trailing" secondItem="5JE-F5-72a" secondAttribute="trailing" id="PRn-sB-Gud"/>
+                                <constraint firstAttribute="trailing" secondItem="5JE-F5-72a" secondAttribute="trailing" constant="16" id="PRn-sB-Gud"/>
                                 <constraint firstAttribute="trailing" secondItem="jSe-Yz-mOK" secondAttribute="trailing" id="VnM-Rx-JQx"/>
                                 <constraint firstItem="jSe-Yz-mOK" firstAttribute="top" secondItem="5JE-F5-72a" secondAttribute="bottom" id="bLi-dR-exZ"/>
-                                <constraint firstItem="5JE-F5-72a" firstAttribute="leading" secondItem="xdX-26-nhU" secondAttribute="leading" id="d8x-h8-tIv"/>
+                                <constraint firstItem="5JE-F5-72a" firstAttribute="leading" secondItem="xdX-26-nhU" secondAttribute="leading" constant="16" id="d8x-h8-tIv"/>
                                 <constraint firstItem="5JE-F5-72a" firstAttribute="height" secondItem="xdX-26-nhU" secondAttribute="height" multiplier="1:2" id="jlm-M6-oCQ"/>
                                 <constraint firstAttribute="bottom" secondItem="jSe-Yz-mOK" secondAttribute="bottom" id="tOc-Ra-eVn"/>
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="b9l-cM-NEd" firstAttribute="leading" secondItem="elD-Pj-VuT" secondAttribute="leading" id="52Q-7d-iNH"/>
+                        <constraint firstItem="5Ur-5z-a8q" firstAttribute="leading" secondItem="b9l-cM-NEd" secondAttribute="leading" id="5qr-8l-9pM"/>
                         <constraint firstItem="xdX-26-nhU" firstAttribute="leading" secondItem="elD-Pj-VuT" secondAttribute="leading" id="Lwc-rh-IVC"/>
+                        <constraint firstItem="5Ur-5z-a8q" firstAttribute="bottom" secondItem="b9l-cM-NEd" secondAttribute="bottom" id="QyI-zh-nyn"/>
                         <constraint firstItem="xdX-26-nhU" firstAttribute="top" secondItem="elD-Pj-VuT" secondAttribute="top" id="aw2-dD-ntw"/>
                         <constraint firstItem="b9l-cM-NEd" firstAttribute="top" secondItem="elD-Pj-VuT" secondAttribute="top" id="d4M-w5-hY6"/>
+                        <constraint firstItem="5Ur-5z-a8q" firstAttribute="trailing" secondItem="b9l-cM-NEd" secondAttribute="trailing" id="dOT-eN-Ucl"/>
                         <constraint firstAttribute="trailing" secondItem="b9l-cM-NEd" secondAttribute="trailing" id="gVB-yg-AQn"/>
+                        <constraint firstItem="5Ur-5z-a8q" firstAttribute="top" secondItem="b9l-cM-NEd" secondAttribute="top" id="sMr-zJ-pnH"/>
                         <constraint firstAttribute="bottom" secondItem="xdX-26-nhU" secondAttribute="bottom" id="wrA-dz-PUn"/>
                         <constraint firstAttribute="trailing" secondItem="xdX-26-nhU" secondAttribute="trailing" id="z4e-yB-paW"/>
                         <constraint firstAttribute="bottom" secondItem="b9l-cM-NEd" secondAttribute="bottom" id="zld-ai-CgK"/>
@@ -102,4 +102,8 @@
             <point key="canvasLocation" x="25.5" y="51.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="Backgroud" width="16" height="16"/>
+        <image name="lala" width="16" height="16"/>
+    </resources>
 </document>

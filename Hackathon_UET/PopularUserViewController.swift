@@ -31,7 +31,7 @@ class PopularUserViewController: UIViewController {
     
     func loadData() {
         var tmp = [PopularUser]()
-        Alamofire.request(URL_DEFINE.popularUser, method: .get, parameters: nil).responseJSON { (response) in
+        Alamofire.request(URL_DEFINE.popularUser, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             let data = JSON.init(data: response.data!)
             for item in data.arrayValue {
                 let pu = PopularUser(json: item)

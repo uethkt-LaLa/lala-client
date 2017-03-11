@@ -20,21 +20,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mI9-nA-ZrC">
-                        <rect key="frame" x="0.0" y="0.0" width="385" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="385" height="60"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JPR-Ji-M9u">
-                                <rect key="frame" x="8" y="4" width="36" height="36"/>
+                                <rect key="frame" x="8" y="4" width="52" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="JPR-Ji-M9u" secondAttribute="height" multiplier="1:1" id="f3F-Uy-yJb"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="18"/>
+                                        <real key="value" value="26"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0E-1K-Yd4">
-                                <rect key="frame" x="48" y="17" width="8" height="10"/>
+                                <rect key="frame" x="64" y="25" width="8" height="10"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3h-Qx-wCv">
                                         <rect key="frame" x="4" y="4" width="0.0" height="0.0"/>
@@ -64,7 +64,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="n0E-1K-Yd4" firstAttribute="leading" secondItem="JPR-Ji-M9u" secondAttribute="trailing" constant="4" id="GCv-S1-dCG"/>
-                            <constraint firstAttribute="height" constant="44" id="S5J-Aw-ACz"/>
+                            <constraint firstAttribute="height" constant="60" id="S5J-Aw-ACz"/>
                             <constraint firstItem="JPR-Ji-M9u" firstAttribute="top" secondItem="mI9-nA-ZrC" secondAttribute="top" constant="4" id="Zis-xg-4by"/>
                             <constraint firstItem="n0E-1K-Yd4" firstAttribute="centerY" secondItem="JPR-Ji-M9u" secondAttribute="centerY" id="bia-7H-a7M"/>
                             <constraint firstItem="JPR-Ji-M9u" firstAttribute="leading" secondItem="mI9-nA-ZrC" secondAttribute="leading" constant="8" id="ncg-mM-Ien"/>
@@ -72,7 +72,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1Z-3F-OLV">
-                        <rect key="frame" x="14" y="48" width="367" height="0.0"/>
+                        <rect key="frame" x="14" y="64" width="367" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -204,6 +204,7 @@
                 <outlet property="btnLike" destination="7Zd-I1-EP6" id="fXm-5p-tbp"/>
                 <outlet property="collection" destination="9Jf-9p-fV1" id="Jk9-II-KAo"/>
                 <outlet property="heightCollection" destination="53Q-Mh-kAd" id="JS5-UW-hRZ"/>
+                <outlet property="imgThumbNail" destination="JPR-Ji-M9u" id="02d-E4-IxG"/>
                 <outlet property="lblCountComment" destination="FTB-4I-kUF" id="PbA-aE-t9j"/>
                 <outlet property="lblCountDisLike" destination="Lu0-7Q-dV9" id="S74-JS-cGu"/>
                 <outlet property="lblCountLike" destination="Qx3-Ln-zN4" id="S33-Iy-9BK"/>
