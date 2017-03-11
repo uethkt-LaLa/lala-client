@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 
+
 protocol ImageForPostViewDelegate {
     
     func btnPickImageDidTap()
@@ -64,9 +65,10 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
     override func awakeFromNib() {
         
         
-        for i in 1...8
+        for i in 1...5
         {
             let name = "Question\(i)"
+            print("\(name)")
             listImageName.append(name)
             
         }
@@ -302,6 +304,12 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
             for i in 0 ..< listImageName.count
             {
                 let indexPath = IndexPath(item: i, section: 0)
+                let cell = photoFolderCollection.cellForItem(at: indexPath) as! ImageFromFolderCell
+                if cell.photo.image == img
+                {
+                    cell.btnAction.setImage(cell.unselectedImage, for: .normal)
+                }
+                
                 
             }
             
