@@ -17,9 +17,11 @@ class MainViewController: UIViewController {
     var slideMenu : SlideMenuController?
     var tabsName = [String]()
     @IBOutlet weak var contentView : UIView!
+    var settingVc : SettingViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        settingVc = SettingViewController(nibName: "SettingViewController", bundle: nil)
         initCarbonTabs()
     }
 
@@ -46,21 +48,26 @@ class MainViewController: UIViewController {
         tabsName.append("My Posts")
         tabsName.append("My Tag")
         tabsName.append("Popular Users")
-        tabsName.append("Setting")
         let carbonTabSwipeNavigation = CarbonTabSwipeNavigation(items: tabsName, delegate: self)
         carbonTabSwipeNavigation.insert(intoRootViewController: self, andTargetView: contentView)
-        carbonTabSwipeNavigation.toolbar.isTranslucent = false
         carbonTabSwipeNavigation.setTabBarHeight(40)
-        carbonTabSwipeNavigation.setIndicatorHeight(0)
+        carbonTabSwipeNavigation.setIndicatorHeight(2)
         carbonTabSwipeNavigation.carbonSegmentedControl?.backgroundColor = UIColor.init(rgba: "#FAFAFA")
-        carbonTabSwipeNavigation.setNormalColor(UIColor.init(rgba: "#040D14"), font: UIFont.boldSystemFont(ofSize: 13))
-        carbonTabSwipeNavigation.setNormalColor(UIColor.init(rgba: "#007D01"), font: UIFont.boldSystemFont(ofSize: 14))
+        carbonTabSwipeNavigation.setNormalColor(UIColor.init(rgba: "#00A25E"), font: UIFont.systemFont(ofSize: 13))
+        carbonTabSwipeNavigation.setNormalColor(UIColor.init(rgba: "#007D01"), font: UIFont.systemFont(ofSize: 14))
         for i in 0..<tabsName.count {
             carbonTabSwipeNavigation.carbonSegmentedControl?.setWidth(UIScreen.main.bounds.width / 3, forSegmentAt: i)
         }
     }
     
+    @IBAction func settingTouchUp(_sender : UIButton){
+        
+        self.navigationController?.pushViewController(settingVc!, animated: true)
+    }
     
+    @IBAction func newPostTouchUp(_sender : UIButton){
+        
+    }
 
 }
 extension MainViewController : CarbonTabSwipeNavigationDelegate {

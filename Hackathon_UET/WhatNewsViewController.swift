@@ -100,12 +100,14 @@ class WhatNewsViewController: BaseViewController {
         let idPost = self.listShow[index.row].id
         let item = self.listShow[index.row]
         if status == true { ////like
+            item.isFollow = true
             Alamofire.request(kURL + "home/following_posts/" + "/\(idPost)", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
-                item.isFollow = true
+                
             }
         } else if status == false { //unlike
+            item.isFollow = false
             Alamofire.request(kURL + "home/following_posts/" + "/\(idPost)", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
-                item.isFollow = false
+                
             }
         }
         self.listShow[index.row] = item
