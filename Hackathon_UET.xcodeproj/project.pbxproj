@@ -1011,8 +1011,9 @@
 					"$(PROJECT_DIR)/Hackathon_UET",
 				);
 				INFOPLIST_FILE = Hackathon_UET/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.linecentury.Hackathon-UET";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tuanvu2605.Hackathon-UET";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hackathon_UET/Hackathon_UET-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1031,8 +1032,9 @@
 					"$(PROJECT_DIR)/Hackathon_UET",
 				);
 				INFOPLIST_FILE = Hackathon_UET/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.linecentury.Hackathon-UET";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tuanvu2605.Hackathon-UET";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hackathon_UET/Hackathon_UET-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

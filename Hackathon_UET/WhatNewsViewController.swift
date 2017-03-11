@@ -14,10 +14,11 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
     @IBOutlet weak var tbl : UITableView!
     var listShow = [News]()
     var urlRequest : String?
+    let cellNewId = "NewTableViewCell"
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(WhatNewsViewController.reloadData(notification:)), name: NSNotification.Name.init("Menu0"), object: nil)
-        tbl.register(UINib.init(nibName: "NewTableViewCell", bundle: nil), forCellReuseIdentifier: "NewTableViewCell")
+        tbl.register(UINib.init(nibName: "NewTableViewCell", bundle: nil), forCellReuseIdentifier:cellNewId)
         tbl.tableFooterView = UIView.init(frame: CGRect.zero)
         tbl.estimatedRowHeight = 100
         tbl.emptyDataSetSource = self
