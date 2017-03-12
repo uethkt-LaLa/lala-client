@@ -14,11 +14,14 @@ enum PostContentControllerType {
     case newPost
     case comment
 }
+protocol PostComment {
+    func comment()
+}
 
 class PostContentController: UIViewController , ImageForPostViewDelegate ,DelegateChooseTag{
     
     @IBOutlet weak var txtContent: UITextView!
-    
+    var delegate : PostComment?
     var pickImageView : ImageForPostView?
     var listTag : [Tag] = []
     var type : PostContentControllerType?
@@ -96,17 +99,25 @@ class PostContentController: UIViewController , ImageForPostViewDelegate ,Delega
         
         if self.type == .comment
         {
-            
+            if delegate != nil {
+                delegate?.comment()
+            }
             let dict :[String:AnyObject] =
                 [
                 "description" : txtContent.text as AnyObject,
                 "image_urls" : (pickImageView?.listLinkSelected)! as AnyObject,
                 ]
-            Alamofire.request(kURL+"posts/\(self.postID ?? "")/comments", method: .post, parameters: dict).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+            Alamofire.request(kURL+"posts/\(self.postID ?? "")/comments/", method: .post, parameters: dict).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 let data = JSON.init(data: response.data!)
-                NSLog("\(data)")
+                NSLog("Comment \(data)")
+                let idComment = data["data"]["_id"].stringValue
+                Alamofire.request(kURL+"posts/\(self.postID ?? "")/comments/\(idComment)", method: .put, parameters: dict).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                    let data = JSON.init(data: response.data!)
+                    NSLog("Comment \(data)")
+                }
                 self.dismiss(animated: false, completion: nil)
             }
+            
             
         }
         

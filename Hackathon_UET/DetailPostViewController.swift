@@ -51,6 +51,7 @@ class DetailPostViewController: UIViewController , UITableViewDelegate , UITable
         let post = PostContentController(nibName: "PostContentController", bundle: nil)
         post.type = .comment
         post.postID = self.dataNews?.id
+        post.delegate = self
         let navi = UINavigationController(rootViewController: post)
         self.present(navi, animated: false, completion: nil)
     }
@@ -293,6 +294,11 @@ extension DetailPostViewController : DelegateNewCell {
     }
     func touchName(cell: NewTableViewCell) {
         let index = tbl.indexPath(for: cell)
+    }
+}
+extension DetailPostViewController : PostComment {
+    func comment() {
+        self.dataNews?.comments.append("a")
     }
 }
 

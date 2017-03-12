@@ -20,23 +20,32 @@ class SettingViewController: BaseViewController {
     @IBOutlet weak var lblCountFLPost : UILabel!
     @IBOutlet weak var lblCountFLTag : UILabel!
     @IBOutlet weak var btnChat : UIButton!
+    @IBOutlet weak var btnLogOut : UIButton!
+    @IBOutlet weak var btnFollow : UIButton!
     var tabsName = [String]()
     var urlID : String?
+    var method : HTTPMethod = .post
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         imgAva.clipsToBounds = true
         imgAva.cornerRadius = imgAva.frame.width / 2
         
-        requestInfo()
         initCarbonTabs()
     }
     override func viewWillAppear(_ animated: Bool) {
+        requestInfo()
         if urlID == nil {
             btnChat.isEnabled = false
+            heightConstraint.constant = 40
+            btnLogOut.isHidden = false
         } else {
+            heightConstraint.constant = 0
+            btnLogOut.isHidden = true
             btnChat.setTitle("   Chat with me   ", for: UIControlState.normal)
             btnChat.isEnabled = true
         }
+        self.loadFollowOrNot()
     }
     
     func requestInfo() {
@@ -75,6 +84,37 @@ class SettingViewController: BaseViewController {
         }
     }
     
+    func loadFollowOrNot() {
+        let id = UltilsUser.userId
+        btnFollow.isHidden = false
+        if ((urlID == nil) || (urlID == id)) {
+            urlID = id
+            btnFollow.isHidden = true
+        }
+        var followOrNot = true
+        Alamofire.request(URL_DEFINE.home , method: .get, parameters: nil).authenticate(user: UltilsUser.userId, password: UltilsUser.kPassword).responseJSON { (response) in
+            let data = JSON.init(data: response.data!)
+            NSLog("Info \(data)")
+            let followings = data["followings"].arrayValue
+            for item in followings {
+                let val = item.stringValue
+                if val == self.urlID {
+                    followOrNot = true //dang follow
+                    break
+                }
+            }
+            self.method = HTTPMethod.put
+            if followOrNot == true {
+                self.method = HTTPMethod.delete
+            }
+            if self.method == .put {
+                self.btnFollow.setImage(UIImage.init(named: "Follow"), for: UIControlState.normal)
+            } else {
+                self.btnFollow.setImage(UIImage.init(named: "Followed"), for: UIControlState.normal)
+            }
+        }
+    }
+    
     @IBAction func dismiss(_sender : UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -86,6 +126,35 @@ class SettingViewController: BaseViewController {
     @IBAction func btnChatTouchUp(_ sender : UIButton) {
         let idThangkia = urlID
     }
+    
+    @IBAction func logoutTouchUp(_sender : UIButton){
+        UltilsUser.kPassword = ""
+        UltilsUser.kUserName = ""
+        UltilsUser.userId = ""
+        
+        let mainVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
+        UIApplication.shared.keyWindow?.rootViewController = mainVC
+    }
+    
+    @IBAction func followOrUnfollow(_ sender : UIButton){
+        if self.method == .put {
+            self.btnFollow.setImage(UIImage.init(named: "Followed"), for: UIControlState.normal)
+            self.method = .delete
+        } else {
+            self.btnFollow.setImage(UIImage.init(named: "Follow"), for: UIControlState.normal)
+            self.method = .put
+        }
+        Alamofire.request(kURL+"home/following_people/\(self.urlID!)", method: self.method, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+            let data = JSON.init(data: response.data!)
+            NSLog("Follow \(data)")
+        }
+        Alamofire.request(kURL+"users/" + "\(self.urlID!)/followers", method: self.method, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+            let data = JSON.init(data: response.data!)
+            NSLog("Follow hihi \(data)")
+        }
+        
+    }
+    
 }
 
 extension SettingViewController : CarbonTabSwipeNavigationDelegate {
@@ -98,8 +167,13 @@ extension SettingViewController : CarbonTabSwipeNavigationDelegate {
             if urlID == nil {
                 urlID = id
             }
+            
+            
             let vc = MyTagViewController(nibName: "MyTagViewController", bundle: nil)
             vc.url = kURL + "users/\(urlID)/following_tags"
+            if ((urlID == nil) || (urlID == UltilsUser.userId)) {
+                vc.isChoose = true
+            }
             return vc
         default:
             let vc = MyTagViewController(nibName: "MyTagViewController", bundle: nil)

@@ -17,10 +17,10 @@
          contextName = "NewTableViewCell.setData(new : News) -&gt; ():NewTableViewCell.swift">
       </ContextState>
       <ContextState
-         contextName = "MyTagViewController.requestData() -&gt; ():MyTagViewController.swift">
+         contextName = "WhatNewsViewController.loadData() -&gt; ():WhatNewsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "url">
+               value = "kUserName">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -68,6 +68,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "SettingViewController.loadFollowOrNot() -&gt; ():SettingViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "urlID">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "News.init(json : JSON) -&gt; News:News.swift">
          <PersistentStrings>
             <PersistentString
@@ -76,10 +84,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "WhatNewsViewController.loadData() -&gt; ():WhatNewsViewController.swift">
+         contextName = "MyTagViewController.requestData() -&gt; ():MyTagViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "kUserName">
+               value = "url">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

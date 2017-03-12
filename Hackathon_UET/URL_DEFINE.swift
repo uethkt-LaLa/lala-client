@@ -19,4 +19,6 @@ class URL_DEFINE: NSObject {
     static let popularUser = kURL + "users/popular"
     static let followOrNotTag = kURL + "home/following_tags/"
     static let kURLRegis = kURL + "users"
+    static let kFollower = kURL + "home/following_people"
+    static let home = kURL + "home"
 }

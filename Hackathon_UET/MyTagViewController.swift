@@ -16,6 +16,7 @@ class MyTagViewController: UIViewController {
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var tbl : UITableView!
     var url : String?
+    var isChoose = false
     override func viewDidLoad() {
         super.viewDidLoad()
         tbl.register(UINib.init(nibName: "TagTableViewCell", bundle: nil), forCellReuseIdentifier: "TagTableViewCell")
@@ -76,7 +77,11 @@ extension MyTagViewController : UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TagTableViewCell", for: indexPath) as! TagTableViewCell
         cell.setData(item: listTags[indexPath.row])
-        cell.delegate = self
+        if self.isChoose == true {
+            cell.delegate = self
+        } else {
+            cell.delegate = nil
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -106,6 +111,10 @@ extension MyTagViewController : DelegateTag {
                 let json = JSON.init(data: response.data!)
                 NSLog("delete \(json)")
             }
+            Alamofire.request(kURL + "tags/"+"\(item.id)/followers", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                let json = JSON.init(data: response.data!)
+                NSLog("delete \(json)")
+            }
         } else {
             item.select = true
             self.listTags[(index?.row)!] = item
@@ -113,6 +122,10 @@ extension MyTagViewController : DelegateTag {
             Alamofire.request(URL_DEFINE.followOrNotTag+"\(item.id)", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 let json = JSON.init(data: response.data!)
                 NSLog("add \(json)")
+            }
+            Alamofire.request(kURL + "tags/"+"\(item.id)/followers", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                let json = JSON.init(data: response.data!)
+                NSLog("delete \(json)")
             }
         }
         

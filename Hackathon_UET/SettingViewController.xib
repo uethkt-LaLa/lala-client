@@ -13,7 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController" customModule="Hackathon_UET" customModuleProvider="target">
             <connections>
                 <outlet property="btnChat" destination="Rkh-a4-aBl" id="x7D-yB-l9H"/>
+                <outlet property="btnFollow" destination="lVd-x3-LzN" id="4JR-ni-SLD"/>
+                <outlet property="btnLogOut" destination="BSp-kQ-Rdl" id="ayN-Z2-ORi"/>
                 <outlet property="contentView" destination="AU4-lr-i04" id="Bhs-TQ-Teu"/>
+                <outlet property="heightConstraint" destination="Rvt-SB-wVo" id="j53-Du-V1R"/>
                 <outlet property="imgAva" destination="7yh-ke-nhy" id="A2C-GE-nsm"/>
                 <outlet property="lblCountFLPost" destination="eSL-fW-5p7" id="NQ2-wv-fLz"/>
                 <outlet property="lblCountFLTag" destination="Vzr-YS-fIG" id="wcH-jy-nM9"/>
@@ -95,6 +98,12 @@
                                 <action selector="btnChatTouchUp:" destination="-1" eventType="touchUpInside" id="isC-OR-9GY"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVd-x3-LzN">
+                            <rect key="frame" x="231" y="45" width="30" height="30"/>
+                            <connections>
+                                <action selector="followOrUnfollow:" destination="-1" eventType="touchUpInside" id="qAe-QF-uzX"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -102,10 +111,12 @@
                         <constraint firstItem="gZv-Hr-kS2" firstAttribute="top" secondItem="aj3-jW-rPr" secondAttribute="top" constant="28" id="3mI-sL-n5f"/>
                         <constraint firstItem="gZv-Hr-kS2" firstAttribute="leading" secondItem="aj3-jW-rPr" secondAttribute="leading" constant="4" id="8pk-rp-I5z"/>
                         <constraint firstItem="QQl-hA-n1O" firstAttribute="top" secondItem="Rkh-a4-aBl" secondAttribute="bottom" constant="4" id="90o-iE-snw"/>
+                        <constraint firstItem="lVd-x3-LzN" firstAttribute="centerY" secondItem="7yh-ke-nhy" secondAttribute="centerY" id="ISX-Jv-vhy"/>
                         <constraint firstItem="YAC-dj-vQU" firstAttribute="centerX" secondItem="aj3-jW-rPr" secondAttribute="centerX" id="PVt-Pj-yrg"/>
                         <constraint firstItem="eSL-fW-5p7" firstAttribute="centerY" secondItem="QQl-hA-n1O" secondAttribute="centerY" id="Rl7-0X-Rbq"/>
                         <constraint firstItem="Rkh-a4-aBl" firstAttribute="top" secondItem="YAC-dj-vQU" secondAttribute="bottom" constant="4" id="T5h-ci-e0n"/>
                         <constraint firstAttribute="bottom" secondItem="QQl-hA-n1O" secondAttribute="bottom" constant="8" id="dNn-zl-qfW"/>
+                        <constraint firstItem="lVd-x3-LzN" firstAttribute="leading" secondItem="7yh-ke-nhy" secondAttribute="trailing" constant="4" id="gWP-Ke-dJX"/>
                         <constraint firstItem="QQl-hA-n1O" firstAttribute="leading" secondItem="eSL-fW-5p7" secondAttribute="trailing" constant="8" id="h7P-Oj-TTB"/>
                         <constraint firstItem="Vzr-YS-fIG" firstAttribute="centerY" secondItem="QQl-hA-n1O" secondAttribute="centerY" id="nv0-pf-qRj"/>
                         <constraint firstItem="7yh-ke-nhy" firstAttribute="top" secondItem="aj3-jW-rPr" secondAttribute="top" constant="20" id="omM-Tb-Uwv"/>
@@ -116,19 +127,44 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AU4-lr-i04">
-                    <rect key="frame" x="0.0" y="181" width="375" height="486"/>
+                    <rect key="frame" x="0.0" y="181" width="375" height="446"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rfj-gy-5rw">
+                    <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSp-kQ-Rdl">
+                            <rect key="frame" x="153.5" y="5" width="68" height="30"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" title="LOG OUT">
+                                <color key="titleColor" red="0.89411764709999997" green="0.2901960784" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="logoutTouchUpWith_sender:" destination="-1" eventType="touchUpInside" id="MPl-IY-2cL"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="BSp-kQ-Rdl" firstAttribute="centerY" secondItem="Rfj-gy-5rw" secondAttribute="centerY" id="466-MH-Cda"/>
+                        <constraint firstItem="BSp-kQ-Rdl" firstAttribute="centerX" secondItem="Rfj-gy-5rw" secondAttribute="centerX" id="9on-qf-Zh1"/>
+                        <constraint firstItem="BSp-kQ-Rdl" firstAttribute="height" relation="lessThanOrEqual" secondItem="Rfj-gy-5rw" secondAttribute="height" id="RuE-CO-zZ8"/>
+                        <constraint firstAttribute="height" constant="40" id="Rvt-SB-wVo"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="aj3-jW-rPr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0jP-G2-r7G"/>
+                <constraint firstAttribute="bottom" secondItem="Rfj-gy-5rw" secondAttribute="bottom" id="9Lw-1T-R2L"/>
                 <constraint firstAttribute="trailing" secondItem="aj3-jW-rPr" secondAttribute="trailing" id="E0l-dt-7hD"/>
+                <constraint firstItem="Rfj-gy-5rw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Net-Dk-Hgn"/>
                 <constraint firstItem="AU4-lr-i04" firstAttribute="top" secondItem="aj3-jW-rPr" secondAttribute="bottom" id="OK0-WD-IMV"/>
                 <constraint firstItem="aj3-jW-rPr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="W9A-sZ-Zt3"/>
                 <constraint firstAttribute="trailing" secondItem="AU4-lr-i04" secondAttribute="trailing" id="WZp-G3-rk6"/>
+                <constraint firstItem="Rfj-gy-5rw" firstAttribute="top" secondItem="AU4-lr-i04" secondAttribute="bottom" id="aMD-Fp-wYq"/>
                 <constraint firstItem="AU4-lr-i04" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eOz-NY-nI7"/>
-                <constraint firstAttribute="bottom" secondItem="AU4-lr-i04" secondAttribute="bottom" id="eTI-jd-rh3"/>
+                <constraint firstAttribute="trailing" secondItem="Rfj-gy-5rw" secondAttribute="trailing" id="n2v-Tx-5sd"/>
             </constraints>
             <point key="canvasLocation" x="32.5" y="56.5"/>
         </view>
