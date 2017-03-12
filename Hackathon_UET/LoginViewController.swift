@@ -14,7 +14,7 @@ import FBSDKCoreKit
 import SwiftyJSON
 
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
     @IBOutlet weak var txtUserName : UITextField!
     @IBOutlet weak var txtUserPass : UITextField!
     override func viewDidLoad() {
@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func btnLoginTouchUp(_ sender : UIButton){
+        self.showLoadingHUD()
         let facebookLogin = FBSDKLoginManager()
         facebookLogin.logIn(withReadPermissions: ["public_profile"], from: self) { (facebookResult, facebookError) in
             if facebookError != nil {
@@ -64,6 +65,7 @@ class LoginViewController: UIViewController {
                             UserDefaults.standard.setValue(username, forKey: "username")
                             UserDefaults.standard.setValue(password, forKey: "password")
                             
+                            self.hideLoadingHUD()
                             let mainVC = MainViewController(nibName: "MainViewController", bundle: nil)
                             let nav = UINavigationController(rootViewController: mainVC)
                             nav.navigationController?.isNavigationBarHidden = true
@@ -92,6 +94,7 @@ class LoginViewController: UIViewController {
                                 UltilsUser.kUserName = username
                                 UltilsUser.kPassword = password
                                 
+                                self.hideLoadingHUD()
                                 UserDefaults.standard.setValue(id, forKey: "userId")
                                 UserDefaults.standard.setValue(username, forKey: "username")
                                 UserDefaults.standard.setValue(password, forKey: "password")

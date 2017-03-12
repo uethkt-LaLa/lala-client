@@ -17,10 +17,26 @@
          contextName = "NewTableViewCell.setData(new : News) -&gt; ():NewTableViewCell.swift">
       </ContextState>
       <ContextState
+         contextName = "MyTagViewController.requestData() -&gt; ():MyTagViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "url">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ChoosePostWhenLoginVC.requestData() -&gt; ():ChoosePostWhenLoginVC.swift">
          <PersistentStrings>
             <PersistentString
                value = "UltilsUser.kUserName">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SettingViewController.requestInfo() -&gt; ():SettingViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "urlID">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -40,6 +56,14 @@
             </PersistentString>
             <PersistentString
                value = "UltilsUser.userId">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WhatNewsViewController.touchName(cell : NewTableViewCell) -&gt; ():WhatNewsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "item.userId">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

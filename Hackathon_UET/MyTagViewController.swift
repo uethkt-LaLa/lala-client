@@ -15,6 +15,7 @@ class MyTagViewController: UIViewController {
     var listChoose = [String]()
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var tbl : UITableView!
+    var url : String?
     override func viewDidLoad() {
         super.viewDidLoad()
         tbl.register(UINib.init(nibName: "TagTableViewCell", bundle: nil), forCellReuseIdentifier: "TagTableViewCell")
@@ -28,10 +29,13 @@ class MyTagViewController: UIViewController {
     
     func requestData() {
         self.listChoose.removeAll()
-        self.listTags.removeAll()        
-        Alamofire.request(URL_DEFINE.tagHome, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+        self.listTags.removeAll()
+        if url == nil {
+            url = URL_DEFINE.tagHome
+        }
+        Alamofire.request(url!, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             let jsondata = JSON.init(data: response.data!)
-            NSLog("\(jsondata)")
+            NSLog("Choose \(jsondata)")
             for item in jsondata.arrayValue {
                 let tag = Tag.init(json: item)
                 tag.select = true
@@ -40,7 +44,7 @@ class MyTagViewController: UIViewController {
             }
             Alamofire.request(URL_DEFINE.tagAll, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 let jsondata = JSON.init(data: response.data!)
-                NSLog("\(jsondata)")
+                NSLog("List all \(jsondata)")
                 for item in jsondata.arrayValue {
                     let tag = Tag(json: item)
                     if self.listChoose.contains(tag.id) == false {

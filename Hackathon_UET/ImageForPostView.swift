@@ -54,7 +54,7 @@ class ImageForPostView: UIView , UICollectionViewDelegate, UICollectionViewDataS
     var listPhotoSelectect : [UIImage]  =  []
     var listTag : [Tag] = []
     var listImageName : [String] = []
-    var listLinkImg = ["http://imgur.com/wTgiD3n","http://imgur.com/y6nk5fT","http://imgur.com/WLCzl4A","http://imgur.com/djGyDVL","http://imgur.com/j2ENWro"]
+    var listLinkImg = ["http://i.imgur.com/wTgiD3n.png","http://i.imgur.com/y6nk5fT.png","http://i.imgur.com/WLCzl4A.png","http://i.imgur.com/djGyDVL.png","http://i.imgur.com/j2ENWro.png"]
     var listLinkSelected :[String] = []
     
     @IBOutlet weak var imageSelectedCollection: UICollectionView!

@@ -15,6 +15,7 @@ protocol DelegateNewCell {
     func favTouchUp(cell : NewTableViewCell , status : Bool)
     func commentTouchUp(cell : NewTableViewCell)
     func selectImage(cell : NewTableViewCell, index : Int)
+    func touchName(cell : NewTableViewCell)
 }
 
 class NewTableViewCell: UITableViewCell {
@@ -55,6 +56,30 @@ class NewTableViewCell: UITableViewCell {
         self.collection.backgroundColor = .white
         imgThumbNail.clipsToBounds = true
         imgThumbNail.cornerRadius = imgThumbNail.frame.width / 2
+        
+        imgThumbNail.isUserInteractionEnabled = true
+        imgThumbNail.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(NewTableViewCell.touchName(_:))))
+        lblName.isUserInteractionEnabled = true
+        lblName.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(NewTableViewCell.touchName(_:))))
+    }
+    
+    func touchName(_ gesture : UITapGestureRecognizer) {
+        if delegate != nil {
+            delegate?.touchName(cell: self)
+        }
+    }
+    
+    func requestTag() {
+        let url = URL_DEFINE.post_all + "/\(object!.id)/tags"
+        Alamofire.request(url, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+            let data = JSON.init(data: response.data!)
+            var result = ""
+            for item in data.arrayValue {
+                let name = item["name"].stringValue
+                result = result + name + "   "
+            }
+            self.lblTag.text = result
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -65,6 +90,7 @@ class NewTableViewCell: UITableViewCell {
     
     func setData(new : News) {
         self.object = new
+        requestTag()
         if object?.imagePath.count == 0 {
             heightCollection.constant = 0
         } else {

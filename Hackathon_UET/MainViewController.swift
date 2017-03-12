@@ -56,7 +56,7 @@ class MainViewController: UIViewController {
         carbonTabSwipeNavigation.insert(intoRootViewController: self, andTargetView: contentView)
         carbonTabSwipeNavigation.setTabBarHeight(40)
         carbonTabSwipeNavigation.setIndicatorHeight(2)
-        carbonTabSwipeNavigation.carbonSegmentedControl?.backgroundColor = UIColor.init(rgba: "#FAFAFA")
+        carbonTabSwipeNavigation.carbonSegmentedControl?.backgroundColor = UIColor.init(rgba: "#FFFFFF")
         carbonTabSwipeNavigation.setNormalColor(UIColor.init(rgba: "#00A25E"), font: UIFont.systemFont(ofSize: 13))
         carbonTabSwipeNavigation.setNormalColor(UIColor.init(rgba: "#007D01"), font: UIFont.systemFont(ofSize: 14))
         for i in 0..<tabsName.count {
@@ -65,8 +65,9 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func settingTouchUp(_sender : UIButton){
-        
-        self.present(settingVc!, animated: true, completion: nil)
+        let navi = UINavigationController(rootViewController: settingVc!)
+        navi.navigationBar.isHidden = true
+        self.present(navi, animated: false, completion: nil)
     }
     
     @IBAction func newPostTouchUp(_sender : UIButton){

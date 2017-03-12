@@ -22,7 +22,7 @@ class PostContentController: UIViewController , ImageForPostViewDelegate ,Delega
     var pickImageView : ImageForPostView?
     var listTag : [Tag] = []
     var type : PostContentControllerType?
-    
+    var postID : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,8 +102,9 @@ class PostContentController: UIViewController , ImageForPostViewDelegate ,Delega
                 "description" : txtContent.text as AnyObject,
                 "image_urls" : (pickImageView?.listLinkSelected)! as AnyObject,
                 ]
-            Alamofire.request(kURL+"posts", method: .post, parameters: dict).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+            Alamofire.request(kURL+"posts/\(self.postID ?? "")/comments", method: .post, parameters: dict).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 let data = JSON.init(data: response.data!)
+                NSLog("\(data)")
                 self.dismiss(animated: false, completion: nil)
             }
             

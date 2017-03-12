@@ -48,7 +48,6 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
     }
     
     func loadData() {
-        //        self.showLoadingHUD()
         //https://lala-test.herokuapp.com/api/home/new_feeds
         var url = kURL + "home/new_feeds"
         if urlRequest != nil {
@@ -63,12 +62,9 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
             NSLog("\(jsondata)")
             for item in jsondata.arrayValue {
                 let new = News(json: item)
-                //                self.listShow.append(new)
                 tmp.append(new)
             }
             self.listShow = tmp
-            
-            //            self.hideLoadingHUD()
             self.tbl.reloadData()
         }
     }
@@ -210,5 +206,16 @@ extension WhatNewsViewController : DelegateNewCell {
         slidePhotoVC.listPhotoItem = self.listShow[(indexPath?.row)!].imagePath
         slidePhotoVC.currentIndex = index
         self.present(slidePhotoVC, animated: true, completion: nil)
+    }
+    func touchName(cell: NewTableViewCell) {
+        let index = tbl.indexPath(for: cell)
+        let item = self.listShow[(index?.row)!]
+        let settingVC = SettingViewController(nibName: "SettingViewController", bundle: nil)
+        settingVC.urlID =  item.userId
+        
+        let navi = UINavigationController(rootViewController: settingVC)
+        navi.navigationBar.isHidden = true
+        self.present(navi, animated: false, completion: nil)
+        
     }
 }

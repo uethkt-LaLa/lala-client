@@ -11,10 +11,15 @@ import CarbonKit
 import Alamofire
 import SwiftyJSON
 
-class SettingViewController: UIViewController {
+class SettingViewController: BaseViewController {
     @IBOutlet weak var imgAva : UIImageView!
     @IBOutlet weak var lblName : UILabel!
     @IBOutlet weak var contentView : UIView!
+    @IBOutlet weak var lblFollower : UILabel!
+    @IBOutlet weak var lblLike : UILabel!
+    @IBOutlet weak var lblCountFLPost : UILabel!
+    @IBOutlet weak var lblCountFLTag : UILabel!
+    @IBOutlet weak var btnChat : UIButton!
     var tabsName = [String]()
     var urlID : String?
     override func viewDidLoad() {
@@ -25,17 +30,32 @@ class SettingViewController: UIViewController {
         requestInfo()
         initCarbonTabs()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        if urlID == nil {
+            btnChat.isEnabled = false
+        } else {
+            btnChat.setTitle("   Chat with me   ", for: UIControlState.normal)
+            btnChat.isEnabled = true
+        }
+    }
     
     func requestInfo() {
         let id = UltilsUser.userId
         if urlID == nil {
             urlID = id
         }
+        self.showLoadingHUD()
         Alamofire.request(URL_DEFINE.user_info_id + "\(urlID!)", method: .get, parameters: nil).authenticate(user: UltilsUser.userId, password: UltilsUser.kPassword).responseJSON { (response) in
             let data = JSON.init(data: response.data!)
-            NSLog("\(data)")
+            self.hideLoadingHUD()
+            NSLog("Info \(data)")
             let display_name = data["display_name"].stringValue
             let image_url = data["image_url"].stringValue
+            let flTag = data["following_tags"].arrayValue
+            
+            self.lblCountFLTag.text = "follow \(flTag.count) tags"
+            let flPost = data["following_posts"].arrayValue
+            self.lblCountFLPost.text = "follow \((flPost.count)) posts"
             self.imgAva.sd_setImage(with: URL.init(string: image_url), placeholderImage: kImagePlaceHoler)
             self.lblName.text = display_name
         }
@@ -62,6 +82,10 @@ class SettingViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func btnChatTouchUp(_ sender : UIButton) {
+        let idThangkia = urlID
+    }
 }
 
 extension SettingViewController : CarbonTabSwipeNavigationDelegate {
@@ -70,7 +94,12 @@ extension SettingViewController : CarbonTabSwipeNavigationDelegate {
     func carbonTabSwipeNavigation(_ carbonTabSwipeNavigation: CarbonTabSwipeNavigation, viewControllerAt index: UInt) -> UIViewController {
         switch index {
         case 0:
+            let id = UltilsUser.userId
+            if urlID == nil {
+                urlID = id
+            }
             let vc = MyTagViewController(nibName: "MyTagViewController", bundle: nil)
+            vc.url = kURL + "users/\(urlID)/following_tags"
             return vc
         default:
             let vc = MyTagViewController(nibName: "MyTagViewController", bundle: nil)

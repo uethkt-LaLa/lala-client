@@ -33,7 +33,6 @@ class DetailPostViewController: UIViewController , UITableViewDelegate , UITable
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.isHidden = false
-        requestComment()
         configTbl()
         
         
@@ -42,11 +41,16 @@ class DetailPostViewController: UIViewController , UITableViewDelegate , UITable
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.requestComment()
+    }
+    
     
     @IBAction func btnPostNewCommentDidTap(_ sender: Any) {
         
         let post = PostContentController(nibName: "PostContentController", bundle: nil)
         post.type = .comment
+        post.postID = self.dataNews?.id
         let navi = UINavigationController(rootViewController: post)
         self.present(navi, animated: false, completion: nil)
     }
@@ -65,7 +69,7 @@ class DetailPostViewController: UIViewController , UITableViewDelegate , UITable
     func requestComment() {
         let url = URL_DEFINE.getComment+"\(dataNews!.id)/"+"comments"
         NSLog("\(url)  \(UltilsUser.kUserName)  \(UltilsUser.kPassword)")
-        
+        var tmp = [Comment]()
         Alamofire.request(URL_DEFINE.getComment+"\(dataNews!.id ?? "")/"+"comments", method: .get).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
             let data = JSON.init(data: response.data!)
                 NSLog("\(data)")
@@ -73,8 +77,9 @@ class DetailPostViewController: UIViewController , UITableViewDelegate , UITable
                     NSLog("\(item)")
                     let comment = Comment(json: item)
                     print("comment \(comment)")
-                    self.listComment.append(comment)
+                    tmp.append(comment)                    
                 }
+            self.listComment = tmp
         
            
             self.tbl.reloadData()
@@ -285,6 +290,9 @@ extension DetailPostViewController : DelegateNewCell {
         slidePhotoVC.listPhotoItem = (self.dataNews?.imagePath)!
         slidePhotoVC.currentIndex = index
         self.present(slidePhotoVC, animated: true, completion: nil)
+    }
+    func touchName(cell: NewTableViewCell) {
+        let index = tbl.indexPath(for: cell)
     }
 }
 
