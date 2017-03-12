@@ -173,6 +173,8 @@ extension SettingViewController : CarbonTabSwipeNavigationDelegate {
             vc.url = kURL + "users/\(urlID)/following_tags"
             if ((urlID == nil) || (urlID == UltilsUser.userId)) {
                 vc.isChoose = true
+            } else {
+                vc.isChoose = false
             }
             return vc
         default:
