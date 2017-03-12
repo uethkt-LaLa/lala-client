@@ -9,6 +9,8 @@
 import UIKit
 import IQKeyboardManagerSwift
 import FBSDKLoginKit
+import FirebaseDatabase
+import FirebaseCore
 
 let kUserId = "58ba468ddfae86239b973adc"
 let kURL = "https://lala-test.herokuapp.com/api/"
@@ -19,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        FIRApp.configure()
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
