@@ -34,26 +34,40 @@ class MyTagViewController: UIViewController {
         if url == nil {
             url = URL_DEFINE.tagHome
         }
-        Alamofire.request(url!, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
-            let jsondata = JSON.init(data: response.data!)
-            NSLog("Choose \(jsondata)")
-            for item in jsondata.arrayValue {
-                let tag = Tag.init(json: item)
-                tag.select = true
-                self.listChoose.append(tag.id)
-                self.listTags.append(tag)
-            }
-            Alamofire.request(URL_DEFINE.tagAll, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+        if self.isChoose == true {
+            Alamofire.request(url!, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 let jsondata = JSON.init(data: response.data!)
-                NSLog("List all \(jsondata)")
+                NSLog("Choose \(jsondata)")
                 for item in jsondata.arrayValue {
-                    let tag = Tag(json: item)
-                    if self.listChoose.contains(tag.id) == false {
-                        tag.select = false
-                        self.listTags.append(tag)
-                    }
+                    let tag = Tag.init(json: item)
+                    tag.select = true
+                    self.listChoose.append(tag.id)
+                    self.listTags.append(tag)
                 }
-            self.tbl.reloadData()
+                Alamofire.request(URL_DEFINE.tagAll, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                    let jsondata = JSON.init(data: response.data!)
+                    NSLog("List all \(jsondata)")
+                    for item in jsondata.arrayValue {
+                        let tag = Tag(json: item)
+                        if self.listChoose.contains(tag.id) == false {
+                            tag.select = false
+                            self.listTags.append(tag)
+                        }
+                    }
+                    self.tbl.reloadData()
+                }
+            }
+
+        } else {
+            Alamofire.request(url!, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                let jsondata = JSON.init(data: response.data!)
+                NSLog("Choose \(jsondata)")
+                for item in jsondata.arrayValue {
+                    let tag = Tag.init(json: item)
+                    tag.select = true
+                    self.listChoose.append(tag.id)
+                    self.listTags.append(tag)
+                }
             }
         }
     }
@@ -123,7 +137,7 @@ extension MyTagViewController : DelegateTag {
                 let json = JSON.init(data: response.data!)
                 NSLog("add \(json)")
             }
-            Alamofire.request(kURL + "tags/"+"\(item.id)/followers", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+            Alamofire.request(kURL + "tags/"+"\(item.id)/followers", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 let json = JSON.init(data: response.data!)
                 NSLog("delete \(json)")
             }
