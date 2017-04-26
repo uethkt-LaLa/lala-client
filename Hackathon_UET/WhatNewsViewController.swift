@@ -15,6 +15,7 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
     var listShow = [News]()
     var urlRequest : String?
     let cellNewId = "NewTableViewCell"
+    var refreshControl: UIRefreshControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(WhatNewsViewController.reloadData(notification:)), name: NSNotification.Name.init("Menu0"), object: nil)
@@ -24,7 +25,21 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
         tbl.emptyDataSetSource = self
         tbl.emptyDataSetDelegate = self
         tbl.rowHeight = UITableViewAutomaticDimension
+        
+        self.refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        //refreshControl.addTarget(self, action: "refresh:", for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(WhatNewsViewController.refresh(sender:)), for: UIControlEvents.valueChanged)
+        tbl.addSubview(refreshControl) // not required when using UITableViewController
         self.loadData()
+    }
+    
+    func refresh(sender:AnyObject) {
+        let deadlineTime = DispatchTime.now() + .seconds(1)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            self.refreshControl.endRefreshing()
+        }
+        //self.loadData()
     }
     
     func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
@@ -66,6 +81,7 @@ class WhatNewsViewController: BaseViewController , DZNEmptyDataSetSource , DZNEm
             }
             self.listShow = tmp
             self.tbl.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
     

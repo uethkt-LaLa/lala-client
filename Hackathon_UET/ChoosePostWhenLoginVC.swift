@@ -106,6 +106,10 @@ extension ChoosePostWhenLoginVC : DelegateTag {
                 let json = JSON.init(data: response.data!)
                 NSLog("delete \(json)")
             }
+            Alamofire.request(kURL + "tags/"+"\(item.id)/followers", method: .delete, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                let json = JSON.init(data: response.data!)
+                NSLog("delete \(json)")
+            }
         } else {
             item.select = true
             self.listTags[(index?.row)!] = item
@@ -113,6 +117,10 @@ extension ChoosePostWhenLoginVC : DelegateTag {
             Alamofire.request(URL_DEFINE.followOrNotTag+"\(item.id)", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 let json = JSON.init(data: response.data!)
                 NSLog("add \(json)")
+            }
+            Alamofire.request(kURL + "tags/"+"\(item.id)/followers", method: .put, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
+                let json = JSON.init(data: response.data!)
+                NSLog("delete \(json)")
             }
         }
         

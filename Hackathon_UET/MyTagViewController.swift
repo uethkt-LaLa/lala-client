@@ -34,7 +34,7 @@ class MyTagViewController: UIViewController {
         if url == nil {
             url = URL_DEFINE.tagHome
         }
-        if self.isChoose == true {
+        if true {
             Alamofire.request(url!, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
                 let jsondata = JSON.init(data: response.data!)
                 NSLog("Choose \(jsondata)")
@@ -58,17 +58,6 @@ class MyTagViewController: UIViewController {
                 }
             }
 
-        } else {
-            Alamofire.request(url!, method: .get, parameters: nil).authenticate(user: UltilsUser.kUserName, password: UltilsUser.kPassword).responseJSON { (response) in
-                let jsondata = JSON.init(data: response.data!)
-                NSLog("Choose \(jsondata)")
-                for item in jsondata.arrayValue {
-                    let tag = Tag.init(json: item)
-                    tag.select = true
-                    self.listChoose.append(tag.id)
-                    self.listTags.append(tag)
-                }
-            }
         }
     }
 
